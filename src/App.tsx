@@ -1,11 +1,3 @@
-import { Flex } from "@chakra-ui/react";
-import { Input } from "./components/Input";
+import { Routes } from "./routes";
 
-export const App = () => {
-  return (
-    <Flex>
-      <h1>App</h1>
-      <Input name="exemplo" />
-    </Flex>
-  );
-};
+export const App = () => <Routes />;

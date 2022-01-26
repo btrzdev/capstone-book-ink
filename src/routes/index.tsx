@@ -10,17 +10,23 @@ import { PageNotFound } from "../pages/PageNotFound";
 import { useAuth } from "../contexts/Auth.Context";
 
 export const Routes = () => {
-  const { accessToken } = useAuth();
+  const { accessToken, user } = useAuth();
   return (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
-      <Route path="/dashboard-client" component={DashboardClient} isPrivate />
-      <Route
-        path="/dashboard-tattooist"
-        component={DashboardTattooist}
-        isPrivate
-      />
+      {true && user.isTattooists && (
+        <Route
+          path="/dashboard-tattooist"
+          component={DashboardTattooist}
+          isPrivate
+          isTattooist={user.isTattooists || false}
+        />
+      )}
+      {true && !user.isTattooists && (
+        <Route path="/dashboard-client" component={DashboardClient} isPrivate />
+      )}
+
       <Route path="/perfil" component={PerfilTattooist} isPrivate />
       <Route path="/register" component={Register} />
       <Route component={PageNotFound} isPrivate={!!accessToken} />

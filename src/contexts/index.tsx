@@ -1,6 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { AuthProvider } from "./Auth.Context";
+import { TattooistsProvider } from "./Tattooists.Context";
 
 interface AppProviderProps {
   children: ReactNode;
@@ -8,6 +9,8 @@ interface AppProviderProps {
 
 export const AppProvider = ({ children }: AppProviderProps) => (
   <AuthProvider>
-    <ChakraProvider>{children}</ChakraProvider>
+    <TattooistsProvider>
+      <ChakraProvider>{children}</ChakraProvider>
+    </TattooistsProvider>
   </AuthProvider>
 );

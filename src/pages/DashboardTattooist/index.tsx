@@ -1,5 +1,12 @@
-import { Heading } from "@chakra-ui/react";
+import { Button, Heading } from "@chakra-ui/react";
+import { useAuth } from "../../contexts/Auth.Context";
 
 export const DashboardTattooist = () => {
-  return <Heading>DashboardTattoist</Heading>;
+  const { logout } = useAuth();
+  return (
+    <Heading>
+      DashboardTattoist
+      <Button onClick={logout}>Sair</Button>
+    </Heading>
+  );
 };

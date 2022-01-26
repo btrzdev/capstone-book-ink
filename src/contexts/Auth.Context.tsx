@@ -92,11 +92,11 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     []
   );
 
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
     localStorage.removeItem("@Bookink:accessToken");
     localStorage.removeItem("@Bookink:user");
 
-    setData({} as AuthState);
+    await setData({} as AuthState);
   }, []);
 
   return (

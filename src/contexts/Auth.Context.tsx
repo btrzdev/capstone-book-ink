@@ -13,15 +13,18 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-interface SignInCredentials {
+interface loginCredentials {
   email: string;
   password: string;
 }
 
-interface SignUpCredentials {
+interface registerCredentials {
   email: string;
-  password: string;
   name: string;
+  password: string;
+  img?: string;
+  bio?: string;
+  isTattooists: boolean;
 }
 
 interface AuthState {
@@ -32,9 +35,9 @@ interface AuthState {
 interface AuthContextData {
   user: User;
   accessToken: string;
-  signIn: (credentials: SignInCredentials) => Promise<void>;
-  signUp: (credentials: SignUpCredentials) => Promise<void>;
-  signOut: () => void;
+  login: (credentials: loginCredentials) => Promise<void>;
+  register: (credentials: registerCredentials) => Promise<void>;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -61,7 +64,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     return {} as AuthState;
   });
 
-  const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
+  const login = useCallback(async ({ email, password }: loginCredentials) => {
     const response = await api.post("/login", { email, password });
 
     const { accessToken, user } = response.data;
@@ -72,17 +75,24 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setData({ accessToken, user });
   }, []);
 
-  const signUp = useCallback(
-    async ({ email, password, name }: SignUpCredentials) => {
+  const register = useCallback(
+    async ({
+      email,
+      password,
+      name,
+      img = "",
+      bio = "",
+      isTattooists = false,
+    }: registerCredentials) => {
       const response = await api
-        .post("/register", { email, password, name })
+        .post("/register", { email, password, name, img, bio, isTattooists })
         .then((response) => console.log(response))
         .catch((err) => console.log(err));
     },
     []
   );
 
-  const signOut = useCallback(() => {
+  const logout = useCallback(() => {
     localStorage.removeItem("@Bookink:accessToken");
     localStorage.removeItem("@Bookink:user");
 
@@ -94,9 +104,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       value={{
         accessToken: data.accessToken,
         user: data.user,
-        signIn,
-        signUp,
-        signOut,
+        login,
+        register,
+        logout,
       }}
     >
       {children}

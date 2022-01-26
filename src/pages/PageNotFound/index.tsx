@@ -27,7 +27,7 @@ export const PageNotFound = () => {
           _hover={{ bg: "red.700" }}
           onClick={() => history.push("/")}
         >
-          Ir para as minhas tarefas
+          Voltar
         </Button>
       </Box>
       <Image src={NotFoundImg} />

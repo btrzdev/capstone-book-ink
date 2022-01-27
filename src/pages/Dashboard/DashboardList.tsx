@@ -9,7 +9,14 @@ interface DashboardListProps {
 
 export const DashboardList = ({ tattooists }: DashboardListProps) => {
   return (
-    <UnorderedList listStyleType="none" m="0">
+    <UnorderedList
+      display="flex"
+      flexWrap="wrap"
+      flexDirection="row"
+      listStyleType="none"
+      justifyContent="center"
+      m="0"
+    >
       {React.Children.toArray(
         tattooists.map((tattooist) => (
           <ListItem>

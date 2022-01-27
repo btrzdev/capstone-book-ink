@@ -11,8 +11,16 @@ export const Dashboard = () => {
     loadTattooists();
   }, []);
 
+  console.log(tattooists);
+
   return (
-    <Flex flexDir="column" w="100vw" bg="blue" alignItems="center">
+    <Flex
+      w="100%"
+      bg="gray.300"
+      minH="100vh"
+      flexDir="column"
+      alignItems="center"
+    >
       Dashboard
       <Button onClick={logout}>Sair</Button>
       <DashboardList tattooists={tattooists} />

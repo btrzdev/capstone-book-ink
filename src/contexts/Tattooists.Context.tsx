@@ -33,7 +33,7 @@ interface TattooistsState {
 
 interface TattooistsContextData {
   tattooists: User[];
-  allTattooists: () => void;
+  loadTattooists: () => void;
 }
 
 const TattooistsContext = createContext<TattooistsContextData>(
@@ -53,7 +53,7 @@ const useTattooists = () => {
 const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
   const [tattooists, setTattooists] = useState<User[]>([]);
 
-  const allTattooists = useCallback(async () => {
+  const loadTattooists = useCallback(async () => {
     const response = await api.get("/tattooists");
 
     setTattooists([...response.data]);
@@ -63,7 +63,7 @@ const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
     <TattooistsContext.Provider
       value={{
         tattooists,
-        allTattooists,
+        loadTattooists,
       }}
     >
       {children}

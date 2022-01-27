@@ -20,6 +20,8 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
       alignItems="center"
       borderRadius="5px"
       m="5px 5px"
+      // filter="grayscale(100%)"
+      // _hover={{ filter: "grayscale(0%)" }}
     >
       <Flex w="100%" flexDir="column" alignItems="center">
         <Image

@@ -20,6 +20,7 @@ const signInSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password"), null], "Senhas diferentes"),
   img: yup.string(),
+  bio: yup.string(),
   isTattooists: yup.boolean(),
 });
 
@@ -28,6 +29,7 @@ export interface SignUpData {
   password: string;
   name: string;
   img?: string;
+  bio?: string;
   confirm_password?: string;
   isTattooists: boolean;
 }
@@ -49,6 +51,7 @@ export const Register = () => {
 
   const handleSignUp = (data: SignUpData) => {
     setLoading(true);
+    console.log(data);
     delete data.confirm_password;
 
     registerUser(data)

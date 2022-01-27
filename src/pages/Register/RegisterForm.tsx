@@ -7,6 +7,7 @@ import {
   Text,
   Flex,
   Checkbox,
+  Textarea,
 } from "@chakra-ui/react";
 import { Input } from "../../components/Input";
 import {
@@ -17,7 +18,13 @@ import {
   UseFormRegister,
 } from "react-hook-form";
 import { SignUpData } from ".";
-import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
+import {
+  FaBook,
+  FaEnvelope,
+  FaFileImage,
+  FaLock,
+  FaUser,
+} from "react-icons/fa";
 import { useAuth } from "../../contexts/Auth.Context";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -85,6 +92,16 @@ export const RegisterForm = ({
           </Flex>
           <Flex w="90%">
             <Input
+              type="text"
+              placeholder="Link para imagem do Perfil"
+              error={errors.img}
+              icon={FaFileImage}
+              {...register("img")}
+            />
+          </Flex>
+
+          <Flex w="90%">
+            <Input
               type="password"
               placeholder="Digite sua senha"
               error={errors.password}
@@ -101,6 +118,17 @@ export const RegisterForm = ({
               {...register("confirm_password")}
             />
           </Flex>
+          <Flex w="90%">
+            <Textarea
+              type="text"
+              maxLength={100}
+              placeholder="Descreva-se brevemente"
+              // error={errors.img}
+              // icon={FaBook}
+              {...register("bio")}
+            />
+          </Flex>
+
           <Flex w="90%">
             <Checkbox error={errors.isTattoists} {...register("isTattooists")}>
               Você é tatuador

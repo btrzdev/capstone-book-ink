@@ -28,15 +28,7 @@ export const Route = ({
         isPrivate === !!accessToken ? (
           <Component />
         ) : (
-          <Redirect
-            to={
-              isPrivate
-                ? "/"
-                : user.isTattooists
-                ? "/dashboard-tattooist"
-                : "/dashboard-client"
-            }
-          />
+          <Redirect to={isPrivate ? "/" : "/dashboard"} />
         )
       }
     />

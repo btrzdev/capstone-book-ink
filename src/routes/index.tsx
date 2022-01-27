@@ -1,7 +1,6 @@
 import { Switch } from "react-router-dom";
 import { Login } from "../pages/Login";
-import { DashboardClient } from "../pages/DashboardClient";
-import { DashboardTattooist } from "../pages/DashboardTattooist";
+import { Dashboard } from "../pages/Dashboard";
 import { Route } from "./Route";
 import { Register } from "../pages/Register";
 import { Home } from "../pages/Home";
@@ -15,18 +14,7 @@ export const Routes = () => {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
-      {true && user.isTattooists && (
-        <Route
-          path="/dashboard-tattooist"
-          component={DashboardTattooist}
-          isPrivate
-          isTattooist={user.isTattooists || false}
-        />
-      )}
-      {true && !user.isTattooists && (
-        <Route path="/dashboard-client" component={DashboardClient} isPrivate />
-      )}
-
+      <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/perfil" component={PerfilTattooist} isPrivate />
       <Route path="/register" component={Register} />
       <Route component={PageNotFound} isPrivate={!!accessToken} />

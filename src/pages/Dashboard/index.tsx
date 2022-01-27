@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/Auth.Context";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { DashboardList } from "./DashboardList";
 
-export const DashboardClient = () => {
+export const Dashboard = () => {
   const { logout } = useAuth();
   const { allTattooists, tattooists } = useTattooists();
   useEffect(() => {
@@ -14,7 +14,7 @@ export const DashboardClient = () => {
   console.log("aqui", tattooists);
   return (
     <Heading>
-      DashboardClient
+      Dashboard
       <Button onClick={logout}>Sair</Button>
       <DashboardList tattooists={tattooists} />
     </Heading>

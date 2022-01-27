@@ -24,7 +24,6 @@ export const LoginForm = ({
   register,
   loading,
 }: LoginFormProps) => {
-  const { login } = useAuth();
   const history = useHistory();
 
   return (

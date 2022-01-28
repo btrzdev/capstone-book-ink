@@ -54,7 +54,13 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
             borderRadius="100%"
             padding="5px 2px"
             m="10px 0"
-            onClick={() => history.push(`/perfil/${tattooist.id}`)}
+            onClick={() => {
+              localStorage.setItem(
+                "@Bookink:tattooistId",
+                JSON.stringify(tattooist.id)
+              );
+              history.push(`/perfil`);
+            }}
           >
             <FaUserAlt />
           </Button>

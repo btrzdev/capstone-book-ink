@@ -38,14 +38,7 @@ export const Login = () => {
     setLoading(true);
     login(data)
       .then((response) => {
-        const typeUser = JSON.parse(
-          localStorage.getItem("@Bookink:user") || "{}"
-        );
-        if (typeUser.isTattooists) {
-          history.push("/dashboard-tattooist");
-        } else {
-          history.push("/dashboard-client");
-        }
+        history.push("/dashboard");
         setLoading(false);
       })
       .catch((err) => {

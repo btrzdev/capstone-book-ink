@@ -55,13 +55,13 @@ const useAuth = () => {
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const [data, setData] = useState<AuthState>(() => {
     const accessToken = localStorage.getItem("@Bookink:accessToken");
-    const user = localStorage.getItem("@@Bookink:user");
+    const user = localStorage.getItem("@Bookink:user");
 
     if (accessToken && user) {
       return { accessToken, user: JSON.parse(user) };
     }
 
-    return {} as AuthState;
+    return { accessToken: "", user: {} } as AuthState;
   });
 
   const login = useCallback(async ({ email, password }: loginCredentials) => {
@@ -92,11 +92,11 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     []
   );
 
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
     localStorage.removeItem("@Bookink:accessToken");
     localStorage.removeItem("@Bookink:user");
 
-    setData({} as AuthState);
+    await setData({} as AuthState);
   }, []);
 
   return (

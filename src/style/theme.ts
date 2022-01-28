@@ -15,12 +15,13 @@ export const theme = extendTheme({
       800: "#090A0B",
     },
     yellow: {
-      30: "##F8F4E3",
+      30: "#F8F4E3",
     },
     orange: {
       100: "#C08B6A",
       300: "#A95C3C",
       700: "#5F493F",
+      800: "#4C4343",
     },
     fonts: {
       heading: "Alata, Philosopher, Arapey",
@@ -30,7 +31,7 @@ export const theme = extendTheme({
       xs: "1.25rem",
       sm: "2.5rem",
       md: "3.875rem",
-      lg: "4.688rem",      
+      lg: "4.688rem",
     },
     styles: {
       global: {

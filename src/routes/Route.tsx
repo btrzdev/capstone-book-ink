@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/Auth.Context";
 
 interface Props extends RouteProps {
   isPrivate?: boolean;
+  isTattooist?: boolean;
   component: ComponentType;
 }
 
@@ -14,10 +15,11 @@ interface Props extends RouteProps {
 
 export const Route = ({
   isPrivate = false,
+  isTattooist,
   component: Component,
   ...rest
 }: Props) => {
-  const { accessToken } = useAuth();
+  const { accessToken, user } = useAuth();
 
   return (
     <ReactRoute

@@ -1,9 +1,11 @@
 import { ReactNode } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Box,
   Flex,
   HStack,
   Heading,
+  Spacer,
   Link,
   Image,
   Button,
@@ -16,13 +18,22 @@ import { theme } from "../../style/theme";
 export const Links = ["Home", "Artists", "About"];
 
 export const NavBar = () => {
+  const history = useHistory();
+
   return (
-    <Flex m={10} h={10} alignItems="center" justifyContent="space-evenly">
-      <Box m={10}>
+    <Flex
+      m={8}
+      h={10}
+      w="90vw"
+      alignItems="center"
+      justifyContent="space-between"
+    >
+      <Box m={2} w="400px">
         <Image m={0} boxSize="300px" src={Logo}></Image>
       </Box>
-      <Box ml={80} justifyContent="space-between" display="flex">
-        <Link m={2} fontSize="lg" fontFamily="Arapey" padding="4px">
+
+      <Box w="300px" display="flex">
+        <Link m={2} fontSize="2xl" fontFamily="Arapey" padding="4px">
           {" "}
           About
         </Link>
@@ -32,7 +43,8 @@ export const NavBar = () => {
           bgColor={theme.colors.gray[800]}
           color={theme.colors.gray[100]}
           fontFamily="Philosopher"
-          fontSize="md"
+          fontSize="2xl"
+          onClick={() => history.push("/register")}
           _hover={{ bg: "#443407" }}
         >
           {" "}

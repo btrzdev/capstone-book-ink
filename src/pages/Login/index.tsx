@@ -77,7 +77,7 @@ export const Login = () => {
         flexDirection={["column-reverse", "column-reverse", "row", "row"]}
         alignItems="center"
         justifyContent="center"
-        bg="blue"
+        bgGradient="linear(to-t, #ABA394, #686255)"
         w={["100%", "100%", "70%", "70%"]}
         h="100vh"
       >

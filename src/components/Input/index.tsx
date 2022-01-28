@@ -20,6 +20,8 @@ import {
   forwardRef,
 } from "react";
 
+import { theme } from "../../style/theme";
+
 interface InputProps extends ChakraInputProps {
   name: string;
   label?: string;
@@ -34,7 +36,7 @@ type inputVariationOptions = {
 const inputVariation: inputVariationOptions = {
   error: "feedback.negative",
   default: "gray.200",
-  focus: "green.800",
+  focus: "orange.800",
   filled: "green.500",
 };
 

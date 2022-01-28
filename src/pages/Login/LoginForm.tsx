@@ -1,4 +1,4 @@
-import { Button, Heading, VStack, Text, Flex } from "@chakra-ui/react";
+import { Button, Heading, VStack, Text, Flex, Link } from "@chakra-ui/react";
 import { Input } from "../../components/Input";
 import {
   DeepMap,
@@ -10,6 +10,7 @@ import { LoginData } from ".";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { useAuth } from "../../contexts/Auth.Context";
 import { useHistory } from "react-router-dom";
+import { theme } from "../../style/theme";
 
 interface LoginFormProps {
   handleSignIn: () => void;
@@ -32,22 +33,19 @@ export const LoginForm = ({
       <Flex
         onSubmit={handleSignIn}
         as="form"
-        w="90%"
+        w="80%"
         m="20px 0px 10px 0"
         flexDir="column"
-        border="1px"
-        borderColor="gray.100"
-        borderRadius="5px"
         boxShadow=" rgba(149, 157, 165, 0.2) 0px 8px 24px"
       >
-        <Heading size="lg" m="30px 0px 0px 18px">
+        <Heading color={theme.colors.gray[100]} size="lg" m="30px 0px 0px 18px">
           {" "}
-          Entrar
+          Login
         </Heading>
         <VStack mt="6" spacing="5">
           <Flex w="90%">
             <Input
-              placeholder="Digite seu email"
+              placeholder="Your email"
               type="email"
               error={errors.email}
               icon={FaEnvelope}
@@ -57,7 +55,7 @@ export const LoginForm = ({
           <Flex w="90%">
             <Input
               type="password"
-              placeholder="Digite sua senha"
+              placeholder="Your password"
               error={errors.password}
               icon={FaLock}
               {...register("password")}
@@ -67,34 +65,27 @@ export const LoginForm = ({
         <VStack m="10px 0px 20px 0px" spacing="5">
           <Button
             isLoading={loading}
-            bg="green.800"
+            bg={theme.colors.orange[700]}
             w="91%"
-            color="white"
+            color={theme.colors.gray[100]}
             h="60px"
-            borderRadius="8px"
+            borderRadius="2px"
             _hover={{
               filter: "brightness(80%)",
             }}
             type="submit"
           >
-            Login
+            Sign in
           </Button>
-          <Text fontSize="14px" color="gray.400" w="70%" textAlign="center">
-            Crie sua conta e marque sua sessão de tattoo!{" "}
-          </Text>
-          <Button
-            bg="gray.100"
-            w="91%"
-            color="gray.300"
-            h="60px"
-            borderRadius="8px"
+          <Link
             onClick={() => history.push("/register")}
-            _hover={{
-              background: "gray.200",
-            }}
+            fontSize="14px"
+            color={theme.colors.gray[100]}
+            w="70%"
+            textAlign="center"
           >
-            Cadastrar
-          </Button>
+            or create an account{" "}
+          </Link>
         </VStack>
       </Flex>
     </VStack>

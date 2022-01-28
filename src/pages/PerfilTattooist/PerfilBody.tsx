@@ -6,10 +6,13 @@ import {
   Image,
   ListItem,
   Text,
+  Textarea,
   UnorderedList,
+  VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { FaCommentAlt, FaRegCommentAlt, FaUserAlt } from "react-icons/fa";
+import { useTattooists } from "../../contexts/Tattooists.Context";
 import { User } from "../../types";
 
 interface PerfilBodyProps {
@@ -17,6 +20,16 @@ interface PerfilBodyProps {
 }
 
 export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
+  const [onChange, setOnChange] = useState<string>("");
+  const { submitComment } = useTattooists();
+
+  const handleClick = () => {
+    const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
+    const data = { name: user.name, userId: tattooist?.id, comment: onChange };
+    console.log(data);
+    // submitComment(data);
+  };
+
   return (
     <Flex flexDir="column" alignItems="center">
       <Flex alignItems="center">
@@ -84,6 +97,10 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
             ))
           )}
         </UnorderedList>
+        <VStack space={2} bg="blue">
+          <Textarea bg="white" placeholder="Add Comment"></Textarea>
+          <Button onClick={() => handleClick()}>Submit</Button>
+        </VStack>
       </Flex>
     </Flex>
   );

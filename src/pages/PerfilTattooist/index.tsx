@@ -26,7 +26,11 @@ export const PerfilTattooist = () => {
   }, []);
 
   return (
-    <Flex minH="100vh" flexDir="column">
+    <Flex
+      minH="100vh"
+      flexDir="column"
+      bgGradient="linear(to-t, #ABA394, #686255)"
+    >
       <PerfilHeader />
       <PerfilBody tattooist={tattooist} />
     </Flex>

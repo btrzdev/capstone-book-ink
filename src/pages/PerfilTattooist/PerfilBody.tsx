@@ -7,7 +7,7 @@ interface PerfilBodyProps {
 
 export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
   return (
-    <Flex flexDir="column">
+    <Flex flexDir="column" alignItems="center">
       <Flex alignItems="center">
         <Flex flexDir="column" w="50%">
           <Heading fontSize="lg" textAlign="center">
@@ -38,12 +38,13 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
             border="3px solid"
             borderColor="orange.800"
             w="80%"
+            display="flex"
           >
-            Ver Trabalhos
+            Portfolio
           </Button>
         </Flex>
       </Flex>
-      <Flex flexDir="column" bg="brown">
+      <Flex flexDir="column" bg="brown" w="310px">
         <Heading>Bio</Heading>
         <Flex>
           <Text bg="yellow.30" fontFamily="Alata">

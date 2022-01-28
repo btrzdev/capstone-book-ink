@@ -22,6 +22,7 @@ export const theme = extendTheme({
       300: "#A95C3C",
       700: "#5F493F",
       800: "#4C4343",
+      900: "linear(to-t, #ABA394, #686255)",
     },
     fonts: {
       heading: "Alata, Philosopher, Arapey",
@@ -32,6 +33,9 @@ export const theme = extendTheme({
       sm: "2.5rem",
       md: "3.875rem",
       lg: "4.688rem",
+    },
+    gradient: {
+      browGradient: "linear(to-t, #ABA394, #686255)",
     },
     styles: {
       global: {

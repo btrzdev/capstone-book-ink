@@ -1,4 +1,13 @@
-import { Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  Heading,
+  Image,
+  ListItem,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
+import React from "react";
 import { User } from "../../types";
 
 interface PerfilBodyProps {
@@ -44,13 +53,25 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
           </Button>
         </Flex>
       </Flex>
-      <Flex flexDir="column" bg="brown" w="310px">
+      <Flex flexDir="column" w="310px">
         <Heading>Bio</Heading>
         <Flex>
           <Text bg="yellow.30" fontFamily="Alata">
             "{tattooist?.bio}
           </Text>
         </Flex>
+      </Flex>
+      <Flex mt="20px" flexDir="column" w="310px">
+        <Heading>Comments</Heading>
+        <UnorderedList>
+          {React.Children.toArray(
+            tattooist?.comments.map((tattooist) => (
+              <ListItem>
+                <Heading>Comment</Heading>
+              </ListItem>
+            ))
+          )}
+        </UnorderedList>
       </Flex>
     </Flex>
   );

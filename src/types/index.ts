@@ -1,3 +1,7 @@
+export interface Comment {
+  comment: string;
+  userId: number;
+}
 export interface User {
   email: string;
   name: string;
@@ -5,4 +9,5 @@ export interface User {
   bio?: string;
   isTattooists: boolean;
   id: number;
+  comments: Comment[];
 }

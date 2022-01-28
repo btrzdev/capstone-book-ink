@@ -74,7 +74,7 @@ export const Register = () => {
 
   return (
     <Flex
-      bgGradient="white"
+      bgGradient="linear(to-t, #ABA394, #686255)"
       alignItems="center"
       justifyContent="center"
       height={["auto", "auto", "100vh", "100vh"]}

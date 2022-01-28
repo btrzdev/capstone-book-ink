@@ -37,7 +37,7 @@ const inputVariation: inputVariationOptions = {
   error: "feedback.negative",
   default: "gray.200",
   focus: "orange.800",
-  filled: "green.500",
+  filled: "gray.500",
 };
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
@@ -86,13 +86,14 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           color={inputVariation[variation]}
           bg="gray.50"
           variant="outline"
+          borderRadius="2px"
           _hover={{ bgColor: "gray.100" }}
           _placeholder={{ color: "gray.300" }}
           _focus={{
             bg: "gray.100",
           }}
           size="md"
-          h="60px"
+          h="50px"
           ref={ref}
           {...rest}
         />

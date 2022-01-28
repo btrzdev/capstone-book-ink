@@ -28,6 +28,7 @@ import {
 import { useAuth } from "../../contexts/Auth.Context";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { theme } from "../../style/theme";
 
 interface LoginFormProps {
   handleSignUp: () => void;
@@ -46,35 +47,32 @@ export const RegisterForm = ({
   const history = useHistory();
 
   return (
-    <VStack w="100vw" maxW="377px" m="0" display="flex">
+    <VStack w="100vw" maxW="500px" m={10} display="flex">
       <Flex
         onSubmit={handleSignUp}
         as="form"
-        w="90%"
+        w="100%"
         m="20px 0px 10px 0"
         flexDir="column"
-        border="1px"
         borderColor="gray.100"
         borderRadius="5px"
-        boxShadow=" rgba(149, 157, 165, 0.2) 0px 8px 24px;"
       >
         <Heading
           display="flex"
+          color="gray.100"
+          fontFamily="Alata"
           justifyContent="space-between"
           alignItems="center"
           size="lg"
           m="30px 0px 0px 18px"
         >
           {" "}
-          Cadastro
-          <Box mr="5px" fontSize="10px" textDecor="underline" color="gray.300">
-            <Link to="/login">Retornar para o login</Link>
-          </Box>
+          Subscribe now to BookInk!
         </Heading>
         <VStack m="10px 0px 20px 0px" spacing="5">
           <Flex w="90%">
             <Input
-              placeholder="Digite seu nome"
+              placeholder="Your name"
               type="text"
               error={errors.name}
               icon={FaUser}
@@ -112,7 +110,7 @@ export const RegisterForm = ({
           <Flex w="90%">
             <Input
               type="password"
-              placeholder="Confirme sua senha"
+              placeholder="Confirm your password"
               error={errors.confirm_password}
               icon={FaLock}
               {...register("confirm_password")}
@@ -122,7 +120,8 @@ export const RegisterForm = ({
             <Textarea
               type="text"
               maxLength={100}
-              placeholder="Descreva-se brevemente"
+              bgColor="orange.700"
+              placeholder="Decribe yourself in a few words"
               // error={errors.img}
               // icon={FaBook}
               {...register("bio")}
@@ -131,23 +130,27 @@ export const RegisterForm = ({
 
           <Flex w="90%">
             <Checkbox error={errors.isTattoists} {...register("isTattooists")}>
-              Você é tatuador
+              Are you tattooist?
             </Checkbox>
           </Flex>
           <Button
             isLoading={loading}
-            bg="green.800"
+            bg="orange.700"
             w="91%"
-            color="white"
+            color="gray.100"
             h="60px"
-            borderRadius="8px"
+            borderRadius="2px"
             _hover={{
               filter: "brightness(80%)",
             }}
             type="submit"
           >
-            Cadastrar-se
+            Sign Up
           </Button>
+          <Flex m="5px" w="100%" fontSize="15px" color="gray.800">
+            <Text>Already have an account? </Text>
+            <Link to="/login">Login</Link>
+          </Flex>
         </VStack>
       </Flex>
     </VStack>

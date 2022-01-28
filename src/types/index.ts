@@ -1,5 +1,6 @@
 export interface Comment {
   comment: string;
+  name: string;
   userId: number;
 }
 export interface User {

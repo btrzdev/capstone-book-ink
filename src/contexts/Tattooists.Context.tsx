@@ -31,6 +31,7 @@ interface TattooistsContextData {
   tattooists: User[];
   loadTattooists: () => void;
   loadSpecificTattooist: (id: number) => User;
+  submitComment: (data: Comment) => void;
 }
 
 const TattooistsContext = createContext<TattooistsContextData>(
@@ -84,12 +85,20 @@ const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
     return {} as User;
   };
 
+  const submitComment = (data: Comment) => {
+    api
+      .post("/comments", data)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <TattooistsContext.Provider
       value={{
         tattooists,
         loadTattooists,
         loadSpecificTattooist,
+        submitComment,
       }}
     >
       {children}

@@ -15,7 +15,7 @@ export const Routes = () => {
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
       <Route path="/dashboard" component={Dashboard} isPrivate />
-      <Route path="/perfil/:id" component={PerfilTattooist} isPrivate />
+      <Route path="/perfil" component={PerfilTattooist} isPrivate />
       <Route path="/register" component={Register} />
       <Route component={PageNotFound} isPrivate={!!accessToken} />
     </Switch>

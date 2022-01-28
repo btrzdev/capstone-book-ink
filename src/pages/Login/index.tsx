@@ -39,7 +39,6 @@ export const Login = () => {
     login(data)
       .then((response) => {
         history.push("/dashboard");
-        setLoading(false);
       })
       .catch((err) => {
         toast({
@@ -51,7 +50,6 @@ export const Login = () => {
           isClosable: true,
           position: "top",
         });
-        setLoading(false);
         reset();
       });
   };

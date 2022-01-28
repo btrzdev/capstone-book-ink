@@ -11,7 +11,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import { CloseIcon } from "@chakra-ui/icons";
 import Logo from "../../assets/LOGO.svg";
 import { theme } from "../../style/theme";
 

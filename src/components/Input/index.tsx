@@ -93,7 +93,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
             bg: "gray.100",
           }}
           size="md"
-          h="50px"
+          h="45px"
           ref={ref}
           {...rest}
         />

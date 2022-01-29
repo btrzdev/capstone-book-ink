@@ -29,7 +29,7 @@ export const LoginForm = ({
   const history = useHistory();
 
   return (
-    <VStack w="100vw" maxW="377px" m="0" display="flex">
+    <VStack w="100vw" maxW="377px" height="600px" m="0" display="flex">
       <Flex
         onSubmit={handleSignIn}
         as="form"

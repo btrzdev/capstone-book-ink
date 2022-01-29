@@ -61,6 +61,7 @@ export const Login = () => {
       bgGradient="linear(to-t, #ABA394, #686255)"
       alignItems="center"
       w="100vw"
+      minHeight="100vh"
       height={["auto", "auto", "100vh", "100vh"]}
     >
       <Flex
@@ -73,7 +74,7 @@ export const Login = () => {
         backgroundSize="80%"
         backgroundRepeat="no-repeat"
         w={["100%", "100%", "70%", "70%"]}
-        h="100vh"
+        minHeight="100vh"
       >
         <Flex justifyContent="left" flexDirection="column">
           <LoginForm

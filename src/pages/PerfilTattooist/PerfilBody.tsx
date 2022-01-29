@@ -4,6 +4,7 @@ import {
   Flex,
   Heading,
   Image,
+  Input,
   ListItem,
   Text,
   Textarea,
@@ -11,7 +12,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { FaCommentAlt, FaRegCommentAlt, FaUserAlt } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import { FaRegCommentAlt, FaUserAlt } from "react-icons/fa";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { User } from "../../types";
 
@@ -19,21 +21,38 @@ interface PerfilBodyProps {
   tattooist?: User;
 }
 
+interface CommentData {
+  comment: string;
+}
+
 export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
   const [onChange, setOnChange] = useState<string>("");
   const { submitComment } = useTattooists();
+
   const [loading, setLoading] = useState(false);
 
-  const handleClick = async () => {
-    setLoading(true);
-    const data = { comment: onChange, name: "asdasd", userId: tattooist?.id };
+  const {
+    formState: { errors },
+    register,
+    handleSubmit,
+    reset,
+  } = useForm<CommentData>();
 
-    submitComment(data)
+  const handleClick = async (data: CommentData) => {
+    setLoading(true);
+
+    setOnChange("");
+    const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
+    const data_ = { comment: onChange, name: user.name, userId: tattooist?.id };
+
+    submitComment(data_)
       .then((_) => {
         setLoading(false);
+        reset();
       })
       .catch((_) => {
         setLoading(false);
+        reset();
       });
   };
 
@@ -104,13 +123,15 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
             ))
           )}
         </UnorderedList>
-        <VStack space={2} bg="blue">
-          <Textarea
+        <VStack as="form" onSubmit={handleSubmit(handleClick)} bg="blue">
+          <Input
+            id="fieldComment"
             bg="white"
+            {...register("comment")}
             onChange={(e) => setOnChange(e.target.value)}
             placeholder="Add Comment"
           />
-          <Button isLoading={loading} onClick={() => handleClick()}>
+          <Button isLoading={loading} type="submit">
             Submit
           </Button>
         </VStack>

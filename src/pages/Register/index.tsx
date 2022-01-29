@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Box, Image } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,6 +8,9 @@ import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { RegisterForm } from "./RegisterForm";
 import { RegisterHeader } from "./RegisterHeader";
+import img from "../../assets/tattoo-vector-black.png";
+import { NavBar } from "../../components/NavBar";
+import Logo from "../../assets/LOGO.svg";
 
 const signInSchema = yup.object().shape({
   email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -76,15 +79,25 @@ export const Register = () => {
     <Flex
       bgGradient="linear(to-t, #ABA394, #686255)"
       alignItems="center"
-      justifyContent="center"
-      height={["auto", "auto", "100vh", "100vh"]}
+      minHeight="100vh"
+      w="100vw"
+      justifyContent="right"
+
+      // height={["auto", "auto", "100vh", "100vh"]}
     >
       <Flex
-        flexDir={["column", "column", "row", "row"]}
+        flexDir={["column", "column", "column", "column"]}
         alignItems="center"
-        justifyContent="center"
+        w="100vw"
+        bgImage={img}
+        backgroundPosition="-30vw"
+        backgroundSize="80%"
+        backgroundRepeat="no-repeat"
+        minHeight="100vh"
+        backdrop-filter="brightness(60%)"
       >
-        <RegisterHeader />
+        <Image src={Logo} position="relative" left="35vw" />
+
         <RegisterForm
           errors={errors}
           handleSignUp={handleSubmit(handleSignUp)}

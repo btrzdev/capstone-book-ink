@@ -71,7 +71,7 @@ export const Login = () => {
         bgGradient="linear(to-t, #ABA394, #686255)"
         bgImage={img}
         backgroundPosition="left"
-        backgroundSize="80%"
+        backgroundSize="90%"
         backgroundRepeat="no-repeat"
         w={["100%", "100%", "70%", "70%"]}
         minHeight="100vh"
@@ -85,6 +85,13 @@ export const Login = () => {
           />
         </Flex>
       </Flex>
+      <Image
+        src={imgLogo}
+        position="relative"
+        left="0vw"
+        top="-35vh"
+        h="auto"
+      />
     </Flex>
   );
 };

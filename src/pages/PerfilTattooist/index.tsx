@@ -6,12 +6,10 @@ import { PerfilBody } from "./PerfilBody";
 import { PerfilHeader } from "./PerfilHeader";
 
 export const PerfilTattooist = () => {
-  const { loadSpecificTattooist } = useTattooists();
+  const { tattooists, loadTattooists, loadSpecificTattooist } = useTattooists();
   const [tattooist, setTattooist] = useState<User>();
 
   useEffect(() => {
-    console.log("asd");
-
     setTattooist(() => {
       const elementId = JSON.parse(
         localStorage.getItem("@Bookink:tattooistId") || ""
@@ -23,7 +21,7 @@ export const PerfilTattooist = () => {
 
       return {} as User;
     });
-  }, []);
+  }, [tattooists]);
 
   return (
     <Flex

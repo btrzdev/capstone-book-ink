@@ -13,25 +13,11 @@ interface TattooistsProviderProps {
   children: ReactNode;
 }
 
-interface loginCredentials {
-  email: string;
-  password: string;
-}
-
-interface registerCredentials {
-  email: string;
-  name: string;
-  password: string;
-  img?: string;
-  bio?: string;
-  isTattooists: boolean;
-}
-
 interface TattooistsContextData {
   tattooists: User[];
   loadTattooists: () => void;
   loadSpecificTattooist: (id: number) => User;
-  submitComment: (data: Comment) => void;
+  submitComment: (data: Object) => Promise<void>;
 }
 
 const TattooistsContext = createContext<TattooistsContextData>(
@@ -49,8 +35,6 @@ const useTattooists = () => {
 };
 
 const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
-  // const [tattooists, setTattooists] = useState<User[]>([]);
-
   const [tattooists, setTattooists] = useState<User[]>(() => {
     const tattooists = JSON.parse(
       localStorage.getItem("@Bookink:tattooists") || "[]"
@@ -85,12 +69,11 @@ const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
     return {} as User;
   };
 
-  const submitComment = (data: Comment) => {
-    api
-      .post("/comments", data)
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
-  };
+  const submitComment = useCallback(async (data: Object) => {
+    const response = await api.post("/comments", data);
+
+    loadTattooists();
+  }, []);
 
   return (
     <TattooistsContext.Provider

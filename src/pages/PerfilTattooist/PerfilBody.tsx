@@ -22,12 +22,19 @@ interface PerfilBodyProps {
 export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
   const [onChange, setOnChange] = useState<string>("");
   const { submitComment } = useTattooists();
+  const [loading, setLoading] = useState(false);
 
-  const handleClick = () => {
-    const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
-    const data = { name: user.name, userId: tattooist?.id, comment: onChange };
-    console.log(data);
-    // submitComment(data);
+  const handleClick = async () => {
+    setLoading(true);
+    const data = { comment: onChange, name: "asdasd", userId: tattooist?.id };
+
+    submitComment(data)
+      .then((_) => {
+        setLoading(false);
+      })
+      .catch((_) => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -98,8 +105,14 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
           )}
         </UnorderedList>
         <VStack space={2} bg="blue">
-          <Textarea bg="white" placeholder="Add Comment"></Textarea>
-          <Button onClick={() => handleClick()}>Submit</Button>
+          <Textarea
+            bg="white"
+            onChange={(e) => setOnChange(e.target.value)}
+            placeholder="Add Comment"
+          />
+          <Button isLoading={loading} onClick={() => handleClick()}>
+            Submit
+          </Button>
         </VStack>
       </Flex>
     </Flex>

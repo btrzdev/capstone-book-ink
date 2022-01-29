@@ -1,5 +1,6 @@
 import { Button, Heading, VStack, Text, Flex, Link } from "@chakra-ui/react";
 import { Input } from "../../components/Input";
+
 import {
   DeepMap,
   FieldError,
@@ -32,7 +33,7 @@ export const LoginForm = ({
       <Flex
         onSubmit={handleSignIn}
         as="form"
-        w="80%"
+        w="100%"
         m="20px 0px 10px 0"
         flexDir="column"
         boxShadow=" rgba(149, 157, 165, 0.2) 0px 8px 24px"
@@ -81,6 +82,7 @@ export const LoginForm = ({
             fontSize="14px"
             color={theme.colors.gray[100]}
             w="70%"
+            textShadow="2px 2px 4px #000000"
             textAlign="center"
           >
             or create an account{" "}

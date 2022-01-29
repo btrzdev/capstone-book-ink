@@ -1,4 +1,4 @@
-import { Flex, Heading, Image, useToast } from "@chakra-ui/react";
+import { Flex, Heading, Image, useToast, Box } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,6 +8,8 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/Auth.Context";
 import { LoginForm } from "./LoginForm";
 import { LoginHeader } from "./LoginHeader";
+import img from "../../assets/tattoo-vector-black.png";
+import imgLogo from "../../assets/LOGO.svg";
 
 const signInSchema = yup.object().shape({
   email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -56,28 +58,31 @@ export const Login = () => {
 
   return (
     <Flex
-      bgGradient="white"
+      bgGradient="linear(to-t, #ABA394, #686255)"
       alignItems="center"
-      bg="blue"
+      w="100vw"
       height={["auto", "auto", "100vh", "100vh"]}
     >
-      <Flex w="30%" display={["none", "none", "flex", "flex"]}>
-        <LoginHeader />
-      </Flex>
       <Flex
         flexDirection={["column-reverse", "column-reverse", "row", "row"]}
         alignItems="center"
-        justifyContent="center"
+        justifyContent="right"
         bgGradient="linear(to-t, #ABA394, #686255)"
+        bgImage={img}
+        backgroundPosition="left"
+        backgroundSize="80%"
+        backgroundRepeat="no-repeat"
         w={["100%", "100%", "70%", "70%"]}
         h="100vh"
       >
-        <LoginForm
-          errors={errors}
-          handleSignIn={handleSubmit(handleSignIn)}
-          loading={loading}
-          register={register}
-        />
+        <Flex justifyContent="left" flexDirection="column">
+          <LoginForm
+            errors={errors}
+            handleSignIn={handleSubmit(handleSignIn)}
+            loading={loading}
+            register={register}
+          />
+        </Flex>
       </Flex>
     </Flex>
   );

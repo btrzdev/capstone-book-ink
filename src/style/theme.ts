@@ -33,6 +33,9 @@ export const theme = extendTheme({
       md: "3.875rem",
       lg: "4.688rem",
     },
+    gradient: {
+      browGradient: "linear(to-t, #ABA394, #686255)",
+    },
     styles: {
       global: {
         body: {

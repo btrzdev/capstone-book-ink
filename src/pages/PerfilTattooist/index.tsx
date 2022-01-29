@@ -1,19 +1,36 @@
-import { Heading } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { User } from "../../types";
+import { PerfilBody } from "./PerfilBody";
+import { PerfilHeader } from "./PerfilHeader";
 
 export const PerfilTattooist = () => {
-  const { id } = useParams<{ id?: string }>();
-  const { tattooists } = useTattooists();
-  const [tattooist, setTattooist] = useState<User>({} as User);
+  const { tattooists, loadTattooists, loadSpecificTattooist } = useTattooists();
+  const [tattooist, setTattooist] = useState<User>();
 
   useEffect(() => {
-    const a = tattooists.find((element) => element.id === Number(id));
-    console.log(a);
-    // setTattooist({...a});
-  }, []);
+    setTattooist(() => {
+      const elementId = JSON.parse(
+        localStorage.getItem("@Bookink:tattooistId") || ""
+      );
 
-  return <Heading>PerfilTattooist</Heading>;
+      if (elementId) {
+        return loadSpecificTattooist(elementId);
+      }
+
+      return {} as User;
+    });
+  }, [tattooists]);
+
+  return (
+    <Flex
+      minH="100vh"
+      flexDir="column"
+      bgGradient="linear(to-t, #ABA394, #686255)"
+    >
+      <PerfilHeader />
+      <PerfilBody tattooist={tattooist} />
+    </Flex>
+  );
 };

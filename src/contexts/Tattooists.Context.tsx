@@ -13,27 +13,11 @@ interface TattooistsProviderProps {
   children: ReactNode;
 }
 
-interface loginCredentials {
-  email: string;
-  password: string;
-}
-
-interface registerCredentials {
-  email: string;
-  name: string;
-  password: string;
-  img?: string;
-  bio?: string;
-  isTattooists: boolean;
-}
-
-interface TattooistsState {
-  tattooists: User[];
-}
-
 interface TattooistsContextData {
   tattooists: User[];
   loadTattooists: () => void;
+  loadSpecificTattooist: (id: number) => User;
+  submitComment: (data: Object) => Promise<void>;
 }
 
 const TattooistsContext = createContext<TattooistsContextData>(
@@ -51,12 +35,44 @@ const useTattooists = () => {
 };
 
 const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
-  const [tattooists, setTattooists] = useState<User[]>([]);
+  const [tattooists, setTattooists] = useState<User[]>(() => {
+    const tattooists = JSON.parse(
+      localStorage.getItem("@Bookink:tattooists") || "[]"
+    );
+
+    if (tattooists) {
+      return tattooists;
+    }
+
+    return [] as User[];
+  });
 
   const loadTattooists = useCallback(async () => {
     const response = await api.get("/tattooists");
 
+    localStorage.setItem(
+      "@Bookink:tattooists",
+      JSON.stringify([...response.data])
+    );
     setTattooists([...response.data]);
+  }, []);
+
+  const loadSpecificTattooist = (id: number) => {
+    const element = tattooists.find(
+      (element: User) => element.id === Number(id)
+    );
+
+    if (element) {
+      return element;
+    }
+
+    return {} as User;
+  };
+
+  const submitComment = useCallback(async (data: Object) => {
+    const response = await api.post("/comments", data);
+
+    loadTattooists();
   }, []);
 
   return (
@@ -64,6 +80,8 @@ const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
       value={{
         tattooists,
         loadTattooists,
+        loadSpecificTattooist,
+        submitComment,
       }}
     >
       {children}

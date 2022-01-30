@@ -9,6 +9,14 @@ import {
   Tooltip,
   Text,
   Heading,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  Box,
+  CloseButton,
+  toast,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -28,6 +36,7 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
   const [onChange, setOnChange] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const { submitComment } = useTattooists();
+  const toast = useToast();
 
   const {
     formState: { errors },
@@ -38,8 +47,8 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
 
   const handleClick = async (data: CommentData) => {
     setLoading(true);
-
     setOnChange("");
+
     const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
     const data_ = {
       comment: onChange,
@@ -52,10 +61,24 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
       .then((_) => {
         setLoading(false);
         reset();
+        toast({
+          title: "Sucess",
+          description: "Comment added",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
       })
       .catch((_) => {
         setLoading(false);
         reset();
+        toast({
+          title: "Error",
+          description: "Something went wrong.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
       });
   };
 

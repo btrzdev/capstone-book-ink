@@ -40,8 +40,6 @@ export interface CommentData {
 }
 
 export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
-  const [numberStar, setNumberStar] = useState<number>(0);
-
   return (
     <Flex flexDir="column" alignItems="center">
       <Flex alignItems="center">
@@ -49,7 +47,7 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
           <Heading fontSize="lg" textAlign="center">
             {tattooist?.name}
           </Heading>
-          <Image w="160px" src={tattooist?.img} />
+          <Image w="160px" h="200px" src={tattooist?.img} />
         </Flex>
         <Flex
           flexDir="column"

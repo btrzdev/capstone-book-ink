@@ -15,7 +15,7 @@ export const DashboardList = ({ tattooists }: DashboardListProps) => {
       flexDirection="row"
       listStyleType="none"
       justifyContent="center"
-      m="0"
+      m="0 0 20px 0"
     >
       {React.Children.toArray(
         tattooists.map((tattooist) => (

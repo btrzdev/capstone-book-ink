@@ -8,15 +8,16 @@ import { PerfilHeader } from "./PerfilHeader";
 export const PerfilTattooist = () => {
   const { tattooists, loadTattooists, loadSpecificTattooist } = useTattooists();
   const [tattooist, setTattooist] = useState<User>();
+  const [numberStars, setNumberStars] = useState<number>(0);
 
   useEffect(() => {
     setTattooist(() => {
-      const elementId = JSON.parse(
-        localStorage.getItem("@Bookink:tattooistId") || ""
+      const element = JSON.parse(
+        localStorage.getItem("@Bookink:tattooistInfo") || ""
       );
-
-      if (elementId) {
-        return loadSpecificTattooist(elementId);
+      setNumberStars(element.stars);
+      if (element) {
+        return loadSpecificTattooist(element.id);
       }
 
       return {} as User;
@@ -31,7 +32,7 @@ export const PerfilTattooist = () => {
       fontFamily="Alata"
     >
       <PerfilHeader />
-      <PerfilBody tattooist={tattooist} />
+      <PerfilBody tattooist={tattooist} numberStars={numberStars} />
     </Flex>
   );
 };

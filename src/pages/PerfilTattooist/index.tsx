@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { User } from "../../types";
 import { PerfilBody } from "./PerfilBody";
-import { PerfilHeader } from "./PerfilHeader";
+import { HeaderProfileTattooist } from "./HeaderProfileTattooist";
 
 export const PerfilTattooist = () => {
   const { tattooists, loadTattooists, loadSpecificTattooist } = useTattooists();
@@ -29,7 +29,7 @@ export const PerfilTattooist = () => {
       flexDir="column"
       bgGradient="linear(to-t, #ABA394, #686255)"
     >
-      <PerfilHeader />
+      <HeaderProfileTattooist />
       <PerfilBody tattooist={tattooist} />
     </Flex>
   );

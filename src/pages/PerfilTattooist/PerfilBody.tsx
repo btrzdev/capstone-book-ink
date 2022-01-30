@@ -6,14 +6,25 @@ import {
   Image,
   Input,
   ListItem,
+  RangeSlider,
+  RangeSliderFilledTrack,
+  RangeSliderThumb,
+  RangeSliderTrack,
+  Slider,
+  SliderFilledTrack,
+  SliderMark,
+  SliderThumb,
+  SliderTrack,
   Text,
   Textarea,
+  Tooltip,
   UnorderedList,
   VStack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaRegCommentAlt, FaUserAlt } from "react-icons/fa";
+import { FaRegCommentAlt, FaStar, FaUserAlt } from "react-icons/fa";
+import { Star } from "../../components/Star";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { User } from "../../types";
 
@@ -29,7 +40,12 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
   const [onChange, setOnChange] = useState<string>("");
   const { submitComment } = useTattooists();
 
+  const [sliderValue, setSliderValue] = React.useState(5);
+  const [showTooltip, setShowTooltip] = React.useState(false);
+
   const [loading, setLoading] = useState(false);
+
+  const [numberStar, setNumberStar] = useState<number>(0);
 
   const {
     formState: { errors },
@@ -43,7 +59,12 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
 
     setOnChange("");
     const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
-    const data_ = { comment: onChange, name: user.name, userId: tattooist?.id };
+    const data_ = {
+      comment: onChange,
+      name: user.name,
+      userId: tattooist?.id,
+      rate: sliderValue,
+    };
 
     submitComment(data_)
       .then((_) => {
@@ -107,7 +128,7 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
         <UnorderedList listStyleType="none" m="0">
           {React.Children.toArray(
             tattooist?.comments.map((element) => (
-              <ListItem m="20px 5px">
+              <ListItem m="50px 5px">
                 <Flex>
                   <Box w="20px" fontSize="1.5rem">
                     <FaRegCommentAlt />
@@ -119,22 +140,72 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
                 <Text mt="5px" color="orange.800" fontWeight="700">
                   " {element.comment} "
                 </Text>
+                <Flex alignItems="center">
+                  {React.Children.toArray(
+                    Array.from({ length: element.rate }).map(() => (
+                      <Box>
+                        <FaStar />
+                      </Box>
+                    ))
+                  )}
+                </Flex>
               </ListItem>
             ))
           )}
         </UnorderedList>
-        <VStack as="form" onSubmit={handleSubmit(handleClick)} bg="blue">
+        <Flex
+          as="form"
+          onSubmit={handleSubmit(handleClick)}
+          mb="20px"
+          flexDir="column"
+          align="center"
+        >
           <Input
             id="fieldComment"
             bg="white"
             {...register("comment")}
             onChange={(e) => setOnChange(e.target.value)}
             placeholder="Add Comment"
+            h="60px"
           />
+          <Slider
+            w="80%"
+            id="slider"
+            m="20px 0"
+            defaultValue={1}
+            min={1}
+            max={5}
+            colorScheme="orange"
+            onChange={(v) => setSliderValue(v)}
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+          >
+            <SliderMark value={1} mt="3" ml="0" fontSize="sm" />
+            <SliderMark value={2} mt="3" ml="0" fontSize="sm" />
+            <SliderMark value={3} mt="3" ml="0" fontSize="sm" />
+            <SliderMark value={4} mt="3" ml="0" fontSize="sm" />
+            <SliderMark value={5} mt="3" ml="-2" fontSize="sm" />
+
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <Tooltip
+              hasArrow
+              bg="teal.500"
+              color="white"
+              placement="top"
+              isOpen={showTooltip}
+              label={`${sliderValue}`}
+            >
+              <SliderThumb boxSize={6} color="yellow" bg="orange">
+                <FaStar />
+              </SliderThumb>
+            </Tooltip>
+          </Slider>
           <Button isLoading={loading} type="submit">
             Submit
           </Button>
-        </VStack>
+        </Flex>
       </Flex>
     </Flex>
   );

@@ -1,8 +1,18 @@
 import { User } from "../../types/index";
-import { Button, Flex, Heading, Image, Text, Tooltip } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Image,
+  Text,
+  Tooltip,
+} from "@chakra-ui/react";
 import notFoundImage from "../../assets/notImage.jpg";
 import { useHistory } from "react-router-dom";
-import { FaUserAlt } from "react-icons/fa";
+import { FaStar, FaUserAlt } from "react-icons/fa";
+import { Star } from "../Star";
+import React, { useState } from "react";
 
 interface CardTattoistProps {
   tattooist: User;
@@ -10,7 +20,13 @@ interface CardTattoistProps {
 
 export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
   const history = useHistory();
-
+  const [numberStar, setNumberStar] = useState<number>(
+    Math.round(
+      tattooist.comments.reduce((acc, element) => (acc += element.rate), 0) /
+        tattooist.comments.length
+    )
+  );
+  console.log(numberStar);
   return (
     <Flex
       b="blue"
@@ -47,6 +63,16 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
         >
           - Tattooist -
         </Text>
+        <Flex>
+          {React.Children.toArray(
+            Array.from({ length: numberStar }).map(() => (
+              <Box>
+                <FaStar />
+              </Box>
+            ))
+          )}
+        </Flex>
+
         <Tooltip label="Ver perfil" placement="top">
           <Button
             bg="gray.800"

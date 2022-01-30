@@ -7,12 +7,12 @@ import { DashboardList } from "./DashboardList";
 export const Dashboard = () => {
   const { logout } = useAuth();
   const { loadTattooists, tattooists } = useTattooists();
+
   useEffect(() => {
     loadTattooists();
   }, []);
 
   console.log(tattooists);
-
   return (
     <Flex
       w="100%"

@@ -2,6 +2,7 @@ export interface Comment {
   comment: string;
   name: string;
   userId: number;
+  rate: number;
 }
 
 export interface User {

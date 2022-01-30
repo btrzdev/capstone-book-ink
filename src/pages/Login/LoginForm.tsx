@@ -50,7 +50,6 @@ export const LoginForm = ({
             color={theme.colors.gray[100]}
             size="lg"
             m="30px 0px 0px 18px"
-            textShadow="2px 2px 4px #000000"
           >
             {" "}
             Login
@@ -65,7 +64,7 @@ export const LoginForm = ({
                 {...register("email")}
               />
             </Flex>
-            <Flex w="100%">
+            <Flex w="90%">
               <Input
                 type="password"
                 placeholder="Your password"
@@ -79,7 +78,7 @@ export const LoginForm = ({
             <Button
               isLoading={loading}
               bg={theme.colors.orange[700]}
-              w="100%"
+              w="91%"
               color={theme.colors.gray[100]}
               h="60px"
               borderRadius="2px"

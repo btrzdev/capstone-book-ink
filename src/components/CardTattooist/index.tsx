@@ -20,13 +20,16 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
       alignItems="center"
       borderRadius="5px"
       m="5px 5px"
+
       // filter="grayscale(100%)"
       // _hover={{ filter: "grayscale(0%)" }}
     >
       <Flex w="100%" flexDir="column" alignItems="center">
         <Image
+          marginTop="10px"
           borderRadius="5px 5px 0px 0px"
-          h="500px"
+          h="350px"
+          w="250px"
           src={tattooist.img ? tattooist.img : notFoundImage}
           boxShadow=" rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 64px 16px"
         />

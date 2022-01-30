@@ -28,6 +28,7 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
   const [onChange, setOnChange] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const { submitComment } = useTattooists();
+
   const {
     formState: { errors },
     register,
@@ -47,16 +48,15 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
       rate: sliderValue,
     };
 
-    console.log(data_);
-    // submitComment(data_)
-    //   .then((_) => {
-    //     setLoading(false);
-    //     reset();
-    //   })
-    //   .catch((_) => {
-    //     setLoading(false);
-    //     reset();
-    //   });
+    submitComment(data_)
+      .then((_) => {
+        setLoading(false);
+        reset();
+      })
+      .catch((_) => {
+        setLoading(false);
+        reset();
+      });
   };
 
   return (
@@ -76,7 +76,7 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
         h="60px"
         icon={FaRegCommentAlt}
       />
-      <Text mt={5}>Avalie o tatuador</Text>
+      <Text mt={5}>Rate tattoist</Text>
       <Slider
         w="90%"
         id="slider"

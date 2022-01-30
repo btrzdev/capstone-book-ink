@@ -27,12 +27,14 @@ import { FaRegCommentAlt, FaStar, FaUserAlt } from "react-icons/fa";
 import { Star } from "../../components/Star";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { User } from "../../types";
+import { PerfilBio } from "./PerfilBio";
+import { PerfilNewComment } from "./PerfilNewComment";
 
 interface PerfilBodyProps {
   tattooist?: User;
 }
 
-interface CommentData {
+export interface CommentData {
   comment: string;
 }
 
@@ -69,10 +71,12 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
     submitComment(data_)
       .then((_) => {
         setLoading(false);
+        setSliderValue(1);
         reset();
       })
       .catch((_) => {
         setLoading(false);
+        setSliderValue(1);
         reset();
       });
   };
@@ -115,14 +119,7 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
           </Button>
         </Flex>
       </Flex>
-      <Flex flexDir="column" w="310px">
-        <Heading>Bio</Heading>
-        <Flex bg="yellow.30">
-          <Text padding="20px" fontFamily="Alata">
-            "{tattooist?.bio}
-          </Text>
-        </Flex>
-      </Flex>
+      <PerfilBio tattooist={tattooist} />
       <Flex mt="20px" flexDir="column" w="310px">
         <Heading>Comments</Heading>
         <UnorderedList listStyleType="none" m="0">
@@ -153,59 +150,7 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
             ))
           )}
         </UnorderedList>
-        <Flex
-          as="form"
-          onSubmit={handleSubmit(handleClick)}
-          mb="20px"
-          flexDir="column"
-          align="center"
-        >
-          <Input
-            id="fieldComment"
-            bg="white"
-            {...register("comment")}
-            onChange={(e) => setOnChange(e.target.value)}
-            placeholder="Add Comment"
-            h="60px"
-          />
-          <Slider
-            w="80%"
-            id="slider"
-            m="20px 0"
-            defaultValue={1}
-            min={1}
-            max={5}
-            colorScheme="orange"
-            onChange={(v) => setSliderValue(v)}
-            onMouseEnter={() => setShowTooltip(true)}
-            onMouseLeave={() => setShowTooltip(false)}
-          >
-            <SliderMark value={1} mt="3" ml="0" fontSize="sm" />
-            <SliderMark value={2} mt="3" ml="0" fontSize="sm" />
-            <SliderMark value={3} mt="3" ml="0" fontSize="sm" />
-            <SliderMark value={4} mt="3" ml="0" fontSize="sm" />
-            <SliderMark value={5} mt="3" ml="-2" fontSize="sm" />
-
-            <SliderTrack>
-              <SliderFilledTrack />
-            </SliderTrack>
-            <Tooltip
-              hasArrow
-              bg="teal.500"
-              color="white"
-              placement="top"
-              isOpen={showTooltip}
-              label={`${sliderValue}`}
-            >
-              <SliderThumb boxSize={6} color="yellow" bg="orange">
-                <FaStar />
-              </SliderThumb>
-            </Tooltip>
-          </Slider>
-          <Button isLoading={loading} type="submit">
-            Submit
-          </Button>
-        </Flex>
+        <PerfilNewComment tattooist={tattooist} />
       </Flex>
     </Flex>
   );

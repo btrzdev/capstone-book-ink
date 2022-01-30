@@ -28,6 +28,7 @@ export const PerfilTattooist = () => {
       minH="100vh"
       flexDir="column"
       bgGradient="linear(to-t, #ABA394, #686255)"
+      fontFamily="Alata"
     >
       <PerfilHeader />
       <PerfilBody tattooist={tattooist} />

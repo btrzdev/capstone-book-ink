@@ -102,7 +102,7 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
         <SliderMark value={4} mt="-1.5" ml="0" fontSize="sm">
           i
         </SliderMark>
-        <SliderMark value={5} mt="-1.5" ml="-2" fontSize="sm">
+        <SliderMark value={5} mt="-1.5" ml="-1" fontSize="sm">
           i
         </SliderMark>
         <SliderTrack>

@@ -1,7 +1,7 @@
 import { NavBar } from "../../components/NavBar";
 import { theme } from "../../style/theme";
-import tattooImg from "../../assets/TattooBg.svg";
-import { Box, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import tattooImg from "/home/vitor/MEGA/1_Estudos/ka/q2/CAPSTONE/capstone-book-ink/src/assets/background-tattoo.jpg";
+import { Box, Flex, Image, Heading, Text, VStack } from "@chakra-ui/react";
 
 export const Home = () => {
   return (
@@ -13,19 +13,25 @@ export const Home = () => {
         flexDirection="column"
         p={0}
       >
-        <Box p={0}>
-          <NavBar></NavBar>
+        <Box p={0} zIndex="1">
+          <NavBar />
         </Box>
+
+        <Flex bg="blue" w="100%">
+          <Heading ml="20px" fontSize="6rem" fontFamily="Arapey">
+            BOOKINK
+          </Heading>
+        </Flex>
+
+        <Flex borderTop="solid 20px" borderColor="white">
+          <Image src={tattooImg} top="0" zIndex="0" filter="grayscale(100%)" />
+        </Flex>
         <Box
           h={["300px", "300px", "400px", "400px"]}
           w="100vw"
           m={0}
           bgColor={theme.colors.gray[100]}
           padding={20}
-          backgroundImage={tattooImg}
-          backgroundPosition="center"
-          backgroundRepeat="no-repeat"
-          backgroundSize="cover"
         >
           <Heading
             fontFamily="Philosopher"

@@ -12,7 +12,7 @@ import notFoundImage from "../../assets/notImage.jpg";
 import { useHistory } from "react-router-dom";
 import { FaStar, FaUserAlt } from "react-icons/fa";
 import { Star } from "../Star";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface CardTattoistProps {
   tattooist: User;
@@ -20,12 +20,16 @@ interface CardTattoistProps {
 
 export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
   const history = useHistory();
-  const [numberStar, setNumberStar] = useState<number>(
-    Math.round(
-      tattooist.comments.reduce((acc, element) => (acc += element.rate), 0) /
-        tattooist.comments.length
-    )
-  );
+  const [numberStar, setNumberStar] = useState<number>(0);
+
+  useEffect(() => {
+    setNumberStar(
+      Math.round(
+        tattooist.comments.reduce((acc, element) => (acc += element.rate), 0) /
+          tattooist.comments.length
+      )
+    );
+  }, []);
 
   return (
     <Flex

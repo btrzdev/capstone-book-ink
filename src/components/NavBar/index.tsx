@@ -15,6 +15,7 @@ import {
   MenuItem,
   Text,
   Divider,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 
 import Logo from "../../assets/LOGO.svg";
@@ -32,6 +33,11 @@ export const Links = ["Home", "Artists", "About"];
 export const NavBar = () => {
   const history = useHistory();
 
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    md: true,
+  });
+
   return (
     <Flex
       zIndex="1"
@@ -43,75 +49,100 @@ export const NavBar = () => {
         <Image src={Logo}></Image>
       </Flex>
 
-      <Flex mr="20px">
-        <Menu>
-          <MenuButton
-            as={IconButton}
-            aria-label="Options"
-            icon={<HamburgerIcon />}
-            variant="outline"
-          />
-          <MenuList display="flex" flexDir="column">
-            <Button
-              m={2}
-              borderRadius={3}
-              fontFamily="Arapey"
-              fontSize={["lg", "2xl", "2xl", "2xl"]}
-              onClick={() => history.push("/")}
-              _hover={{ bg: "orange.100" }}
-              bg="none"
-            >
-              {" "}
-              HOME
-            </Button>
-            <Divider width="150px" m="0 auto" />
-            <Button
-              m={2}
-              borderRadius={3}
-              fontFamily="Arapey"
-              fontSize={["lg", "2xl", "2xl", "2xl"]}
-              onClick={() => history.push("/login")}
-              _hover={{ bg: "orange.100" }}
-              bg="none"
-            >
-              {" "}
-              LOGIN
-            </Button>
-            <Divider width="150px" m="0 auto" />
-            <Button
-              m={2}
-              borderRadius={3}
-              fontFamily="Arapey"
-              fontSize={["lg", "2xl", "2xl", "2xl"]}
-              onClick={() => history.push("/register")}
-              _hover={{ bg: "orange.100" }}
-              bg="none"
-            >
-              {" "}
-              REGISTER
-            </Button>
-          </MenuList>
-        </Menu>
-      </Flex>
-      {/* <Box display="flex" bg="violet">
-        <Link m={2} fontSize="2xl" fontFamily="Arapey" padding="4px">
-          {" "}
-          About
-        </Link>
-        <Button
-          m={2}
-          borderRadius={3}
-          bgColor={theme.colors.gray[800]}
-          color={theme.colors.gray[100]}
-          fontFamily="Philosopher"
-          fontSize={["lg", "2xl", "2xl", "2xl"]}
-          onClick={() => history.push("/register")}
-          _hover={{ bg: "#443407" }}
-        >
-          {" "}
-          SIGN UP
-        </Button>
-      </Box> */}
+      {isWideVersion ? (
+        <Flex fontFamily="Arapey">
+          <Button
+            bg="none"
+            _hover={{
+              borderBottom: "3px solid",
+              borderColor: "orange.800",
+            }}
+            mr="10px"
+            w="80px"
+            borderRadius="0"
+            onClick={() => history.push("/")}
+          >
+            HOME
+          </Button>
+          <Button
+            bg="none"
+            _hover={{
+              borderBottom: "3px solid",
+              borderColor: "orange.800",
+            }}
+            mr="10px"
+            w="80px"
+            borderRadius="0"
+            onClick={() => history.push("/login")}
+          >
+            LOGIN
+          </Button>
+          <Button
+            bg="none"
+            _hover={{
+              borderBottom: "3px solid",
+              borderColor: "orange.800",
+            }}
+            mr="10px"
+            w="80px"
+            borderRadius="0"
+            onClick={() => history.push("/register")}
+          >
+            REGISTER
+          </Button>
+        </Flex>
+      ) : (
+        <Flex mr="20px">
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              aria-label="Options"
+              icon={<HamburgerIcon />}
+              variant="outline"
+            />
+            <MenuList display="flex" flexDir="column">
+              <Button
+                m={2}
+                borderRadius={3}
+                fontFamily="Arapey"
+                fontSize={["lg", "2xl", "2xl", "2xl"]}
+                onClick={() => history.push("/")}
+                _hover={{ bg: "orange.100" }}
+                bg="none"
+              >
+                {" "}
+                HOME
+              </Button>
+              <Divider width="150px" m="0 auto" />
+              <Button
+                m={2}
+                borderRadius={3}
+                fontFamily="Arapey"
+                fontSize={["lg", "2xl", "2xl", "2xl"]}
+                onClick={() => history.push("/login")}
+                _hover={{ bg: "orange.100" }}
+                bg="none"
+              >
+                {" "}
+                LOGIN
+              </Button>
+              <Divider width="150px" m="0 auto" />
+              <Button
+                m={2}
+                borderRadius={3}
+                fontFamily="Arapey"
+                fontSize={["lg", "2xl", "2xl", "2xl"]}
+                onClick={() => history.push("/register")}
+                _hover={{ bg: "orange.100" }}
+                bg="none"
+              >
+                {" "}
+                REGISTER
+              </Button>
+            </MenuList>
+          </Menu>
+        </Flex>
+      )}
     </Flex>
   );
 };

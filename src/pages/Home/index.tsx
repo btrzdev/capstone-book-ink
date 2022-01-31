@@ -64,9 +64,11 @@ export const Home = () => {
         <Flex
           p="30px 10px"
           w="100%"
+          h="400px"
           bg="orange.700"
           flexDir="column"
           alignItems="center"
+          justifyContent="center"
         >
           <Heading
             fontSize={["2rem", "3rem"]}
@@ -88,6 +90,7 @@ export const Home = () => {
             display="flex"
             color="gray.200"
             textAlign="center"
+            justifyContent="center"
           >
             We connect clients with tattooists and reensure your booking
           </Heading>

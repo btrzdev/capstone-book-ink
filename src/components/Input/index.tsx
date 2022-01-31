@@ -86,21 +86,22 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           color={inputVariation[variation]}
           bg="gray.50"
           variant="outline"
-          borderRadius="2px"
+          borderRadius="5px"
           _hover={{ bgColor: "gray.100" }}
           _placeholder={{ color: "gray.300" }}
           _focus={{
             bg: "gray.100",
           }}
           size="md"
-          h="45px"
-          
+          h="60px"
           ref={ref}
           {...rest}
         />
 
         {!!error && (
-          <FormErrorMessage color="red.500">{error.message}</FormErrorMessage>
+          <FormErrorMessage bg="gray.300" fontWeight="600" color="red.500">
+            {error.message}
+          </FormErrorMessage>
         )}
       </InputGroup>
     </FormControl>

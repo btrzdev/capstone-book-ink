@@ -7,7 +7,6 @@ import { Input } from "../../components/Input";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/Auth.Context";
 import { LoginForm } from "./LoginForm";
-import { LoginHeader } from "./LoginHeader";
 import img from "../../assets/tattoo-vector-black.png";
 import imgLogo from "../../assets/LOGO.svg";
 import { NavBar } from "../../components/NavBar";
@@ -61,7 +60,7 @@ export const Login = () => {
     <Flex
       bgGradient="linear(to-t, #ABA394, #686255)"
       alignItems="center"
-      w="100vw"
+      w="100%"
       minHeight="100vh"
       height={["auto", "auto", "100vh", "100vh"]}
       flexDir="column"
@@ -88,13 +87,6 @@ export const Login = () => {
           />
         </Flex>
       </Flex>
-      <Image
-        src={imgLogo}
-        position="relative"
-        left="0vw"
-        top="-35vh"
-        h="auto"
-      />
     </Flex>
   );
 };

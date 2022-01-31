@@ -52,7 +52,7 @@ export const RegisterForm = ({
         onSubmit={handleSignUp}
         as="form"
         w="100%"
-        m="20px 0px 10px 0"
+        m="20px 0px 0px 0"
         padding="0"
         flexDir="column"
         borderColor="gray.100"
@@ -66,7 +66,7 @@ export const RegisterForm = ({
           alignItems="center"
           textShadow="2px 2px 4px #000000"
           size="lg"
-          m="0px"
+          m="0px 0px 20px 0"
         >
           {" "}
           Subscribe now to BookInk!
@@ -121,7 +121,6 @@ export const RegisterForm = ({
           <Flex w="90%">
             <Textarea
               type="text"
-              maxLength={100}
               bgColor="orange.700"
               placeholder="Decribe yourself in a few words"
               // error={errors.img}

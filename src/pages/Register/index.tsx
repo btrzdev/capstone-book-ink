@@ -81,7 +81,7 @@ export const Register = () => {
       bgGradient="linear(to-t, #ABA394, #686255)"
       alignItems={["center", "center", "right", "right"]}
       minHeight="100vh"
-      w="100vw"
+      w="100%"
       justifyContent={["center", "center", "right", "right"]}
       flexDir="column"
     >
@@ -89,7 +89,7 @@ export const Register = () => {
       <Flex
         flexDir={["column", "column", "column", "column"]}
         alignItems="center"
-        w="100vw"
+        w="100%"
         bgImage={img}
         backgroundPosition="-30vw"
         backgroundSize={["70%", "70%", "70%", "80%"]}
@@ -97,20 +97,13 @@ export const Register = () => {
         minHeight="100vh"
       >
         <Flex
-          w="100vw"
-          alignItems={["center", "center", "right", "right"]}
-          justifyContent={["center", "center", "right", "right"]}
-        >
-          <Image src={Logo} />
-        </Flex>
-        <Flex
           alignItems={["center", "center", "right", "right"]}
           justifyContent={["center", "center", "right", "right"]}
         >
           <Box
-            position={["initial", "initial", "initial", "relative"]}
-            left="15vw"
-            top="-10vh"
+            position={["initial", "initial", "relative", "relative"]}
+            left={["0", "0", "20vw", "25vw"]}
+            // top="-10vh"
           >
             <RegisterForm
               errors={errors}
@@ -118,7 +111,7 @@ export const Register = () => {
               loading={loading}
               register={register}
             />
-            <Flex paddingLeft={8} paddingTop={0}>
+            <Flex paddingLeft={8} mb="20px" paddingTop={0}>
               <Text
                 fontFamily="Alata"
                 color="gray.100"

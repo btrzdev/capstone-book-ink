@@ -40,7 +40,7 @@ export const NavBar = () => {
 
   return (
     <Flex
-      zIndex="1"
+      zIndex="2"
       w="100%"
       alignItems="center"
       justifyContent="space-between"

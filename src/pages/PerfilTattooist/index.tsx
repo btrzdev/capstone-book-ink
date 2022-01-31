@@ -1,4 +1,4 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { User } from "../../types";
@@ -31,7 +31,9 @@ export const PerfilTattooist = () => {
       fontFamily="Alata"
     >
       <HeaderProfileTattooist />
-      <PerfilBody tattooist={tattooist} />
+     
+        <PerfilBody tattooist={tattooist} />
+     
     </Flex>
   );
 };

@@ -76,7 +76,7 @@ export const Login = () => {
         w={["100%", "100%", "70%", "70%"]}
         minHeight="100vh"
       >
-        <Flex justifyContent="left" flexDirection="column">
+        <Flex justifyContent="left" flexDirection="column" >
           <LoginForm
             errors={errors}
             handleSignIn={handleSubmit(handleSignIn)}

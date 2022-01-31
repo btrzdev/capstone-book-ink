@@ -45,11 +45,14 @@ export const LoginForm = ({
           w="100%"
           m="20px 0px 10px 0"
           flexDir="column"
+          paddingTop="50px"
         >
           <Heading
-            color={theme.colors.gray[100]}
             size="lg"
             m="30px 0px 0px 18px"
+            fontFamily="Alata"
+            color="gray.100"
+            textShadow="2px 2px 4px #000000"
           >
             {" "}
             Login
@@ -64,7 +67,7 @@ export const LoginForm = ({
                 {...register("email")}
               />
             </Flex>
-            <Flex w="90%">
+            <Flex w="100%">
               <Input
                 type="password"
                 placeholder="Your password"
@@ -78,10 +81,11 @@ export const LoginForm = ({
             <Button
               isLoading={loading}
               bg={theme.colors.orange[700]}
-              w="91%"
+              w="100%"
               color={theme.colors.gray[100]}
               h="60px"
               borderRadius="2px"
+              fontFamily="Alata"
               _hover={{
                 filter: "brightness(80%)",
               }}
@@ -94,6 +98,7 @@ export const LoginForm = ({
               fontSize="14px"
               color={theme.colors.gray[100]}
               w="70%"
+              fontFamily="Alata"
               textShadow="2px 2px 4px #000000"
               textAlign="center"
             >

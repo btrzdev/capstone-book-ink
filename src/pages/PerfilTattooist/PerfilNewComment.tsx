@@ -122,7 +122,7 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
         </Tooltip>
       </Slider>
       <Button isLoading={loading} type="submit">
-        Enviar
+        Send
       </Button>
     </Flex>
   );

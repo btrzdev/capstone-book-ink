@@ -7,8 +7,10 @@ interface PerfilBioProps {
 
 export const PerfilBio = ({ tattooist }: PerfilBioProps) => {
   return (
-    <Flex flexDir="column" w="310px">
-      <Heading>Bio</Heading>
+    <Flex flexDir="column" w={["310px","360px", "360px","450px"]}>
+      <Heading textShadow="2px 2px 4px #000000" color="gray.100">
+        Bio
+      </Heading>
       <Flex bg="yellow.30">
         <Text padding="20px" fontFamily="Alata">
           "{tattooist?.bio}

@@ -44,6 +44,7 @@ export const HeaderProfileTattooist = () => {
           fontFamily="Arapey"
           display={["none", "none", "flex", "flex"]}
           padding="4px"
+          onClick={() => history.push("/dashboard")}
         >
           {" "}
           Artists

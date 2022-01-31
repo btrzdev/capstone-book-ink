@@ -38,7 +38,7 @@ export const Dashboard = () => {
             children={<FaSearch color="green.500" />}
             pointerEvents="none"
           />
-          <Input w="20vw" type="text" placeholder="Search" variant="filled" />
+          <Input w="30vw" type="text" placeholder="Search" variant="filled" />
         </InputGroup>
       </Flex>
 

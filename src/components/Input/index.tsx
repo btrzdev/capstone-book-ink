@@ -94,6 +94,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           }}
           size="md"
           h="45px"
+          
           ref={ref}
           {...rest}
         />

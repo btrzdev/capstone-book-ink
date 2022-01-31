@@ -47,14 +47,14 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
           h="350px"
           w="250px"
           src={tattooist.img ? tattooist.img : notFoundImage}
-          boxShadow=" rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 64px 16px"
+          boxShadow="rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 64px 16px"
         />
         <Heading
           fontFamily="Alata"
           letterSpacing={-1}
-          fontSize="20px"
           color="gray.100"
-          marginTop="20px"
+          paddingTop="10px"
+          fontSize="2xl"
         >
           {tattooist.name.toUpperCase()}
         </Heading>

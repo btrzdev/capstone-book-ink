@@ -1,18 +1,21 @@
 import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import { Comment } from "../../types";
 
 interface StarProps {
-  comments: Comment[];
+  numberStars: number;
 }
 
-export const Star = ({ comments }: StarProps) => {
-  const maxRate = comments.reduce((acc, element) => (acc += element.rate), 0);
-  const qtdCommments = comments.length;
-
-  const average = new Array(Math.round(maxRate / qtdCommments)).fill(0);
-
-  console.log(average);
-  return <Flex bg="blue">{/* {average.} */}</Flex>;
+export const Star = ({ numberStars }: StarProps) => {
+  return (
+    <Flex alignItems="center">
+      {React.Children.toArray(
+        Array.from({ length: numberStars }).map(() => (
+          <Box>
+            <FaStar />
+          </Box>
+        ))
+      )}
+    </Flex>
+  );
 };

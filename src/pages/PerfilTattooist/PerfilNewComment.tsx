@@ -9,6 +9,14 @@ import {
   Tooltip,
   Text,
   Heading,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  Box,
+  CloseButton,
+  toast,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -28,6 +36,8 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
   const [onChange, setOnChange] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const { submitComment } = useTattooists();
+  const toast = useToast();
+
   const {
     formState: { errors },
     register,
@@ -37,8 +47,8 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
 
   const handleClick = async (data: CommentData) => {
     setLoading(true);
-
     setOnChange("");
+
     const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
     const data_ = {
       comment: onChange,
@@ -47,16 +57,29 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
       rate: sliderValue,
     };
 
-    console.log(data_);
-    // submitComment(data_)
-    //   .then((_) => {
-    //     setLoading(false);
-    //     reset();
-    //   })
-    //   .catch((_) => {
-    //     setLoading(false);
-    //     reset();
-    //   });
+    submitComment(data_)
+      .then((_) => {
+        setLoading(false);
+        reset();
+        toast({
+          title: "Sucess",
+          description: "Comment added",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+      })
+      .catch((_) => {
+        setLoading(false);
+        reset();
+        toast({
+          title: "Error",
+          description: "Something went wrong.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      });
   };
 
   return (
@@ -76,7 +99,7 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
         h="60px"
         icon={FaRegCommentAlt}
       />
-      <Text mt={5}>Avalie o tatuador</Text>
+      <Text mt={5}>Rate tattoist</Text>
       <Slider
         w="90%"
         id="slider"
@@ -102,7 +125,7 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
         <SliderMark value={4} mt="-1.5" ml="0" fontSize="sm">
           i
         </SliderMark>
-        <SliderMark value={5} mt="-1.5" ml="-2" fontSize="sm">
+        <SliderMark value={5} mt="-1.5" ml="-1" fontSize="sm">
           i
         </SliderMark>
         <SliderTrack>

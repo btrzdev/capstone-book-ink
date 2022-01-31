@@ -26,7 +26,7 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
         tattooist.comments.length
     )
   );
-  console.log(numberStar);
+
   return (
     <Flex
       b="blue"
@@ -85,8 +85,8 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
             m="10px 0"
             onClick={() => {
               localStorage.setItem(
-                "@Bookink:tattooistId",
-                JSON.stringify(tattooist.id)
+                "@Bookink:tattooistInfo",
+                JSON.stringify({ id: tattooist.id, stars: numberStar })
               );
               history.push(`/perfil`);
             }}

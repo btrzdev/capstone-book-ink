@@ -32,55 +32,14 @@ import { PerfilNewComment } from "./PerfilNewComment";
 
 interface PerfilBodyProps {
   tattooist?: User;
+  numberStars: number;
 }
 
 export interface CommentData {
   comment: string;
 }
 
-export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
-  const [onChange, setOnChange] = useState<string>("");
-  const { submitComment } = useTattooists();
-
-  const [sliderValue, setSliderValue] = React.useState(5);
-  const [showTooltip, setShowTooltip] = React.useState(false);
-
-  const [loading, setLoading] = useState(false);
-
-  const [numberStar, setNumberStar] = useState<number>(0);
-
-  const {
-    formState: { errors },
-    register,
-    handleSubmit,
-    reset,
-  } = useForm<CommentData>();
-
-  const handleClick = async (data: CommentData) => {
-    setLoading(true);
-
-    setOnChange("");
-    const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
-    const data_ = {
-      comment: onChange,
-      name: user.name,
-      userId: tattooist?.id,
-      rate: sliderValue,
-    };
-
-    submitComment(data_)
-      .then((_) => {
-        setLoading(false);
-        setSliderValue(1);
-        reset();
-      })
-      .catch((_) => {
-        setLoading(false);
-        setSliderValue(1);
-        reset();
-      });
-  };
-
+export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
   return (
     <Flex
       paddingTop="0px"
@@ -124,6 +83,10 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
           alignItems="center"
           flexDirection="column"
         >
+          <Flex flexDir="column" alignItems="center" mb="20px">
+            <Text>Classification</Text>
+            <Star numberStars={numberStars} />
+          </Flex>
           <Button
             bg="gray.400"
             color="gray.100"
@@ -175,15 +138,7 @@ export const PerfilBody = ({ tattooist }: PerfilBodyProps) => {
                 <Text mt="5px" color="orange.800" fontWeight="700">
                   " {element.comment} "
                 </Text>
-                <Flex alignItems="center">
-                  {React.Children.toArray(
-                    Array.from({ length: element.rate }).map(() => (
-                      <Box>
-                        <FaStar />
-                      </Box>
-                    ))
-                  )}
-                </Flex>
+                <Star numberStars={element.rate} />
               </ListItem>
             ))
           )}

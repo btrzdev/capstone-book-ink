@@ -1,66 +1,101 @@
 import { NavBar } from "../../components/NavBar";
 import { theme } from "../../style/theme";
 import tattooImg from "/home/vitor/MEGA/1_Estudos/ka/q2/CAPSTONE/capstone-book-ink/src/assets/background-tattoo.jpg";
-import { Box, Flex, Image, Heading, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Image,
+  Heading,
+  Text,
+  VStack,
+  UnorderedList,
+  ListItem,
+} from "@chakra-ui/react";
+import { HomeDevs } from "./HomeDevs";
+import { HomeComments } from "./HomeComments";
+import { HomeHowItWorks } from "./HomeHowItWorks";
 
 export const Home = () => {
   return (
-    <VStack>
+    <Flex
+      alignItems="center"
+      minH="100vh"
+      flexDirection="column"
+      p={0}
+      bg="gray.300"
+    >
+      <NavBar />
+
       <Flex
-        bgColor={theme.colors.gray[300]}
+        w="100%"
+        m={["50px 0px", "0px"]}
+        justifyContent={["center"]}
+        flexDir="column"
         alignItems="center"
-        h="100vh"
-        flexDirection="column"
-        p={0}
       >
-        <Box p={0} zIndex="1">
-          <NavBar />
-        </Box>
-
-        <Flex bg="blue" w="100%">
-          <Heading ml="20px" fontSize="6rem" fontFamily="Arapey">
-            BOOKINK
-          </Heading>
-        </Flex>
-
-        <Flex borderTop="solid 20px" borderColor="white">
+        <Heading
+          fontSize={["3rem", "4rem"]}
+          fontFamily="Arapey"
+          w="100%"
+          justifyContent="center"
+          display="flex"
+        >
+          TATTO
+        </Heading>
+        <Heading
+          fontSize={["2rem", "3rem"]}
+          fontFamily="Arapey"
+          w="100%"
+          display="flex"
+          justifyContent="center"
+          mb={["90px", "80px"]}
+        >
+          - ARTIST -
+        </Heading>
+        <Flex
+          boxShadow="rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.5) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
+          borderTop="solid 20px"
+          w="100%"
+          borderColor="rgba(255,255,255,0.3)"
+        >
           <Image src={tattooImg} top="0" zIndex="0" filter="grayscale(100%)" />
         </Flex>
-        <Box
-          h={["300px", "300px", "400px", "400px"]}
-          w="100vw"
-          m={0}
-          bgColor={theme.colors.gray[100]}
-          padding={20}
+
+        <Flex
+          p="30px 10px"
+          w="100%"
+          bg="orange.700"
+          flexDir="column"
+          alignItems="center"
         >
           <Heading
-            fontFamily="Philosopher"
-            fontSize={["3xl", "4xl", "5xl", "6xl"]}
+            fontSize={["2rem", "3rem"]}
+            fontFamily="Arapey"
+            w={["100%", "100%", "70%"]}
+            textAlign="center"
+          >
+            A fantastic solution for tattoo booking
+          </Heading>
+          <Text mt="20px" fontSize="1.5rem" fontFamily="Alata">
+            {" "}
+            * * *
+          </Text>
+          <Heading
+            // ml="20px"
+            fontSize={["1.3rem", "2.5rem"]}
+            fontFamily="Arapey"
+            w="100%"
+            display="flex"
+            color="gray.200"
             textAlign="center"
           >
             We connect clients with tattooists and reensure your booking
           </Heading>
-        </Box>
-        <Text
-          m={8}
-          fontSize={["2xl", "2xl", "3xl", "3xl"]}
-          fontFamily="Arapey"
-          justifyContent="center"
-          textAlign="center"
-        >
-          A fantastic solution for tattoo booking
-        </Text>
-
-        <Text
-          m={5}
-          fontSize={["2xl", "2xl", "3xl", "3xl"]}
-          textAlign="center"
-          fontFamily="Arapey"
-          color={theme.colors.gray[800]}
-        >
-          HOW IT WORKS
-        </Text>
+        </Flex>
       </Flex>
-    </VStack>
+      <HomeDevs />
+      <HomeHowItWorks />
+      <HomeComments />
+    </Flex>
   );
 };

@@ -79,11 +79,13 @@ export const Register = () => {
   return (
     <Flex
       bgGradient="linear(to-t, #ABA394, #686255)"
-      alignItens={["center", "center", "right", "right"]}
+      alignItems={["center", "center", "right", "right"]}
       minHeight="100vh"
       w="100vw"
       justifyContent={["center", "center", "right", "right"]}
+      flexDir="column"
     >
+      <NavBar />
       <Flex
         flexDir={["column", "column", "column", "column"]}
         alignItems="center"

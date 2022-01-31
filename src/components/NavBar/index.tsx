@@ -1,18 +1,31 @@
 import { ReactNode } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Box,
   Flex,
   HStack,
   Heading,
   Spacer,
-  Link,
   Image,
   Button,
+  Menu,
+  MenuButton,
+  IconButton,
+  MenuList,
+  MenuItem,
+  Text,
+  Divider,
 } from "@chakra-ui/react";
 
 import Logo from "../../assets/LOGO.svg";
-import { theme } from "../../style/theme";
+import {
+  AddIcon,
+  EditIcon,
+  ExternalLinkIcon,
+  HamburgerIcon,
+  RepeatIcon,
+} from "@chakra-ui/icons";
+import { FaHome, FaRegistered, FaUserAlt } from "react-icons/fa";
 
 export const Links = ["Home", "Artists", "About"];
 
@@ -21,17 +34,66 @@ export const NavBar = () => {
 
   return (
     <Flex
-      m={8}
-      h={10}
+      zIndex="1"
       w="100%"
       alignItems="center"
       justifyContent="space-between"
     >
-      <Box m={2} w="400px">
-        <Image m={0} boxSize="300px" src={Logo}></Image>
-      </Box>
+      <Flex alignItems="center" w={["200px"]} ml="20px">
+        <Image src={Logo}></Image>
+      </Flex>
 
-      <Box w={["150px", "200px", "300px", "300px"]} display="flex">
+      <Flex mr="20px">
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            aria-label="Options"
+            icon={<HamburgerIcon />}
+            variant="outline"
+          />
+          <MenuList display="flex" flexDir="column">
+            <Button
+              m={2}
+              borderRadius={3}
+              fontFamily="Arapey"
+              fontSize={["lg", "2xl", "2xl", "2xl"]}
+              onClick={() => history.push("/")}
+              _hover={{ bg: "orange.100" }}
+              bg="none"
+            >
+              {" "}
+              HOME
+            </Button>
+            <Divider width="150px" m="0 auto" />
+            <Button
+              m={2}
+              borderRadius={3}
+              fontFamily="Arapey"
+              fontSize={["lg", "2xl", "2xl", "2xl"]}
+              onClick={() => history.push("/login")}
+              _hover={{ bg: "orange.100" }}
+              bg="none"
+            >
+              {" "}
+              LOGIN
+            </Button>
+            <Divider width="150px" m="0 auto" />
+            <Button
+              m={2}
+              borderRadius={3}
+              fontFamily="Arapey"
+              fontSize={["lg", "2xl", "2xl", "2xl"]}
+              onClick={() => history.push("/register")}
+              _hover={{ bg: "orange.100" }}
+              bg="none"
+            >
+              {" "}
+              REGISTER
+            </Button>
+          </MenuList>
+        </Menu>
+      </Flex>
+      {/* <Box display="flex" bg="violet">
         <Link m={2} fontSize="2xl" fontFamily="Arapey" padding="4px">
           {" "}
           About
@@ -49,7 +111,7 @@ export const NavBar = () => {
           {" "}
           SIGN UP
         </Button>
-      </Box>
+      </Box> */}
     </Flex>
   );
 };

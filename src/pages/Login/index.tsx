@@ -10,6 +10,7 @@ import { LoginForm } from "./LoginForm";
 import { LoginHeader } from "./LoginHeader";
 import img from "../../assets/tattoo-vector-black.png";
 import imgLogo from "../../assets/LOGO.svg";
+import { NavBar } from "../../components/NavBar";
 
 const signInSchema = yup.object().shape({
   email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -63,7 +64,9 @@ export const Login = () => {
       w="100vw"
       minHeight="100vh"
       height={["auto", "auto", "100vh", "100vh"]}
+      flexDir="column"
     >
+      <NavBar />
       <Flex
         flexDirection={["column-reverse", "column-reverse", "row", "row"]}
         alignItems="center"
@@ -76,7 +79,7 @@ export const Login = () => {
         w={["100%", "100%", "70%", "70%"]}
         minHeight="100vh"
       >
-        <Flex justifyContent="left" flexDirection="column" >
+        <Flex justifyContent="left" flexDirection="column">
           <LoginForm
             errors={errors}
             handleSignIn={handleSubmit(handleSignIn)}

@@ -31,7 +31,7 @@ export const NavBar = () => {
         <Image m={0} boxSize="300px" src={Logo}></Image>
       </Box>
 
-      <Box w="300px" display="flex">
+      <Box w={["150px", "200px","300px", "300px"]} display="flex">
         <Link m={2} fontSize="2xl" fontFamily="Arapey" padding="4px">
           {" "}
           About
@@ -42,7 +42,7 @@ export const NavBar = () => {
           bgColor={theme.colors.gray[800]}
           color={theme.colors.gray[100]}
           fontFamily="Philosopher"
-          fontSize="2xl"
+          fontSize={["lg","2xl", "2xl","2xl"]}
           onClick={() => history.push("/register")}
           _hover={{ bg: "#443407" }}
         >

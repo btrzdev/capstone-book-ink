@@ -29,21 +29,43 @@ export const HeaderProfileTattooist = () => {
       alignItems="center"
       justifyContent="space-between"
     >
-      <Box m={2} w="400px">
-        <Image m={0} boxSize="300px" src={Logo}></Image>
+      <Box m={2} w={["300px", "300px", "250px", "400px"]}>
+        <Image
+          m={0}
+          boxSize={["300px", "300px", "250px", "300px"]}
+          src={Logo}
+        ></Image>
       </Box>
 
       <Box w="400px" display="flex">
-        <Link m={2} fontSize="2xl" fontFamily="Arapey" padding="4px">
+        <Link
+          m={2}
+          fontSize={["md", "lg", "1xl", "2xl"]}
+          fontFamily="Arapey"
+          display={["none", "none", "flex", "flex"]}
+          padding="4px"
+        >
           {" "}
           Artists
         </Link>
-        <Link m={2} fontSize="2xl" fontFamily="Arapey" padding="4px">
+        <Link
+          m={2}
+          fontSize={["md", "lg", "1xl", "2xl"]}
+          fontFamily="Arapey"
+          display={["none", "none", "flex", "flex"]}
+          padding="4px"
+        >
           {" "}
           Bookings
         </Link>
 
-        <Link m={2} fontSize="2xl" fontFamily="Arapey" padding="4px">
+        <Link
+          m={2}
+          fontSize={["md", "lg", "1xl", "2xl"]}
+          fontFamily="Arapey"
+          display={["none", "none", "flex", "flex"]}
+          padding="4px"
+        >
           {" "}
           About
         </Link>
@@ -53,7 +75,7 @@ export const HeaderProfileTattooist = () => {
           bgColor={theme.colors.gray[800]}
           color={theme.colors.gray[100]}
           fontFamily="Philosopher"
-          fontSize="2xl"
+          fontSize={["md", "lg", "1xl", "2xl"]}
           onClick={logout}
           _hover={{ bg: "#443407" }}
         >

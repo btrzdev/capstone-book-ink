@@ -1,4 +1,4 @@
-import { Flex, Box, Image } from "@chakra-ui/react";
+import { Flex, Box, Image, Text, Link } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -11,6 +11,7 @@ import { RegisterHeader } from "./RegisterHeader";
 import img from "../../assets/tattoo-vector-black.png";
 import { NavBar } from "../../components/NavBar";
 import Logo from "../../assets/LOGO.svg";
+import { FaHome } from "react-icons/fa";
 
 const signInSchema = yup.object().shape({
   email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -78,12 +79,10 @@ export const Register = () => {
   return (
     <Flex
       bgGradient="linear(to-t, #ABA394, #686255)"
-      alignItems="center"
+      alignItens={["center", "center", "right", "right"]}
       minHeight="100vh"
       w="100vw"
-      justifyContent="right"
-
-      // height={["auto", "auto", "100vh", "100vh"]}
+      justifyContent={["center", "center", "right", "right"]}
     >
       <Flex
         flexDir={["column", "column", "column", "column"]}
@@ -91,19 +90,51 @@ export const Register = () => {
         w="100vw"
         bgImage={img}
         backgroundPosition="-30vw"
-        backgroundSize="80%"
-        backgroundRepeat="no-repeat"
+        backgroundSize={["70%", "70%", "70%", "80%"]}
+        backgroundRepeat={["repeat", "50%", "no-repeat", "no-repeat"]}
         minHeight="100vh"
-        backdrop-filter="brightness(60%)"
       >
-        <Image src={Logo} position="relative" left="35vw" />
-
-        <RegisterForm
-          errors={errors}
-          handleSignUp={handleSubmit(handleSignUp)}
-          loading={loading}
-          register={register}
-        />
+        <Flex
+          w="100vw"
+          alignItems={["center", "center", "right", "right"]}
+          justifyContent={["center", "center", "right", "right"]}
+        >
+          <Image src={Logo} />
+        </Flex>
+        <Flex
+          alignItems={["center", "center", "right", "right"]}
+          justifyContent={["center", "center", "right", "right"]}
+        >
+          <Box
+            position={["initial", "initial", "initial", "relative"]}
+            left="15vw"
+            top="-10vh"
+          >
+            <RegisterForm
+              errors={errors}
+              handleSignUp={handleSubmit(handleSignUp)}
+              loading={loading}
+              register={register}
+            />
+            <Flex paddingLeft={8} paddingTop={0}>
+              <Text
+                fontFamily="Alata"
+                color="gray.100"
+                textShadow="2px 2px 4px #000000"
+              >
+                Already have an account?{" "}
+              </Text>
+              <Link
+                paddingLeft={1}
+                fontWeight="bold"
+                onClick={() => history.push("/login")}
+              >
+                {" "}
+                Login{" "}
+              </Link>
+            </Flex>
+          </Box>
+        </Flex>
       </Flex>
     </Flex>
   );

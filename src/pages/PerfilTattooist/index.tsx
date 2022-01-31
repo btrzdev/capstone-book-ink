@@ -26,7 +26,7 @@ export const PerfilTattooist = () => {
   return (
     <Flex
       minH="100vh"
-      flexDir="column"
+      flexDirection={["column", "column", "column", "column"]}
       bgGradient="linear(to-t, #ABA394, #686255)"
       fontFamily="Alata"
     >

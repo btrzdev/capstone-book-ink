@@ -31,7 +31,7 @@ interface PerfilNewCommentProps {
 }
 
 export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
-  const [sliderValue, setSliderValue] = React.useState(5);
+  const [sliderValue, setSliderValue] = React.useState(1);
   const [showTooltip, setShowTooltip] = React.useState(false);
   const [onChange, setOnChange] = useState<string>("");
   const [loading, setLoading] = useState(false);

@@ -41,6 +41,7 @@ export const Login = () => {
     login(data)
       .then((response) => {
         history.push("/dashboard");
+        setLoading(false);
       })
       .catch((err) => {
         toast({
@@ -53,12 +54,13 @@ export const Login = () => {
           position: "top",
         });
         reset();
+        setLoading(false);
       });
   };
 
   return (
     <Flex
-      bgGradient="linear(to-t, #ABA394, #686255)"
+      bgGradient="linear(to-t, #686255,#ABA394)"
       alignItems="center"
       w="100%"
       minHeight="100vh"
@@ -70,7 +72,6 @@ export const Login = () => {
         flexDirection={["column-reverse", "column-reverse", "row", "row"]}
         alignItems="center"
         justifyContent="right"
-        bgGradient="linear(to-t, #ABA394, #686255)"
         bgImage={img}
         backgroundPosition="left"
         backgroundSize="90%"

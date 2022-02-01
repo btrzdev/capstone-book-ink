@@ -4,6 +4,7 @@ import { useTattooists } from "../../contexts/Tattooists.Context";
 import { User } from "../../types";
 import { PerfilBody } from "./PerfilBody";
 import { HeaderProfileTattooist } from "./HeaderProfileTattooist";
+import { NavBarDash } from "../../components/NavBar/NavbarDash";
 
 export const PerfilTattooist = () => {
   const { tattooists, loadTattooists, loadSpecificTattooist } = useTattooists();
@@ -28,10 +29,10 @@ export const PerfilTattooist = () => {
     <Flex
       minH="100vh"
       flexDirection={["column", "column", "column", "column"]}
-      bgGradient="linear(to-t, #ABA394, #686255)"
+      bgGradient="linear(to-t, #686255,#ABA394)"
       fontFamily="Alata"
     >
-      <HeaderProfileTattooist />
+      <NavBarDash />
       <PerfilBody tattooist={tattooist} numberStars={numberStars} />
     </Flex>
   );

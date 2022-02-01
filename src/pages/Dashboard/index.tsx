@@ -13,6 +13,7 @@ import { DashboardList } from "./DashboardList";
 import { HeaderDashboard } from "./HeaderDashboard";
 import { SearchIcon } from "@chakra-ui/icons";
 import { FaSearch } from "react-icons/fa";
+import { NavBarDash } from "../../components/NavBar/NavbarDash";
 export const Dashboard = () => {
   const { logout } = useAuth();
   const { loadTattooists, tattooists } = useTattooists();
@@ -24,15 +25,14 @@ export const Dashboard = () => {
   return (
     <Flex
       w="100%"
-      bg="gray.300"
+      // bg="gray.300"
       minH="100vh"
       flexDir="column"
       alignItems="center"
+      bgGradient="linear(to-t, #686255,#ABA394)"
     >
-      <Flex>
-        <HeaderDashboard />
-      </Flex>
-      <Flex alignItems="right">
+      <NavBarDash />
+      <Flex alignItems="right" zIndex="1">
         <InputGroup marginBottom="10px">
           <InputRightElement
             children={<FaSearch color="green.500" />}

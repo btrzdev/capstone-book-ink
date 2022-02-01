@@ -19,7 +19,7 @@ export const HomeHowItWorks = () => {
       fontFamily="Alata"
       flexDir="column"
       alignItems="center"
-      bg="orange.700"
+      bg="orange.800"
     >
       <Flex m="50px 0" alignItems="center" flexDir="column">
         <Text color="gray.800">who were the devs</Text>

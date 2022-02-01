@@ -22,7 +22,7 @@ export const Home = () => {
       minH="100vh"
       flexDirection="column"
       p={0}
-      bg="gray.300"
+      bgGradient="linear(to-t, #686255,#ABA394)"
     >
       <NavBar />
 
@@ -65,7 +65,7 @@ export const Home = () => {
           p="30px 10px"
           w="100%"
           h="400px"
-          bg="orange.700"
+          bg="orange.800"
           flexDir="column"
           alignItems="center"
           justifyContent="center"

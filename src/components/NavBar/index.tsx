@@ -27,6 +27,7 @@ import {
   RepeatIcon,
 } from "@chakra-ui/icons";
 import { FaHome, FaRegistered, FaUserAlt } from "react-icons/fa";
+import { IoMdPersonAdd } from "react-icons/io";
 
 export const Links = ["Home", "Artists", "About"];
 
@@ -92,15 +93,22 @@ export const NavBar = () => {
           </Button>
         </Flex>
       ) : (
-        <Flex mr="20px">
+        <Flex mr="20px" color="gray.100" bg="orange.800">
           <Menu>
             <MenuButton
               as={IconButton}
               aria-label="Options"
               icon={<HamburgerIcon />}
               variant="outline"
+              _hover={{ bg: "orange.800" }}
+              _active={{ bg: "orange.800" }}
             />
-            <MenuList display="flex" flexDir="column">
+            <MenuList
+              color="gray.100"
+              bg="orange.800"
+              display="flex"
+              flexDir="column"
+            >
               <Button
                 m={2}
                 borderRadius={3}
@@ -110,8 +118,8 @@ export const NavBar = () => {
                 _hover={{ bg: "orange.100" }}
                 bg="none"
               >
-                {" "}
-                HOME
+                <FaHome />
+                <Text ml="5px">HOME</Text>
               </Button>
               <Divider width="150px" m="0 auto" />
               <Button
@@ -123,8 +131,8 @@ export const NavBar = () => {
                 _hover={{ bg: "orange.100" }}
                 bg="none"
               >
-                {" "}
-                LOGIN
+                <FaUserAlt />
+                <Text ml="5px">LOGIN</Text>
               </Button>
               <Divider width="150px" m="0 auto" />
               <Button
@@ -137,7 +145,8 @@ export const NavBar = () => {
                 bg="none"
               >
                 {" "}
-                REGISTER
+                <IoMdPersonAdd />
+                <Text ml="5px">REGISTER</Text>
               </Button>
             </MenuList>
           </Menu>

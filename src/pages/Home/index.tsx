@@ -1,6 +1,6 @@
 import { NavBar } from "../../components/NavBar";
 import { theme } from "../../style/theme";
-import tattooImg from "/home/vitor/MEGA/1_Estudos/ka/q2/CAPSTONE/capstone-book-ink/src/assets/background-tattoo.jpg";
+// import tattooImg from "/home/vitor/MEGA/1_Estudos/ka/q2/CAPSTONE/capstone-book-ink/src/assets/background-tattoo.jpg";
 import {
   Box,
   Flex,
@@ -58,7 +58,7 @@ export const Home = () => {
           w="100%"
           borderColor="rgba(255,255,255,0.3)"
         >
-          <Image src={tattooImg} top="0" zIndex="0" filter="grayscale(100%)" />
+          {/* <Image src={tattooImg} top="0" zIndex="0" filter="grayscale(100%)" /> */}
         </Flex>
 
         <Flex

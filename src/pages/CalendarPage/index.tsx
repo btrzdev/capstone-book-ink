@@ -71,6 +71,8 @@ export function CalendarPage() {
   const [event, setEvent] = useState<Event>({} as Event);
   const [allEvents, setAllEvents] = useState<Event[]>([] as Event[]);
 
+ 
+
   function handleEvents() {
     setAllEvents([...allEvents, event]);
   }
@@ -99,17 +101,18 @@ export function CalendarPage() {
         {" "}
         AddEvent
       </button>
-      <DatePicker
+      {/* <DatePicker
         placeholderText="Start Date"
         selected={event.start}
-        onChange={(e) => setEvent({ ...event })}
+        // onChange={(date) => setEvent({ ...event, start: Date })}
         name="start"
-      />
+      /> */}
+     
       <DatePicker
         placeholderText="End Date"
         selected={event.end}
         name="end"
-        onChange={(end) => setEvent({ ...event })}
+        onChange={(date) => console.log(date)}
       />
       <Calendar
         localizer={localizer}
@@ -118,7 +121,7 @@ export function CalendarPage() {
         startAccessor={(events: Event) => {
           return events.start;
         }}
-        // // endAcessor={(events: Event) => { return events.end }}
+        // endAcessor={(endAcessor: CalendarProviderProps) => { return events.end }}
       />
       <Button onClick={handleEvents}>Adicionar</Button>
     </div>

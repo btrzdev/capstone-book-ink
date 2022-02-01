@@ -1,6 +1,6 @@
 import { NavBar } from "../../components/NavBar";
 import { theme } from "../../style/theme";
-import tattooImg from "/home/vitor/MEGA/1_Estudos/ka/q2/CAPSTONE/capstone-book-ink/src/assets/background-tattoo.jpg";
+import tattooImg from "../../assets/background-tattoo.jpg";
 import {
   Box,
   Flex,

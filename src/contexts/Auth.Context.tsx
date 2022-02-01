@@ -75,6 +75,23 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setData({ accessToken, user });
   }, []);
 
+  // const login = useCallback(async ({ email, password }: loginCredentials) => {
+  //   const response = await api.post("/login", { email, password });
+
+  //   const { accessToken, user } = response.data;
+
+  //   const allUsers = await api.post("/users");
+
+  //   const userLoggedIn: User = allUsers.data.find(
+  //     (element: User) => element.id === user.id
+  //   );
+
+  //   localStorage.setItem("@Bookink:accessToken", accessToken);
+  //   localStorage.setItem("@Bookink:user", JSON.stringify(userLoggedIn));
+
+  //   setData({ accessToken, userLoggedIn });
+  // }, []);
+
   const register = useCallback(
     async ({
       email,

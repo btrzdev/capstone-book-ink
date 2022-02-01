@@ -40,10 +40,11 @@ export const Login = () => {
     setLoading(true);
     login(data)
       .then((response) => {
-        history.push("/dashboard");
         setLoading(false);
+        history.push("/dashboard");
       })
       .catch((err) => {
+        setLoading(false);
         toast({
           title: "Conta não encontrada.",
           description:
@@ -54,7 +55,6 @@ export const Login = () => {
           position: "top",
         });
         reset();
-        setLoading(false);
       });
   };
 

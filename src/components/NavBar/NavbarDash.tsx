@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
   Box,
@@ -30,18 +30,28 @@ import { FaBook, FaHome, FaRegistered, FaUserAlt } from "react-icons/fa";
 import { useAuth } from "../../contexts/Auth.Context";
 import { IoMdSettings } from "react-icons/io";
 import { FaSignOutAlt } from "react-icons/fa";
+import { api } from "../../services/api";
+import { Sessions, User } from "../../types";
+import { userInfo } from "os";
 
 export const Links = ["Home", "Artists", "About"];
 
 export const NavBarDash = () => {
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
+  const [userSessions, setUserSessions] = useState<User>({} as User);
   const { logout } = useAuth();
 
   const isWideVersion = useBreakpointValue({
     base: false,
     md: true,
   });
+
+  useEffect(() => {
+    const response = api.get(`/users/${user.id}`).then((response) => {
+      setUserSessions({ ...response.data });
+    });
+  }, []);
 
   return (
     <Flex
@@ -80,6 +90,19 @@ export const NavBarDash = () => {
             borderRadius="0"
             onClick={() => history.push("/bookings")}
           >
+            {userSessions && (
+              <Text
+                position="absolute"
+                mb="20px"
+                ml="70px"
+                bg="orange.300"
+                borderRadius="full"
+                padding="1px 5px"
+                color="gray.100"
+              >
+                {userSessions.sessions?.length}
+              </Text>
+            )}
             BOOKINGS
           </Button>
           <Flex mr="20px">
@@ -190,7 +213,7 @@ export const NavBarDash = () => {
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
-                onClick={() => history.push("/bookings")}
+                onClick={() => logout()}
                 _hover={{ bg: "orange.100" }}
                 bg="none"
               >

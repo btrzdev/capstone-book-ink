@@ -11,7 +11,6 @@ import { useAuth } from "../../contexts/Auth.Context";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { DashboardList } from "./DashboardList";
 import { HeaderDashboard } from "./HeaderDashboard";
-import { SearchIcon } from "@chakra-ui/icons";
 import { FaSearch } from "react-icons/fa";
 import { NavBarDash } from "../../components/NavBar/NavbarDash";
 export const Dashboard = () => {

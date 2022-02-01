@@ -5,6 +5,16 @@ export interface Comment {
   rate: number;
 }
 
+export interface Sessions {
+  date: Date;
+  accepted: boolean;
+  pending: boolean;
+  client: string;
+  userId: number;
+  messageRequest: string;
+  messageResponse: string;
+}
+
 export interface User {
   email: string;
   name: string;
@@ -13,4 +23,5 @@ export interface User {
   isTattooists: boolean;
   id: number;
   comments: Comment[];
+  sessions?: Sessions[];
 }

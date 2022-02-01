@@ -1,16 +1,6 @@
 import { NavBar } from "../../components/NavBar";
-import { theme } from "../../style/theme";
 import tattooImg from "../../assets/background-tattoo.jpg";
-import {
-  Box,
-  Flex,
-  Image,
-  Heading,
-  Text,
-  VStack,
-  UnorderedList,
-  ListItem,
-} from "@chakra-ui/react";
+import { Flex, Image, Heading, Text } from "@chakra-ui/react";
 import { HomeDevs } from "./HomeDevs";
 import { HomeComments } from "./HomeComments";
 import { HomeHowItWorks } from "./HomeHowItWorks";
@@ -83,7 +73,6 @@ export const Home = () => {
             * * *
           </Text>
           <Heading
-            // ml="20px"
             fontSize={["1.3rem", "2.5rem"]}
             fontFamily="Arapey"
             w="100%"

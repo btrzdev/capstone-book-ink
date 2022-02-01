@@ -7,6 +7,7 @@ import { Home } from "../pages/Home";
 import { PerfilTattooist } from "../pages/PerfilTattooist";
 import { PageNotFound } from "../pages/PageNotFound";
 import { useAuth } from "../contexts/Auth.Context";
+import { CalendarPage } from "../pages/CalendarPage";
 
 export const Routes = () => {
   const { accessToken, user } = useAuth();
@@ -17,6 +18,7 @@ export const Routes = () => {
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/perfil" component={PerfilTattooist} isPrivate />
       <Route path="/register" component={Register} />
+      <Route path="/calendar" component={CalendarPage} />
       <Route component={PageNotFound} isPrivate={!!accessToken} />
     </Switch>
   );

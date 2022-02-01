@@ -63,8 +63,8 @@ export const Register = () => {
         history.push("/login");
         setLoading(false);
         toast({
-          title: "Conta Registrada com sucesso.",
-          description: "Tente realizar o Login",
+          title: "Your account created sucessfully",
+          description: "Try login in",
           status: "success",
           duration: 2000,
           isClosable: true,

@@ -103,7 +103,7 @@ export const RegisterForm = ({
           <Flex w="90%">
             <Input
               type="password"
-              placeholder="Digite sua senha"
+              placeholder="Your password"
               error={errors.password}
               icon={FaLock}
               {...register("password")}
@@ -122,7 +122,8 @@ export const RegisterForm = ({
             <Textarea
               type="text"
               maxLength={100}
-              bgColor="orange.700"
+              bgColor="gray.200"
+              borderColor="gray.400"
               placeholder="Decribe yourself in a few words"
               // error={errors.img}
               // icon={FaBook}

@@ -41,22 +41,12 @@ export const NavBarDash = () => {
   const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
   const [sessionsLength, setSessionsLength] = useState<number>(0);
 
-  const { logout } = useAuth();
+  const { logout, userSessions } = useAuth();
 
   const isWideVersion = useBreakpointValue({
     base: false,
     md: true,
   });
-
-  useEffect(() => {
-    const response = api.get(`/sessions/${user.id}`).then((response) => {
-      localStorage.setItem(
-        "@Bookink:sessions",
-        JSON.stringify([...response.data])
-      );
-      setSessionsLength([...response.data].length);
-    });
-  }, []);
 
   return (
     <Flex
@@ -95,7 +85,7 @@ export const NavBarDash = () => {
             borderRadius="0"
             onClick={() => history.push("/bookings")}
           >
-            {sessionsLength && (
+            {userSessions.length > 0 && (
               <Text
                 position="absolute"
                 mb="20px"
@@ -105,7 +95,7 @@ export const NavBarDash = () => {
                 padding="1px 5px"
                 color="gray.100"
               >
-                {sessionsLength}
+                {userSessions.length}
               </Text>
             )}
             BOOKINGS

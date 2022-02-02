@@ -16,6 +16,7 @@ import { FaSearch } from "react-icons/fa";
 import { NavBarDash } from "../../components/NavBar/NavbarDash";
 import { StringSchema } from "yup";
 import { User } from "../../types";
+import { boolean } from "yup/lib/locale";
 
 export const Dashboard = () => {
   const { logout } = useAuth();
@@ -36,12 +37,11 @@ export const Dashboard = () => {
   const [input, setInput] = useState("");
 
   function showTattooists(input: string) {
-    const filtered = tattooists.filter((tattooist) => 
-      tattooist.name === input);
-    setTattooists(filtered);
+    const filtered = tattooists.filter((tattoist) =>
+      tattoist.name.toLowerCase().includes(input)
+    );
+    setTattooists([...filtered]);
   }
-
-  console.log(tattooists);
 
   return (
     <Flex

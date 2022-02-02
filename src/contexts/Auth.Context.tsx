@@ -7,7 +7,7 @@ import {
 } from "react";
 
 import { api } from "../services/api";
-import { User } from "../types/index";
+import { Sessions, User } from "../types/index";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -34,6 +34,7 @@ interface AuthState {
 
 interface AuthContextData {
   user: User;
+  userSessions: Sessions[];
   accessToken: string;
   login: (credentials: loginCredentials) => Promise<void>;
   register: (credentials: registerCredentials) => Promise<void>;
@@ -64,11 +65,26 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     return { accessToken: "", user: {} } as AuthState;
   });
 
+  const [userSessions, setUserSessions] = useState<Sessions[]>(
+    JSON.parse(localStorage.getItem("@Bookink:sessions") || "[]")
+  );
+
+  const loadSessions = async (id: number) => {
+    const response = await api.get(`/allsessions/${id}`);
+    localStorage.setItem(
+      "@Bookink:sessions",
+      JSON.stringify([...response.data])
+    );
+
+    setUserSessions([...response.data]);
+  };
+
   const login = useCallback(async ({ email, password }: loginCredentials) => {
     const response = await api.post("/login", { email, password });
 
     const { accessToken, user } = response.data;
 
+    await loadSessions(user.id);
     localStorage.setItem("@Bookink:accessToken", accessToken);
     localStorage.setItem("@Bookink:user", JSON.stringify(user));
 
@@ -95,6 +111,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const logout = useCallback(async () => {
     localStorage.removeItem("@Bookink:accessToken");
     localStorage.removeItem("@Bookink:user");
+    localStorage.removeItem("@Bookink:tattooistInfo");
+    localStorage.removeItem("@Bookink:tattooists");
+    localStorage.removeItem("@Bookink:sessions");
 
     await setData({} as AuthState);
   }, []);
@@ -104,6 +123,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       value={{
         accessToken: data.accessToken,
         user: data.user,
+        userSessions,
         login,
         register,
         logout,

@@ -25,6 +25,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { Sessions } from "../../types";
+import { useAuth } from "../../contexts/Auth.Context";
 
 const bookingsSchema = yup.object().shape({
   accepted: yup.boolean(),
@@ -42,11 +43,12 @@ interface CardBookingProps {
 export const CardBooking = ({ session }: CardBookingProps) => {
   const [accepted, setAccepted] = useState<boolean>(true);
   const [pending, setPending] = useState<boolean>(false);
-  const [messageRes, setMessageReq] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const [userId, setUserId] = useState<number>(0);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const { submitResponse, loadSpecificUser } = useTattooists();
+  const { user, removeSession } = useAuth();
 
   const {
     formState: { errors },
@@ -63,20 +65,19 @@ export const CardBooking = ({ session }: CardBookingProps) => {
     data.pending = false;
     data.client = session.client;
     data.userId = session.clientId;
-    data.messageRequest = session.messageRequest;
-    // loadSpecificUser(session.clientId).then((res) => (data.userId = res));
-    data.messageRequest = session.messageRequest;
-    data.id = session.id;
-    // console.log(data);
-    // data.userId = numberId;
 
-    // console.log(data);
+    if (session.userId === user.id && user.isTattooists) {
+      data.messageResponse = message;
+    } else {
+      data.messageRequest = message;
+    }
+    data.id = session.id;
+
     submitResponse(data)
       .then((_) => {
         setLoading(false);
         toast({
-          title: "Conta Registrada com sucesso.",
-          description: "Tente realizar o Login",
+          title: "Enviado",
           status: "success",
           duration: 2000,
           isClosable: true,
@@ -85,6 +86,13 @@ export const CardBooking = ({ session }: CardBookingProps) => {
       })
       .catch((err) => {
         setLoading(false);
+        toast({
+          title: "Algo deu errado no envio",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
       });
   };
 
@@ -98,21 +106,11 @@ export const CardBooking = ({ session }: CardBookingProps) => {
       m="20px 0"
       fontFamily="Alata"
     >
-      <Box display="flex" alignItems="baseline">
+      <Flex display="flex" alignItems="baseline">
         <Badge borderRadius="full" px="2" color="gray.100" bg="orange.300">
           New
         </Badge>
-        <Box
-          color="gray.500"
-          fontWeight="semibold"
-          letterSpacing="wide"
-          fontSize="xs"
-          textTransform="uppercase"
-          ml="2"
-        >
-          as
-        </Box>
-      </Box>
+      </Flex>
 
       <Box
         mt="1"
@@ -127,26 +125,53 @@ export const CardBooking = ({ session }: CardBookingProps) => {
 
       <Box fontWeight="semibold">{session.date}</Box>
       <Box fontWeight="semibold">{session.client}</Box>
-      <Box>{session.messageRequest}</Box>
+      <Flex flexDir="column">
+        <Box>{session.messageRequest}</Box>
+        {session.messageResponse && (
+          <Box mt="10px">R: {session.messageResponse}</Box>
+        )}
+      </Flex>
       <Box>
-        <Textarea
-          {...register("messageResponse")}
-          onChange={(e) => setMessageReq(e.target.value)}
-        />
-        <Checkbox
-          fontFamily="Alata"
-          color="gray.100"
-          textShadow="2px 2px 4px #000000"
-          colorScheme="green"
-          // bg="orange.300"
-          {...register("accepted")}
-        >
-          You accept?
-        </Checkbox>
+        {user.isTattooists ? (
+          <>
+            <Textarea
+              {...register("messageResponse")}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <Checkbox
+              fontFamily="Alata"
+              color="gray.100"
+              textShadow="2px 2px 4px #000000"
+              colorScheme="green"
+              {...register("accepted")}
+            >
+              You accept?
+            </Checkbox>
+          </>
+        ) : (
+          <>
+            {session.pending && (
+              <Textarea
+                {...register("messageRequest")}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+            )}
+          </>
+        )}
       </Box>
-      <Button isLoading={loading} type="submit" mt="20px">
-        Send
-      </Button>
+      <Flex alignItems="center" mt="20px">
+        {session.pending ? (
+          <Button type="submit">Send</Button>
+        ) : (
+          <Button
+            onClick={() => removeSession(session.id)}
+            isLoading={loading}
+            type="submit"
+          >
+            Remove
+          </Button>
+        )}
+      </Flex>
     </Box>
   );
 };

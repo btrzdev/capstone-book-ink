@@ -39,7 +39,8 @@ export const Links = ["Home", "Artists", "About"];
 export const NavBarDash = () => {
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
-  const [userSessions, setUserSessions] = useState<User>({} as User);
+  const [sessionsLength, setSessionsLength] = useState<number>(0);
+
   const { logout } = useAuth();
 
   const isWideVersion = useBreakpointValue({
@@ -48,8 +49,12 @@ export const NavBarDash = () => {
   });
 
   useEffect(() => {
-    const response = api.get(`/users/${user.id}`).then((response) => {
-      setUserSessions({ ...response.data });
+    const response = api.get(`/sessions/${user.id}`).then((response) => {
+      localStorage.setItem(
+        "@Bookink:sessions",
+        JSON.stringify([...response.data])
+      );
+      setSessionsLength([...response.data].length);
     });
   }, []);
 
@@ -90,7 +95,7 @@ export const NavBarDash = () => {
             borderRadius="0"
             onClick={() => history.push("/bookings")}
           >
-            {userSessions && (
+            {sessionsLength && (
               <Text
                 position="absolute"
                 mb="20px"
@@ -100,7 +105,7 @@ export const NavBarDash = () => {
                 padding="1px 5px"
                 color="gray.100"
               >
-                {userSessions.sessions?.length}
+                {sessionsLength}
               </Text>
             )}
             BOOKINGS

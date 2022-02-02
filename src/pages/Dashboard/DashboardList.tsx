@@ -1,6 +1,6 @@
 import { Heading, ListItem, UnorderedList } from "@chakra-ui/react";
 import React from "react";
-import { CardTatttoist } from "../../components/CardTattooist";
+import { CardTatttoist } from "../../components/Cards/CardTattooist";
 import { User } from "../../types";
 
 interface DashboardListProps {

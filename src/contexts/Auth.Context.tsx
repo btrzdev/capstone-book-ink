@@ -112,6 +112,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const logout = useCallback(async () => {
     localStorage.removeItem("@Bookink:accessToken");
     localStorage.removeItem("@Bookink:user");
+    localStorage.removeItem("@Bookink:tattooistInfo");
+    localStorage.removeItem("@Bookink:tattooists");
 
     await setData({} as AuthState);
   }, []);

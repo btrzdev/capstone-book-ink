@@ -30,6 +30,7 @@ import { FaBook, FaHome, FaRegistered, FaUserAlt } from "react-icons/fa";
 import { useAuth } from "../../contexts/Auth.Context";
 import { IoMdSettings } from "react-icons/io";
 import { FaSignOutAlt } from "react-icons/fa";
+import { PatchInfo } from "../PatchInfo";
 
 export const Links = ["Home", "Artists", "About"];
 
@@ -99,19 +100,7 @@ export const NavBarDash = () => {
                 bg="orange.800"
                 flexDir="column"
               >
-                <Button
-                  m={2}
-                  borderRadius={3}
-                  fontFamily="Arapey"
-                  fontSize={["lg", "2xl", "2xl", "2xl"]}
-                  onClick={() => history.push("/")}
-                  _hover={{ bg: "orange.100" }}
-                  bg="none"
-                >
-                  {" "}
-                  <IoMdSettings />
-                  <Text ml="5px">Settings</Text>
-                </Button>
+                <PatchInfo />
                 <Divider width="150px" m="0 auto" />
                 <Button
                   m={2}
@@ -171,19 +160,7 @@ export const NavBarDash = () => {
                 <FaBook /> <Text ml="5px">Bookings</Text>
               </Button>
               <Divider width="150px" m="0 auto" />
-              <Button
-                m={2}
-                borderRadius={3}
-                fontFamily="Arapey"
-                fontSize={["lg", "2xl", "2xl", "2xl"]}
-                onClick={() => history.push("/bookings")}
-                _hover={{ bg: "orange.100" }}
-                bg="none"
-              >
-                {" "}
-                <IoMdSettings />
-                <Text ml="5px">Settings</Text>
-              </Button>
+              <PatchInfo />
               <Divider width="150px" m="0 auto" />
               <Button
                 m={2}

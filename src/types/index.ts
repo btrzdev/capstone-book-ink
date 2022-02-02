@@ -14,3 +14,8 @@ export interface User {
   id: number;
   comments: Comment[];
 }
+
+export interface Patched {
+  email: string;
+  name: string;
+}

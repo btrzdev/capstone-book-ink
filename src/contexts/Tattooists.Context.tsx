@@ -7,7 +7,7 @@ import {
 } from "react";
 
 import { api } from "../services/api";
-import { User } from "../types/index";
+import { Sessions, User } from "../types/index";
 
 interface TattooistsProviderProps {
   children: ReactNode;
@@ -17,7 +17,9 @@ interface TattooistsContextData {
   tattooists: User[];
   loadTattooists: () => void;
   loadSpecificTattooist: (id: number) => User;
+  loadSpecificUser: (id: number) => Promise<number>;
   submitComment: (data: Object) => Promise<void>;
+  submitResponse: (data: Sessions) => Promise<void>;
 }
 
 const TattooistsContext = createContext<TattooistsContextData>(
@@ -69,8 +71,33 @@ const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
     return {} as User;
   };
 
+  const loadSpecificUser = useCallback(async (userId: number) => {
+    const response = await api.get(`/users/${userId}`);
+    // loadTattooists();
+    // console.log(response.data);
+    const { id } = response.data;
+    // const { user } = response.data;
+    return id;
+  }, []);
+
   const submitComment = useCallback(async (data: Object) => {
     const response = await api.post("/comments", data);
+
+    loadTattooists();
+  }, []);
+
+  const submitResponse = useCallback(async (data: Sessions) => {
+    const token = localStorage.getItem("@Bookink:accessToken") || "[]";
+
+    // console.log(token);
+    // console.log("entrou");
+    // console.log(data);
+    await api
+      .patch(`/sessions/${data.id}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
 
     loadTattooists();
   }, []);
@@ -81,7 +108,9 @@ const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
         tattooists,
         loadTattooists,
         loadSpecificTattooist,
+        loadSpecificUser,
         submitComment,
+        submitResponse,
       }}
     >
       {children}

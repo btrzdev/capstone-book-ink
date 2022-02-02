@@ -11,6 +11,7 @@ import {
   Select,
   Stack,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import {
@@ -19,33 +20,78 @@ import {
   FieldValues,
   UseFormRegister,
 } from "react-hook-form";
-import { BookingData } from "../../pages/Bookings";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useTattooists } from "../../contexts/Tattooists.Context";
 import { Sessions } from "../../types";
+
+const bookingsSchema = yup.object().shape({
+  accepted: yup.boolean(),
+  message: yup.string(),
+});
+
+interface BookingData {
+  data: Sessions;
+}
 
 interface CardBookingProps {
   session: Sessions;
-  handleRequest: () => void;
-  errors: DeepMap<FieldValues, FieldError>;
-  register: UseFormRegister<BookingData>;
-  loading: boolean;
 }
 
-export const CardBooking = ({
-  session,
-  handleRequest,
-  errors,
-  register,
-  loading,
-}: CardBookingProps) => {
+export const CardBooking = ({ session }: CardBookingProps) => {
   const [accepted, setAccepted] = useState<boolean>(true);
   const [pending, setPending] = useState<boolean>(false);
   const [messageRes, setMessageReq] = useState<string>("");
   const [userId, setUserId] = useState<number>(0);
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
+  const { submitResponse, loadSpecificUser } = useTattooists();
+
+  const {
+    formState: { errors },
+    register,
+    handleSubmit,
+    reset,
+  } = useForm<Sessions>({
+    resolver: yupResolver(bookingsSchema),
+  });
+
+  const handleRequest = (data: Sessions) => {
+    setLoading(true);
+    data.date = session.date;
+    data.pending = false;
+    data.client = session.client;
+    data.userId = session.clientId;
+    data.messageRequest = session.messageRequest;
+    // loadSpecificUser(session.clientId).then((res) => (data.userId = res));
+    data.messageRequest = session.messageRequest;
+    data.id = session.id;
+    // console.log(data);
+    // data.userId = numberId;
+
+    // console.log(data);
+    submitResponse(data)
+      .then((_) => {
+        setLoading(false);
+        toast({
+          title: "Conta Registrada com sucesso.",
+          description: "Tente realizar o Login",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      })
+      .catch((err) => {
+        setLoading(false);
+      });
+  };
 
   return (
     <Box
       as="form"
-      onSubmit={handleRequest}
+      onSubmit={handleSubmit(handleRequest)}
       p="6"
       border="2px solid"
       borderColor="orange.800"
@@ -83,7 +129,10 @@ export const CardBooking = ({
       <Box fontWeight="semibold">{session.client}</Box>
       <Box>{session.messageRequest}</Box>
       <Box>
-        <Input {...register("message")} onChange={(e) => e.target.value} />
+        <Textarea
+          {...register("messageResponse")}
+          onChange={(e) => setMessageReq(e.target.value)}
+        />
         <Checkbox
           fontFamily="Alata"
           color="gray.100"

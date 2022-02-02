@@ -10,9 +10,11 @@ export interface Sessions {
   accepted: boolean;
   pending: boolean;
   client: string;
+  clientId: number;
   userId: number;
   messageRequest: string;
   messageResponse: string;
+  id: number;
 }
 
 export interface User {

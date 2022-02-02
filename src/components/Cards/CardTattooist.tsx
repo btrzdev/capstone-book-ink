@@ -8,7 +8,7 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import notFoundImage from "../../assets/notImage.jpg";
+import notFoundImage from "../../assets/v.jpeg";
 import { useHistory } from "react-router-dom";
 import { FaStar, FaUserAlt } from "react-icons/fa";
 import { Star } from "../Star";

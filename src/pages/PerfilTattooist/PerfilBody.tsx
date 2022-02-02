@@ -29,6 +29,7 @@ import { useTattooists } from "../../contexts/Tattooists.Context";
 import { User } from "../../types";
 import { PerfilBio } from "./PerfilBio";
 import { PerfilNewComment } from "./PerfilNewComment";
+import notFoundImage from "../../assets/v.jpeg";
 
 interface PerfilBodyProps {
   tattooist?: User;
@@ -48,9 +49,10 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
       alignItems="center"
     >
       <Flex
-        alignItems="center"
+        alignItems={["center"]}
+        justifyContent={["center", "center", "flex-start", "flex-start"]}
         flexDirection={["row", "row", "column", "column"]}
-        marginTop={["0", "0", "0", "-120px"]}
+        marginTop={["0", "0", "0", "-320px"]}
       >
         <Flex
           flexDir="column"
@@ -72,27 +74,40 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
             boxShadow="5px 5px 8px #000000"
             marginTop="10px"
             marginBottom="10px"
-            w="250px"
-            src={tattooist?.img}
+            h={[
+              "194px",
+              "257.55px",
+              "288.13px",
+              "288.13px",
+              "288.13px",
+              "288.13px",
+            ]}
+            w={["168.47px", "223.47px", "250px", "250px", "250px", "250px"]}
+            ml={["10px", "10px", "0", "0"]}
+            src={tattooist?.img || notFoundImage}
           />
         </Flex>
         <Flex
-          h="100px"
           w="50%"
           justifyContent="center"
           alignItems="center"
           flexDirection="column"
         >
-          <Flex flexDir="column" alignItems="center" mb="20px">
+          <Flex
+            flexDir="column"
+            alignItems="center"
+            mt={["0", "0", "20px", "20px"]}
+            mb="20px"
+          >
             <Text>Classification</Text>
             <Star numberStars={numberStars} />
           </Flex>
           <Button
             bg="gray.400"
+            h="50px"
             color="gray.100"
             border="3px solid"
             borderColor="orange.800"
-            h={["80%", "80%", "100%", "20vh"]}
             w={["80%", "80%", "100%", "200px"]}
             textShadow="2px 2px 4px #000000"
           >
@@ -104,7 +119,7 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
             mt="10px"
             border="3px solid"
             borderColor="orange.800"
-            h={["80%", "80%", "100%", "20vh"]}
+            h="50px"
             w={["80%", "80%", "100%", "200px"]}
             display="flex"
             textShadow="2px 2px 4px #000000"
@@ -114,7 +129,13 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
         </Flex>
       </Flex>
 
-      <Flex mt="20px" flexDir="column" w="310px">
+      <Flex
+        mt="20px"
+        // bg="blue"
+        w={["310px", "360px", "360px", "450px"]}
+        flexDir="column"
+        // w="310px"
+      >
         <PerfilBio tattooist={tattooist} />
         <Heading
           color="gray.100"
@@ -123,10 +144,10 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
         >
           Comments
         </Heading>
-        <UnorderedList listStyleType="none" m="0">
+        <UnorderedList mb="50px" listStyleType="none" m="0">
           {React.Children.toArray(
             tattooist?.comments.map((element) => (
-              <ListItem m="50px 5px">
+              <ListItem m="30px 0">
                 <Flex>
                   <Box w="20px" fontSize="1.5rem">
                     <FaRegCommentAlt />
@@ -135,7 +156,7 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
                     {element.name}
                   </Heading>
                 </Flex>
-                <Text mt="5px" color="orange.800" fontWeight="700">
+                <Text mt="5px" color="gray.200" fontWeight="700">
                   " {element.comment} "
                 </Text>
                 <Star numberStars={element.rate} />

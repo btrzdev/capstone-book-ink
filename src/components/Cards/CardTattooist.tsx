@@ -12,7 +12,8 @@ import {
 } from "@chakra-ui/react";
 import notFoundImage from "../../assets/v.jpeg";
 import { useHistory } from "react-router-dom";
-import { FaStar, FaUserAlt } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+import { MdOutlineAdsClick } from "react-icons/md";
 import React, { useState, useEffect } from "react";
 
 interface CardTattoistProps {
@@ -40,8 +41,6 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
           label="PROFILE"
           hasArrow
           arrowSize={15}
-          bg="orange.100"
-          color="gray.800"
           fontWeight="700"
         >
           <Flex
@@ -82,7 +81,7 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
               <Text
                 fontFamily="Alata"
                 marginTop="5px"
-                color="orange.100"
+                color="gray.900"
                 fontWeight="700"
               >
                 - Tattooist -
@@ -97,24 +96,23 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
                 )}
               </Flex>
 
-              <Tooltip label="Ver perfil" placement="top">
-                <Button
-                  bg="gray.800"
-                  color="orange.100"
-                  borderRadius="100%"
-                  padding="5px 2px"
-                  m="10px 0"
-                  onClick={() => {
-                    localStorage.setItem(
-                      "@Bookink:tattooistInfo",
-                      JSON.stringify({ id: tattooist.id, stars: numberStar })
-                    );
-                    history.push(`/perfil`);
-                  }}
-                >
-                  <FaUserAlt />
-                </Button>
-              </Tooltip>
+              <Button
+                bg="gray.800"
+                color="orange.800"
+                borderRadius="100%"
+                padding="5px 2px"
+                m="10px 0"
+                fontSize="1.5rem"
+                onClick={() => {
+                  localStorage.setItem(
+                    "@Bookink:tattooistInfo",
+                    JSON.stringify({ id: tattooist.id, stars: numberStar })
+                  );
+                  history.push(`/perfil`);
+                }}
+              >
+                <MdOutlineAdsClick />
+              </Button>
             </Flex>
           </Flex>
         </Tooltip>

@@ -4,9 +4,11 @@ import { useTattooists } from "../../contexts/Tattooists.Context";
 import { DashboardList } from "./DashboardList";
 import { FaSearch } from "react-icons/fa";
 import { NavBarDash } from "../../components/NavBar/NavbarDash";
+import { useAuth } from "../../contexts/Auth.Context";
 
 export const Dashboard = () => {
   const { loadTattooists, tattooists } = useTattooists();
+  const { userSessions } = useAuth();
 
   useEffect(() => {
     loadTattooists();

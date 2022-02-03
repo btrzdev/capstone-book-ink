@@ -35,13 +35,13 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
       paddingTop="0px"
       flexDir={["column", "column", "column", "row-reverse"]}
       justifyContent={["center", "center", "center", "space-evenly"]}
-      alignItems="center"
+      alignItems={["center", "center", "center", "unset"]}
     >
       <Flex
         alignItems={["center"]}
         justifyContent={["center", "center", "flex-start", "flex-start"]}
         flexDirection={["row", "row", "column", "column"]}
-        marginTop={["0", "0", "0", "-320px"]}
+        mt="50px"
       >
         <Flex
           flexDir="column"
@@ -122,7 +122,7 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
         </Flex>
       </Flex>
 
-      <Flex mt="20px" w={["310px", "360px", "360px", "450px"]} flexDir="column">
+      <Flex mt="50px" w={["310px", "360px", "360px", "450px"]} flexDir="column">
         <PerfilBio tattooist={tattooist} />
         <Heading
           color="gray.100"

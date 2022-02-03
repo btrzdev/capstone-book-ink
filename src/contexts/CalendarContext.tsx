@@ -41,7 +41,11 @@ const CalendarContext = createContext<CalendarContextData>(
   {} as CalendarContextData
 );
 
-const context = useContext(CalendarContext);
+const useCalendar = () => {
+  const context = useContext(CalendarContext);
+
+  return context;
+};
 
 const [event, setEvent] = useState<Event>({} as Event);
 const [allEvents, setAllEvents] = useState<Event[]>([] as Event[]);
@@ -69,4 +73,4 @@ const CalendarProvider = ({ children }: CalendarProviderProps) => {
   );
 };
 
-export { CalendarProvider };
+export { CalendarProvider, useCalendar };

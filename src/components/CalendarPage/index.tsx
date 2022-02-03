@@ -58,7 +58,7 @@ export const CalendarPage = () => {
 
   return (
     <Flex w={"auto"} h={"auto"} flexDirection="column">
-      <Heading>Calendar</Heading>
+      {/* <Heading>Calendar</Heading>
       <Heading>Add new Event </Heading>
 
       <Input
@@ -85,7 +85,7 @@ export const CalendarPage = () => {
         formats={formats}
         defaultView={"month"}
         selectable={true}
-      />
+      /> */}
     </Flex>
   );
 };

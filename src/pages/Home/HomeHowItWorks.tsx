@@ -7,10 +7,7 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
-import imgVitor from "../../assets/vitor.jpeg";
-import imgBea from "../../assets/bea.jpeg";
-import imgLuiz from "../../assets/luiz.png";
-import imgJoao from "../../assets/joao.jpeg";
+import Arrow from "../../assets/seta.png";
 
 export const HomeHowItWorks = () => {
   return (
@@ -19,35 +16,40 @@ export const HomeHowItWorks = () => {
       fontFamily="Alata"
       flexDir="column"
       alignItems="center"
-      bg="orange.800"
+      bg="background: #4c4343;
+      background: linear-gradient(0deg,#38312d 20%, #4c4343 80%);
+      background: -webkit-linear-gradient(-90deg,#38312d 20%,5F493F#aba394 80%);
+      background: -moz-linear-gradient(-90deg,#38312d 20%, #5F493F 80%);"
     >
-      <Flex m="50px 0" alignItems="center" flexDir="column">
-        <Text color="gray.800">who were the devs</Text>
-        <Divider border="2px" w="200px" />
-        <Heading color="gray.800">HOW IT WORKS</Heading>
-        <Divider border="2px" w="200px" />
+      <Divider border="2px" w="100%" />
+      <Flex m="25px 0" alignItems="center" flexDir="column">
+        <Text color="gray.800"></Text>
+
+        <Heading color="gray.800">HOW IT WORKS?</Heading>
+        <Image src={Arrow} />
         <Text fontSize="1.5rem" fontFamily="Alata">
           {" "}
-          * * *
         </Text>
       </Flex>
       <UnorderedList
         fontSize={["1.3rem", "5rem"]}
-        fontFamily="Arapey"
-        w="90%"
+        fontFamily="Philosopher"
+        w="100%"
         color="gray.200"
         mb="50px"
+        listStyleType="none"
       >
-        <ListItem fontSize={["1.3rem", "2rem"]}>
-          select the tattoo artist
+        <ListItem fontSize={["1.3rem", "1.75rem"]} m="15px" textAlign={["center"]}>
+          Get in touch with artists from your area or any where in the world!
         </ListItem>
-        <ListItem fontSize={["1.3rem", "2rem"]}>
-          see your general information
+        <ListItem fontSize={["1.3rem", "1.75rem"]} mb="15px" textAlign={["center"]} >
+          Check their profile and work!
         </ListItem>
-        <ListItem fontSize={["1.3rem", "2rem"]}>did you like it?</ListItem>
-        <ListItem fontSize={["1.3rem", "2rem"]}>
-          make an appointment with him
+        <ListItem fontSize={["1.3rem", "1.75rem"]} mb="15px" textAlign={["center"]}>
+          {" "}
+          Find the artist you are looking for!{" "}
         </ListItem>
+        <ListItem fontSize={["1.3rem", "1.75rem"]} textAlign={["center"]}>Schedule a Booking! </ListItem>
       </UnorderedList>
     </Flex>
   );

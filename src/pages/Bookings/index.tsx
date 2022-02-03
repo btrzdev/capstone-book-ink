@@ -76,11 +76,11 @@ export const Bookings = () => {
               fontSize="3rem"
               color="gray.100"
             >
-              No Sessions
+              No bookings 
             </AlertTitle>
 
             <AlertDescription maxWidth="sm" color="gray.100">
-              you don't have any session
+              You don't have any booking
             </AlertDescription>
           </Alert>
           <Image w={["510px"]} h={["510px"]} src={notSessions} />

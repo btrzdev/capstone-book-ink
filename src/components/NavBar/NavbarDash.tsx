@@ -121,7 +121,7 @@ export const NavBarDash = () => {
                 >
                   {" "}
                   <FaSignOutAlt />
-                  <Text ml="5px">Logout</Text>
+                  <Text ml="5px">LOGOUT</Text>
                 </Button>
               </MenuList>
             </Menu>
@@ -153,7 +153,7 @@ export const NavBarDash = () => {
                 _hover={{ bg: "orange.100" }}
                 bg="none"
               >
-                <FaUserAlt /> <Text ml="5px">Artists</Text>
+                <FaUserAlt /> <Text ml="5px">ARTISTS</Text>
               </Button>
               <Divider width="150px" m="0 auto" />
               <Button
@@ -165,7 +165,7 @@ export const NavBarDash = () => {
                 _hover={{ bg: "orange.100" }}
                 bg="none"
               >
-                <FaBook /> <Text ml="5px">Bookings</Text>
+                <FaBook /> <Text ml="5px">BOOKINGS</Text>
               </Button>
               <Divider width="150px" m="0 auto" />
               <PatchInfo />
@@ -173,7 +173,7 @@ export const NavBarDash = () => {
               <Button
                 m={2}
                 borderRadius={3}
-                fontFamily="Arapey"
+                fontFamily="Philosopher"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
                 onClick={() => logout()}
                 _hover={{ bg: "orange.100" }}
@@ -181,7 +181,7 @@ export const NavBarDash = () => {
               >
                 {" "}
                 <FaSignOutAlt />
-                <Text ml="5px">Logout</Text>
+                <Text ml="5px">LOGOUT</Text>
               </Button>
             </MenuList>
           </Menu>

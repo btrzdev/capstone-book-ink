@@ -179,7 +179,7 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
               {...register("accepted")}
               size="lg"
             >
-              You accept?
+              Accept
             </Checkbox>
           </>
         ) : (
@@ -196,7 +196,7 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
       <Flex alignItems="center" mt="20px">
         {session.pending ? (
           <Button bg="gray.800" color="gray.100" type="submit">
-            Send
+            Send request
           </Button>
         ) : (
           <Button
@@ -206,7 +206,7 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
             color="gray.100"
             type="submit"
           >
-            Remove
+            Cancel
           </Button>
         )}
       </Flex>

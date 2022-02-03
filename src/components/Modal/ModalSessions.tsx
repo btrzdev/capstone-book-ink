@@ -26,10 +26,10 @@ export const ModalSessions = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Modal Title</ModalHeader>
+        <ModalHeader>Get in touch with the artist!</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Text>Aqui</Text>
+          <Text>Your message here</Text>
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="blue" mr={3} onClick={onClose}>

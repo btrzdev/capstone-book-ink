@@ -5,6 +5,7 @@ import {
   Input,
   InputRightElement,
   InputGroup,
+  Divider,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/Auth.Context";
@@ -33,14 +34,11 @@ export const Dashboard = () => {
     rate: number;
     userId: number;
   }
-
-  const [input, setInput] = useState("");
+  const [notFound, setNotFound] = useState(false);
 
   function showTattooists(input: string) {
-    const filtered = tattooists.filter((tattoist) =>
-      tattoist.name.toLowerCase().includes(input)
-    );
-    setTattooists([...filtered]);
+    const filtered = tattooists.filter((tattoist) => tattoist.name.toLowerCase().includes(input.toLowerCase()));
+    { filtered.length > 0 ? setTattooists(filtered) : setNotFound(true); }
   }
 
   return (
@@ -64,18 +62,12 @@ export const Dashboard = () => {
             type="text"
             placeholder="Search"
             variant="filled"
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <Button
-            onClick={() => {
-              console.log("oi");
-              showTattooists(input);
-            }}
+            onChange={(e) => showTattooists(e.target.value)}
           />
         </InputGroup>
       </Flex>
 
-      <DashboardList tattooists={tattooists} />
+      {notFound === true ? null : <DashboardList tattooists={tattooists} />}
     </Flex>
   );
 };

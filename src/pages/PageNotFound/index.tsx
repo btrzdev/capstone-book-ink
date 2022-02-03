@@ -15,8 +15,8 @@ export const PageNotFound = () => {
       <Box mt="4">
         <Heading>Oooops!</Heading>
         <Text mt="4">
-          Não encontramos a página que você procurou, <br />
-          <b>vamos tentar novamente.</b>
+          We couldn't find the page <br />
+          <b>Why don't you get some ink and try again?</b>
         </Text>
         <Button
           mt="4"
@@ -27,7 +27,7 @@ export const PageNotFound = () => {
           _hover={{ bg: "red.700" }}
           onClick={() => history.push("/")}
         >
-          Voltar
+          GO BACK
         </Button>
       </Box>
       <Image src={NotFoundImg} />

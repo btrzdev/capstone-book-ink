@@ -97,6 +97,7 @@ export const NavBarHome = () => {
         <Flex mr="20px" color="gray.100" bg="orange.800">
           <Menu>
             <MenuButton
+    
               as={IconButton}
               aria-label="Options"
               icon={<HamburgerIcon />}

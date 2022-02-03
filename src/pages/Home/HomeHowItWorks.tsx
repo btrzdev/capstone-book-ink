@@ -21,14 +21,14 @@ export const HomeHowItWorks = () => {
       alignItems="center"
       bg="orange.800"
     >
-      <Flex m="50px 0" alignItems="center" flexDir="column">
-        <Text color="gray.800">who were the devs</Text>
-        <Divider border="2px" w="200px" />
-        <Heading color="gray.800">HOW IT WORKS</Heading>
-        <Divider border="2px" w="200px" />
+      <Divider border="2px" w="100%" />
+      <Flex m="25px 0" alignItems="center" flexDir="column">
+        <Text color="gray.800"></Text>
+
+        <Heading color="gray.800">HOW IT WORKS?</Heading>
+
         <Text fontSize="1.5rem" fontFamily="Alata">
           {" "}
-          * * *
         </Text>
       </Flex>
       <UnorderedList
@@ -39,15 +39,16 @@ export const HomeHowItWorks = () => {
         mb="50px"
       >
         <ListItem fontSize={["1.3rem", "2rem"]}>
-          select the tattoo artist
+          Get in touch with artists from your area or any where in the world
         </ListItem>
         <ListItem fontSize={["1.3rem", "2rem"]}>
-          see your general information
+          Check their profile and work
         </ListItem>
-        <ListItem fontSize={["1.3rem", "2rem"]}>did you like it?</ListItem>
         <ListItem fontSize={["1.3rem", "2rem"]}>
-          make an appointment with him
+          {" "}
+          Find the artist you are looking for{" "}
         </ListItem>
+        <ListItem fontSize={["1.3rem", "2.4rem"]}>Make a BookInk!</ListItem>
       </UnorderedList>
     </Flex>
   );

@@ -1,8 +1,8 @@
 import { Divider, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import imgVitor from "../../assets/vitor.jpeg";
-import imgBea from "../../assets/bea.jpeg";
-import imgLuiz from "../../assets/luiz.png";
-import imgJoao from "../../assets/joao.jpeg";
+import imgComments1 from "../../assets/comment1.jpeg";
+import imgComments2 from "../../assets/comment2.jpeg";
+import imgComments3 from "../../assets/comment3.png";
+import imgComments4 from "../../assets/comment4.jpg";
 
 export const HomeComments = () => {
   return (
@@ -14,7 +14,7 @@ export const HomeComments = () => {
       alignItems="center"
     >
       <Flex mb="50px" alignItems="center" flexDir="column">
-        <Text color="orange.800">who commented</Text>
+        <Text color="orange.800"> RECOMMENDED BY USERS </Text>
         <Divider border="2px" w="200px" />
         <Heading color="orange.800">COMMENTS</Heading>
         <Divider border="2px" w="200px" />
@@ -33,14 +33,14 @@ export const HomeComments = () => {
           padding="5px"
         >
           <Heading fontSize="1rem" fontFamily="Alata">
-            SM - Luiz Pombo
+            Isabella Guimarães
           </Heading>
           <Image
             w="100px"
             h="100px"
             m="10px 0"
             borderRadius="full"
-            src={imgLuiz}
+            src={imgComments1}
           />
           <Text textAlign={["center", "center", "left", "left"]} w="90%">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde ullam
@@ -56,14 +56,14 @@ export const HomeComments = () => {
           padding="5px"
         >
           <Heading fontSize="1rem" fontFamily="Alata">
-            PO - Vitor Soares
+            Reinaldo Ribeiro
           </Heading>
           <Image
             w="100px"
             h="100px"
             m="10px 0"
             borderRadius="full"
-            src={imgVitor}
+            src={imgComments2}
           />
           <Text textAlign={["center", "center", "right", "right"]} w="90%">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde ullam
@@ -85,14 +85,14 @@ export const HomeComments = () => {
           padding="5px"
         >
           <Heading fontSize="1rem" fontFamily="Alata">
-            QA - João Pedro
+            Amanda Duppont
           </Heading>
           <Image
             w="100px"
             h="100px"
             m="10px 0"
             borderRadius="full"
-            src={imgJoao}
+            src={imgComments3}
           />
           <Text textAlign={["center", "center", "left", "left"]} w="90%">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde ullam
@@ -108,14 +108,15 @@ export const HomeComments = () => {
           padding="5px"
         >
           <Heading fontSize="1rem" fontFamily="Alata">
-            TL - Beatriz Silva
+            Jorge da Silva
           </Heading>
           <Image
+            style={{ filter:  "sepia(0.4) grayscale(0.1)"}}
             w="100px"
             h="100px"
             m="10px 0"
             borderRadius="full"
-            src={imgBea}
+            src={imgComments4}
           />
           <Text textAlign={["center", "center", "right", "right"]} w="90%">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde ullam

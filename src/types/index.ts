@@ -5,7 +5,7 @@ export interface Comment {
   rate: number;
 }
 
-interface Event {
+export interface Event {
   title: string;
   allDay: boolean;
   start: Date;

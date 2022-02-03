@@ -9,6 +9,7 @@ import * as dateFns from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import { Sessions, Event } from "../../types";
 import { useTattooists } from "../../contexts/Tattooists.Context";
+import { useAuth } from "../../contexts/Auth.Context";
 import { useCalendar } from "../../contexts/CalendarContext";
 import {
   Box,
@@ -33,46 +34,57 @@ const localizer = dateFnsLocalizer({
   parse: dateFns.parse,
   startOfWeek: dateFns.startOfWeek,
   getDay: dateFns.getDay,
-
   locales: { "en-US": require("date-fns/locale/en-US") },
 });
+
+const locales = {
+  "en-US": require("date-fns/locale/en-US"),
+};
 
 interface Props {
   localizer: DateLocalizer;
 }
 
-export const calendarPage = () => {
-  const { allEvents, submitEvent } = useCalendar();
-  const [eventData, setEventData] = useState<Event[]>(allEvents.map((e) => e));
+export const CalendarPage = () => {
+  // const { allEvents, submitEvent } = useCalendar();
+  // console.log(allEvents);
+  // const [eventData, setEventData] = useState<Event[]>(allEvents.map((e) => e));
+  let formats = {
+    timeGutterFormat: "HH:mm",
+  };
+
+  const { userSessions } = useAuth();
+  console.log(userSessions);
 
   return (
-    <Flex>
+    <Flex w={"auto"} h={"auto"} flexDirection="column">
       <Heading>Calendar</Heading>
       <Heading>Add new Event </Heading>
-      <Flex>
-        <Input
-          type="text"
-          placeholder="Add Title"
-          style={{ width: "20%", marginRight: "100px" }}
-          value={allEvents.map((e) => e.title)}
-          onChange={(e) => console.log(eventData)}
-        />
-      </Flex>
-      <Button onClick={() => submitEvent}> Booking a tattoo </Button>
+
+      <Input
+        type="text"
+        placeholder="Add Title"
+        style={{ width: "20%", marginRight: "100px" }}
+        value={userSessions.allEvents.}
+      />
 
       <DatePicker
-        placeholderText="End Date"
+        placeholderText="Choose a session day "
         selected={new Date()}
         name="end"
         onChange={(date) => console.log(date)}
       />
+      <Button onClick={() => submitEvent}> Booking a tattoo </Button>
       <Calendar
         localizer={localizer}
         events={allEvents}
-        style={{ height: 500, margin: "50px" }}
-        startAccessor={(events: Event) => {
-          return events.start;
-        }}
+        style={{ height: "100vh", margin: "50px" }}
+        startAccessor={"start"}
+        endAccessor={"end"}
+        showMultiDayTimes={true}
+        formats={formats}
+        defaultView={"month"}
+        selectable={true}
       />
     </Flex>
   );

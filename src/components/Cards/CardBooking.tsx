@@ -61,7 +61,7 @@ export const CardBooking = ({ session }: CardBookingProps) => {
 
   const handleRequest = (data: Sessions) => {
     setLoading(true);
-    data.date = session.date;
+    // data.date = session.date;
     data.pending = false;
     data.client = session.client;
     data.userId = session.clientId;
@@ -123,7 +123,7 @@ export const CardBooking = ({ session }: CardBookingProps) => {
         BOOKING REQUEST
       </Box>
 
-      <Box fontWeight="semibold">{session.date}</Box>
+      {/* <Box fontWeight="semibold">{session.date}</Box> */}
       <Box fontWeight="semibold">{session.client}</Box>
       <Flex flexDir="column">
         <Box>{session.messageRequest}</Box>

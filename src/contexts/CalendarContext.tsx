@@ -47,10 +47,11 @@ const useCalendar = () => {
   return context;
 };
 
-const [event, setEvent] = useState<Event>({} as Event);
-const [allEvents, setAllEvents] = useState<Event[]>([] as Event[]);
 
 const CalendarProvider = ({ children }: CalendarProviderProps) => {
+
+const [event, setEvent] = useState<Event>({} as Event);
+const [allEvents, setAllEvents] = useState<Event[]>([] as Event[]);
   const submitEvent = useCallback(async (data: Sessions) => {
     const token = localStorage.getItem("@Bookink:accessToken") || "[]";
     await api

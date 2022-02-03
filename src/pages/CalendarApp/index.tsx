@@ -7,7 +7,7 @@ import React, { useState } from "react";
 
 export const CalendarApp = () => {
   return (
-    <Flex>
+    <Flex w={"100vw"} h={"100vh"}>
       <CalendarPage />
     </Flex>
   );

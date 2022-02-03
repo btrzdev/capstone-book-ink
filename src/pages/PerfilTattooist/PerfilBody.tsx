@@ -17,6 +17,7 @@ import { PerfilBio } from "./PerfilBio";
 import { PerfilNewComment } from "./PerfilNewComment";
 import notFoundImage from "../../assets/v.jpeg";
 import { ModalSessions } from "../../components/Modal/ModalSessions";
+import { useHistory } from "react-router-dom";
 
 interface PerfilBodyProps {
   tattooist?: User;
@@ -29,6 +30,7 @@ export interface CommentData {
 
 export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const history = useHistory();
 
   return (
     <Flex
@@ -116,6 +118,7 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
             w={["80%", "80%", "100%", "200px"]}
             display="flex"
             textShadow="2px 2px 4px #000000"
+            onClick={() => history.push('/calendar')}
           >
             PORTFOLIO
           </Button>

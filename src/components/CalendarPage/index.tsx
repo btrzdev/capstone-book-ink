@@ -1,91 +1,77 @@
-import { Calendar, dateFnsLocalizer, DateLocalizer } from "react-big-calendar";
-import format from "date-fns/format";
-import parse from "date-fns/parse";
-import startOfWeek from "date-fns/startOfWeek";
-import getDay from "date-fns/getDay";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
-import * as dateFns from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
-import { Sessions, Event } from "../../types";
-import { useTattooists } from "../../contexts/Tattooists.Context";
 import { useAuth } from "../../contexts/Auth.Context";
-import { useCalendar } from "../../contexts/CalendarContext";
-import {
-  Box,
-  Flex,
-  Link,
-  Image,
-  Button,
-  Heading,
-  Input,
-} from "@chakra-ui/react";
+import { Flex, Button, Heading, Input, Textarea } from "@chakra-ui/react";
 
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useContext,
-  useState,
-} from "react";
+import React, { useState } from "react";
 
-const localizer = dateFnsLocalizer({
-  format: dateFns.format,
-  parse: dateFns.parse,
-  startOfWeek: dateFns.startOfWeek,
-  getDay: dateFns.getDay,
-  locales: { "en-US": require("date-fns/locale/en-US") },
-});
-
-const locales = {
-  "en-US": require("date-fns/locale/en-US"),
-};
-
-interface Props {
-  localizer: DateLocalizer;
-}
+import { api } from "../../services/api";
 
 export const CalendarPage = () => {
-  // const { allEvents, submitEvent } = useCalendar();
-  // console.log(allEvents);
-  // const [eventData, setEventData] = useState<Event[]>(allEvents.map((e) => e));
-  let formats = {
-    timeGutterFormat: "HH:mm",
-  };
+  const { user, accessToken } = useAuth();
 
-  const { userSessions } = useAuth();
-  console.log(userSessions);
+  const [title, setTitle] = useState<string>("");
+  const [allDay, setAllDay] = useState<boolean>(true);
+  const [start, setStart] = useState<string | undefined>("");
+  const [userId, setUserId] = useState<number>(() => {
+    const response = JSON.parse(
+      localStorage.getItem("@Bookink:tattooistInfo") || "{}"
+    );
+    const { id } = response;
+    return id;
+  });
+
+  const [messageRequest, setMessageRequest] = useState<string>("");
+
+  console.log("userId", accessToken);
+  const handleSubmit = () => {
+    const data = {
+      allEvents: {
+        title: title,
+        allDay: allDay,
+        start: start,
+      },
+      accepted: false,
+      pending: true,
+      client: user.email,
+      clientId: user.id,
+      userId: userId,
+      messageRequest: messageRequest,
+      messageResponse: "",
+    };
+    api
+      .post("/sessions", data, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Flex w={"auto"} h={"auto"} flexDirection="column">
-      {/* <Heading>Calendar</Heading>
+      <Heading>Calendar</Heading>
       <Heading>Add new Event </Heading>
 
       <Input
         type="text"
         placeholder="Add Title"
         style={{ width: "20%", marginRight: "100px" }}
-        value={userSessions.allEvents.}
+        onChange={(e) => setTitle(e.target.value)}
       />
 
       <DatePicker
         placeholderText="Choose a session day "
         selected={new Date()}
-        name="end"
-        onChange={(date) => console.log(date)}
+        name="start"
+        onChange={(date) => {
+          setStart(String(date?.toUTCString()));
+        }}
       />
-      <Button onClick={() => submitEvent}> Booking a tattoo </Button>
-      <Calendar
-        localizer={localizer}
-        events={allEvents}
-        style={{ height: "100vh", margin: "50px" }}
-        startAccessor={"start"}
-        endAccessor={"end"}
-        showMultiDayTimes={true}
-        formats={formats}
-        defaultView={"month"}
-        selectable={true}
-      /> */}
+
+      <Textarea onChange={(e) => setMessageRequest(e.target.value)} />
+
+      <Button onClick={handleSubmit}> Booking a tattoo </Button>
     </Flex>
   );
 };

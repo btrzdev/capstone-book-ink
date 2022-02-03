@@ -72,7 +72,12 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   );
 
   const loadSessions = async (id: number) => {
-    const response = await api.get(`/allsessions/${id}`);
+    const token = localStorage.getItem("@Bookink:accessToken") || "[]";
+
+    const response = await api.get(`/allsessions/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
     localStorage.setItem(
       "@Bookink:sessions",
       JSON.stringify([...response.data])
@@ -86,7 +91,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const { accessToken, user } = response.data;
 
-    await loadSessions(user.id);
     localStorage.setItem("@Bookink:accessToken", accessToken);
     localStorage.setItem("@Bookink:user", JSON.stringify(user));
 

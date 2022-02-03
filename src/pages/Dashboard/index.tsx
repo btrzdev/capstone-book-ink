@@ -7,11 +7,12 @@ import { NavBarDash } from "../../components/NavBar/NavbarDash";
 import { useAuth } from "../../contexts/Auth.Context";
 
 export const Dashboard = () => {
-  const { userSessions } = useAuth();
+  const { userSessions, loadSessions, user } = useAuth();
   console.log(userSessions);
   const { loadTattooists, tattooists } = useTattooists();
 
   useEffect(() => {
+    loadSessions(user.id);
     loadTattooists();
   }, []);
 

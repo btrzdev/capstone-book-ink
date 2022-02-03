@@ -89,8 +89,10 @@ export const NavBarHome = () => {
           </Button>
           <Button
             _hover={{
-              borderBottom: "3px solid",
-              borderColor: "orange.800",
+              border: "2px solid",
+              borderColor: "orange.700",
+              bg: "gray.100",
+              color: "orange.700",
             }}
             mr="10px"
             w="100px"

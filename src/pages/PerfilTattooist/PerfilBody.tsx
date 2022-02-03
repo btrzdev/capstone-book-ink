@@ -30,6 +30,7 @@ import { User } from "../../types";
 import { PerfilBio } from "./PerfilBio";
 import { PerfilNewComment } from "./PerfilNewComment";
 import notFoundImage from "../../assets/v.jpeg";
+import { Portfolio } from "../../components/Portfolio";
 
 interface PerfilBodyProps {
   tattooist?: User;
@@ -113,7 +114,8 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
           >
             Schedule tattoo
           </Button>
-          <Button
+          <Portfolio />
+          {/* <Button
             bg="orange.100"
             color="gray.100"
             mt="10px"
@@ -125,7 +127,7 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
             textShadow="2px 2px 4px #000000"
           >
             Portfolio
-          </Button>
+          </Button> */}
         </Flex>
       </Flex>
 

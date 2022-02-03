@@ -2,9 +2,6 @@ import {
   Button,
   Heading,
   VStack,
-  Grid,
-  Box,
-  Text,
   Flex,
   Checkbox,
   Textarea,
@@ -14,21 +11,10 @@ import {
   DeepMap,
   FieldError,
   FieldValues,
-  SubmitHandler,
   UseFormRegister,
 } from "react-hook-form";
 import { SignUpData } from ".";
-import {
-  FaBook,
-  FaEnvelope,
-  FaFileImage,
-  FaLock,
-  FaUser,
-} from "react-icons/fa";
-import { useAuth } from "../../contexts/Auth.Context";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { theme } from "../../style/theme";
+import { FaEnvelope, FaFileImage, FaLock, FaUser } from "react-icons/fa";
 
 interface LoginFormProps {
   handleSignUp: () => void;
@@ -43,9 +29,6 @@ export const RegisterForm = ({
   register,
   loading,
 }: LoginFormProps) => {
-  const { register: registerUser } = useAuth();
-  const history = useHistory();
-
   return (
     <VStack maxW="500px" display="flex" padding="0">
       <Flex
@@ -123,8 +106,6 @@ export const RegisterForm = ({
               type="text"
               bgColor="orange.700"
               placeholder="Decribe yourself in a few words"
-              // error={errors.img}
-              // icon={FaBook}
               {...register("bio")}
             />
           </Flex>

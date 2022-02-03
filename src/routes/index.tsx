@@ -10,7 +10,7 @@ import { useAuth } from "../contexts/Auth.Context";
 import { Bookings } from "../pages/Bookings";
 
 export const Routes = () => {
-  const { accessToken, user } = useAuth();
+  const { accessToken } = useAuth();
   return (
     <Switch>
       <Route exact path="/" component={Home} />

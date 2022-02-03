@@ -1,4 +1,4 @@
-import { Heading, ListItem, UnorderedList } from "@chakra-ui/react";
+import { ListItem, UnorderedList } from "@chakra-ui/react";
 import React from "react";
 import { CardTatttoist } from "../../components/Cards/CardTattooist";
 import { User } from "../../types";

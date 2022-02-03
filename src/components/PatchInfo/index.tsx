@@ -9,7 +9,6 @@ import {
   Button,
   Text,
   Input,
-  InputGroup,
   useToast,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
@@ -18,7 +17,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { IoMdSettings } from "react-icons/io";
-import { Patched, User } from "../../types";
+import { Patched } from "../../types";
 import { api } from "../../services/api";
 
 const patchSchema = yup.object().shape({

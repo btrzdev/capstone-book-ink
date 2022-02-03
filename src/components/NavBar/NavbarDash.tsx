@@ -1,47 +1,31 @@
-import { ReactNode, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
-  Box,
   Flex,
-  HStack,
-  Heading,
-  Spacer,
   Image,
   Button,
   Menu,
   MenuButton,
   IconButton,
   MenuList,
-  MenuItem,
   Text,
   Divider,
   useBreakpointValue,
 } from "@chakra-ui/react";
 
 import Logo from "../../assets/LOGO.svg";
-import {
-  AddIcon,
-  EditIcon,
-  ExternalLinkIcon,
-  HamburgerIcon,
-  RepeatIcon,
-} from "@chakra-ui/icons";
-import { FaBook, FaHome, FaRegistered, FaUserAlt } from "react-icons/fa";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { FaBook, FaUserAlt } from "react-icons/fa";
 import { useAuth } from "../../contexts/Auth.Context";
-import { IoMdSettings } from "react-icons/io";
+
 import { FaSignOutAlt } from "react-icons/fa";
 import { PatchInfo } from "../PatchInfo";
-import { api } from "../../services/api";
-import { Sessions, User } from "../../types";
-import { userInfo } from "os";
 
 export const Links = ["Home", "Artists", "About"];
 
 export const NavBarDash = () => {
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
-  const [sessionsLength, setSessionsLength] = useState<number>(0);
-
   const { logout, userSessions } = useAuth();
 
   const isWideVersion = useBreakpointValue({

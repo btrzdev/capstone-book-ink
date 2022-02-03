@@ -53,9 +53,6 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
             alignItems="center"
             borderRadius="5px"
             m="5px 5px"
-            // _hover={{
-            //   filter: "sepia(50%)",
-            // }}
             onClick={() => {
               localStorage.setItem(
                 "@Bookink:tattooistInfo",
@@ -124,8 +121,5 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
         </Tooltip>
       </WrapItem>
     </Wrap>
-    // <Tooltip label="Ver perfil" placement="top">
-
-    // </Tooltip>
   );
 };

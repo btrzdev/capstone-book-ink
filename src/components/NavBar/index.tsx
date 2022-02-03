@@ -1,32 +1,19 @@
-import { ReactNode } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
-  Box,
   Flex,
-  HStack,
-  Heading,
-  Spacer,
   Image,
   Button,
   Menu,
   MenuButton,
   IconButton,
   MenuList,
-  MenuItem,
   Text,
   Divider,
   useBreakpointValue,
 } from "@chakra-ui/react";
-
 import Logo from "../../assets/LOGO.svg";
-import {
-  AddIcon,
-  EditIcon,
-  ExternalLinkIcon,
-  HamburgerIcon,
-  RepeatIcon,
-} from "@chakra-ui/icons";
-import { FaHome, FaRegistered, FaUserAlt } from "react-icons/fa";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { FaHome, FaUserAlt } from "react-icons/fa";
 import { IoMdPersonAdd } from "react-icons/io";
 
 export const Links = ["Home", "Artists", "About"];

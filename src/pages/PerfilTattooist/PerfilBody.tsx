@@ -4,28 +4,13 @@ import {
   Flex,
   Heading,
   Image,
-  Input,
   ListItem,
-  RangeSlider,
-  RangeSliderFilledTrack,
-  RangeSliderThumb,
-  RangeSliderTrack,
-  Slider,
-  SliderFilledTrack,
-  SliderMark,
-  SliderThumb,
-  SliderTrack,
   Text,
-  Textarea,
-  Tooltip,
   UnorderedList,
-  VStack,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { FaRegCommentAlt, FaStar, FaUserAlt } from "react-icons/fa";
+import React from "react";
+import { FaRegCommentAlt } from "react-icons/fa";
 import { Star } from "../../components/Star";
-import { useTattooists } from "../../contexts/Tattooists.Context";
 import { User } from "../../types";
 import { PerfilBio } from "./PerfilBio";
 import { PerfilNewComment } from "./PerfilNewComment";
@@ -131,13 +116,7 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
         </Flex>
       </Flex>
 
-      <Flex
-        mt="20px"
-        // bg="blue"
-        w={["310px", "360px", "360px", "450px"]}
-        flexDir="column"
-        // w="310px"
-      >
+      <Flex mt="20px" w={["310px", "360px", "360px", "450px"]} flexDir="column">
         <PerfilBio tattooist={tattooist} />
         <Heading
           color="gray.100"

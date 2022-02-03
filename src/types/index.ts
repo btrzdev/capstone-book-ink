@@ -8,8 +8,7 @@ export interface Comment {
 export interface Event {
   title: string;
   allDay: boolean;
-  start: Date;
-  end: Date;
+  start?: string;
 }
 
 export interface Sessions {

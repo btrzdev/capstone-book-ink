@@ -16,9 +16,12 @@ import { NavBarDash } from "../../components/NavBar/NavbarDash";
 
 export const Dashboard = () => {
   const { loadTattooists, tattooists, setTattooists } = useTattooists();
-  const { userSessions } = useAuth();
+  const { userSessions, loadSessions, user } = useAuth();
+
+
 
   useEffect(() => {
+    loadSessions(user.id);
     loadTattooists();
   }, []);
 

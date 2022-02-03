@@ -145,10 +145,6 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
           <FaRegCalendarAlt />{" "}
           <Text ml="10px">start - {session.allEvents.start}</Text>
         </Flex>
-        <Flex alignItems="center" mb="10px" fontWeight="semibold">
-          <FaRegCalendarAlt />{" "}
-          <Text ml="10px">end - {session.allEvents.end}</Text>
-        </Flex>
       </Flex>
       <Flex flexDir="column" mb="20px">
         <Flex alignItems="center" mb="10px" fontWeight="semibold">

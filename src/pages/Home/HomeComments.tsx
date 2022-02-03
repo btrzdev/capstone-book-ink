@@ -14,9 +14,8 @@ export const HomeComments = () => {
       alignItems="center"
     >
       <Flex mb="50px" alignItems="center" flexDir="column">
-        <Text color="orange.800"> RECOMMENDED BY USERS </Text>
         <Divider border="2px" w="200px" />
-        <Heading color="orange.800">COMMENTS</Heading>
+        <Heading color="orange.800">RECOMMENDED BY USERS</Heading>
         <Divider border="2px" w="200px" />
       </Flex>
 
@@ -85,7 +84,7 @@ export const HomeComments = () => {
           padding="5px"
         >
           <Heading fontSize="1rem" fontFamily="Alata">
-            Amanda Duppont
+            Raíssa Almeida
           </Heading>
           <Image
             w="100px"

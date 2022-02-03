@@ -13,7 +13,7 @@ export const HomeDevs = () => {
       flexDir="column"
       alignItems="center"
     >
-      <Flex mt="15px" mb="25px" alignItems="center" flexDir="column">
+      <Flex mt="25px" mb="25px" alignItems="center" flexDir="column">
         <Text color="orange.800">THE</Text>
         <Divider border="2px" w="200px" />
         <Heading color="orange.800">DEVELOPERS</Heading>

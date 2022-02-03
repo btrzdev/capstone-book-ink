@@ -5,6 +5,7 @@ import { HomeComments } from "./HomeComments";
 import { HomeHowItWorks } from "./HomeHowItWorks";
 import { NavBarHome } from "../../components/NavBar/NavBarHome";
 import { motion } from "framer-motion";
+import Art from "../../assets/needle.png";
 
 export const Home = () => {
   return (
@@ -62,7 +63,13 @@ export const Home = () => {
               </Heading>
               <Text mt="20px" fontSize="1.5rem" fontFamily="Alata">
                 {" "}
-                * * *
+                <Image
+                  src={Art}
+                  mb="15px"
+                  mt="10px"
+                  style={{ filter: "invert(0.1)" }}
+                  height="100px"
+                />
               </Text>
               <Heading
                 fontSize={["1.3rem", "2.5rem"]}

@@ -113,6 +113,7 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
         textAlign="center"
         color="gray.300"
         fontWeight="700"
+        textShadow="2px 2px 4px #000000"
       >
         Rate the tattoo artist
       </Text>

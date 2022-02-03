@@ -11,7 +11,7 @@ import { Bookings } from "../pages/Bookings";
 import { CalendarApp } from "../pages/CalendarApp";
 
 export const Routes = () => {
-  const { accessToken, user } = useAuth();
+  const { accessToken } = useAuth();
   return (
     <Switch>
       <Route exact path="/" component={Home} />

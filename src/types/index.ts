@@ -34,3 +34,8 @@ export interface User {
   comments: Comment[];
   sessions?: Sessions[];
 }
+
+export interface Patched {
+  email: string;
+  name: string;
+}

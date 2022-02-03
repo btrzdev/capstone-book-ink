@@ -1,12 +1,4 @@
-import {
-  Button,
-  Heading,
-  VStack,
-  Text,
-  Flex,
-  Link,
-  Box,
-} from "@chakra-ui/react";
+import { Button, Heading, VStack, Flex, Link, Box } from "@chakra-ui/react";
 import { Input } from "../../components/Input";
 
 import {

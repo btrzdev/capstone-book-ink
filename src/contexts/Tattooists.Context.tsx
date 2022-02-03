@@ -73,10 +73,8 @@ const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
 
   const loadSpecificUser = useCallback(async (userId: number) => {
     const response = await api.get(`/users/${userId}`);
-    // loadTattooists();
-    // console.log(response.data);
     const { id } = response.data;
-    // const { user } = response.data;
+
     return id;
   }, []);
 
@@ -89,9 +87,6 @@ const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
   const submitResponse = useCallback(async (data: Sessions) => {
     const token = localStorage.getItem("@Bookink:accessToken") || "[]";
 
-    // console.log(token);
-    // console.log("entrou");
-    // console.log(data);
     await api
       .patch(`/sessions/${data.id}`, data, {
         headers: { Authorization: `Bearer ${token}` },

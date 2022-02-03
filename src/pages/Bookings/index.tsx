@@ -2,10 +2,14 @@ import { Flex, ListItem, UnorderedList } from "@chakra-ui/react";
 import { CardBooking } from "../../components/Cards/CardBooking";
 import { NavBarDash } from "../../components/NavBar/NavbarDash";
 import { useAuth } from "../../contexts/Auth.Context";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
 export const Bookings = () => {
-  const { userSessions } = useAuth();
+  const { userSessions, loadSessions, user } = useAuth();
+
+  useEffect(() => {
+    loadSessions(user.id);
+  }, [userSessions]);
 
   return (
     <Flex

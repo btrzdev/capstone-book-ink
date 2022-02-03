@@ -38,6 +38,8 @@ interface AuthContextData {
   accessToken: string;
   login: (credentials: loginCredentials) => Promise<void>;
   register: (credentials: registerCredentials) => Promise<void>;
+  removeSession: (id: number) => Promise<void>;
+  loadSessions: (id: number) => Promise<void>;
   logout: () => void;
 }
 
@@ -91,6 +93,19 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setData({ accessToken, user });
   }, []);
 
+  const removeSession = async (id: number) => {
+    const token = localStorage.getItem("@Bookink:accessToken") || "[]";
+
+    api
+      .delete(`/sessions/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+
+    setUserSessions([...userSessions]);
+  };
+
   const register = useCallback(
     async ({
       email,
@@ -126,6 +141,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         userSessions,
         login,
         register,
+        removeSession,
+        loadSessions,
         logout,
       }}
     >

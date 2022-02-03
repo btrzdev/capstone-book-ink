@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Flex,
@@ -15,18 +14,13 @@ import {
 
 import Logo from "../../assets/LOGO.svg";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { FaBook, FaUserAlt } from "react-icons/fa";
-import { useAuth } from "../../contexts/Auth.Context";
-
-import { FaSignOutAlt } from "react-icons/fa";
-import { PatchInfo } from "../PatchInfo";
+import { FaHome, FaUserAlt } from "react-icons/fa";
+import { IoMdPersonAdd } from "react-icons/io";
 
 export const Links = ["Home", "Artists", "About"];
 
-export const NavBarDash = () => {
+export const NavBarHome = () => {
   const history = useHistory();
-  const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
-  const { logout, userSessions } = useAuth();
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -40,15 +34,16 @@ export const NavBarDash = () => {
       alignItems="center"
       justifyContent="space-between"
     >
+      <Flex ml="10px">
+        <Image src={Logo} w="350px" />
+      </Flex>
       <Flex
         alignItems="center"
-        onClick={() => history.push("/")}
         w={["200px"]}
         ml="20px"
+        onClick={() => history.push("/")}
         cursor="pointer"
-      >
-        <Image src={Logo}></Image>
-      </Flex>
+      ></Flex>
 
       {isWideVersion ? (
         <Flex fontFamily="Arapey">
@@ -60,10 +55,11 @@ export const NavBarDash = () => {
             }}
             mr="10px"
             w="80px"
+            fontSize={["1.4rem"]}
             borderRadius="0"
-            onClick={() => history.push("/dashboard")}
+            onClick={() => history.push("/")}
           >
-            ARTISTS
+            HOME
           </Button>
           <Button
             bg="none"
@@ -73,59 +69,29 @@ export const NavBarDash = () => {
             }}
             mr="10px"
             w="80px"
+            fontSize={["1.4rem"]}
             borderRadius="0"
-            onClick={() => history.push("/bookings")}
+            onClick={() => history.push("/login")}
           >
-            {userSessions.length > 0 && (
-              <Text
-                position="absolute"
-                mb="20px"
-                ml="70px"
-                bg="orange.300"
-                borderRadius="full"
-                padding="1px 5px"
-                color="gray.100"
-              >
-                {userSessions.length}
-              </Text>
-            )}
-            BOOKINGS
+            LOGIN
           </Button>
-          <Flex mr="20px">
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                variant="outline"
-                bgImage={user.img}
-                bgSize="contain"
-                _active={{ bgImage: `${user.img}`, bgSize: "contain" }}
-                _hover={{ bgImage: `${user.img}`, bgSize: "contain" }}
-              />
-              <MenuList
-                display="flex"
-                color="gray.100"
-                bg="orange.800"
-                flexDir="column"
-              >
-                <PatchInfo />
-                <Divider width="150px" m="0 auto" />
-                <Button
-                  m={2}
-                  borderRadius={3}
-                  fontFamily="Arapey"
-                  fontSize={["lg", "2xl", "2xl", "2xl"]}
-                  onClick={() => logout()}
-                  _hover={{ bg: "orange.100" }}
-                  bg="none"
-                >
-                  {" "}
-                  <FaSignOutAlt />
-                  <Text ml="5px">Logout</Text>
-                </Button>
-              </MenuList>
-            </Menu>
-          </Flex>
+          <Button
+            _hover={{
+              border: "2px solid",
+              borderColor: "orange.700",
+              bg: "gray.100",
+              color: "orange.700",
+            }}
+            mr="10px"
+            w="100px"
+            fontSize={["1.4rem"]}
+            color="gray.100"
+            bg="orange.700"
+            borderRadius="3px"
+            onClick={() => history.push("/register")}
+          >
+            REGISTER
+          </Button>
         </Flex>
       ) : (
         <Flex mr="20px" color="gray.100" bg="orange.800">
@@ -139,21 +105,22 @@ export const NavBarDash = () => {
               _active={{ bg: "orange.800" }}
             />
             <MenuList
-              display="flex"
-              flexDir="column"
               color="gray.100"
               bg="orange.800"
+              display="flex"
+              flexDir="column"
             >
               <Button
                 m={2}
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
-                onClick={() => history.push("/dashboard")}
+                onClick={() => history.push("/")}
                 _hover={{ bg: "orange.100" }}
                 bg="none"
               >
-                <FaUserAlt /> <Text ml="5px">Artists</Text>
+                <FaHome />
+                <Text ml="5px">HOME</Text>
               </Button>
               <Divider width="150px" m="0 auto" />
               <Button
@@ -161,27 +128,26 @@ export const NavBarDash = () => {
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
-                onClick={() => history.push("/bookings")}
+                onClick={() => history.push("/login")}
                 _hover={{ bg: "orange.100" }}
                 bg="none"
               >
-                <FaBook /> <Text ml="5px">Bookings</Text>
+                <FaUserAlt />
+                <Text ml="5px">LOGIN</Text>
               </Button>
-              <Divider width="150px" m="0 auto" />
-              <PatchInfo />
               <Divider width="150px" m="0 auto" />
               <Button
                 m={2}
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
-                onClick={() => logout()}
+                onClick={() => history.push("/register")}
                 _hover={{ bg: "orange.100" }}
                 bg="none"
               >
                 {" "}
-                <FaSignOutAlt />
-                <Text ml="5px">Logout</Text>
+                <IoMdPersonAdd />
+                <Text ml="5px">REGISTER</Text>
               </Button>
             </MenuList>
           </Menu>

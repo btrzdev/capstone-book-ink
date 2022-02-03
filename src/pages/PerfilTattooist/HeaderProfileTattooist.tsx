@@ -1,15 +1,5 @@
-import { ReactNode } from "react";
 import { useHistory } from "react-router-dom";
-import {
-  Box,
-  Flex,
-  HStack,
-  Heading,
-  Spacer,
-  Link,
-  Image,
-  Button,
-} from "@chakra-ui/react";
+import { Box, Flex, Link, Image, Button } from "@chakra-ui/react";
 
 import Logo from "../../assets/LOGO.svg";
 import { theme } from "../../style/theme";

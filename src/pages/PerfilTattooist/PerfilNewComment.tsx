@@ -8,14 +8,6 @@ import {
   SliderFilledTrack,
   Tooltip,
   Text,
-  Heading,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-  Box,
-  CloseButton,
-  toast,
   useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -89,6 +81,11 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
       mb="20px"
       flexDir="column"
       align="flex-start"
+      border="1px solid"
+      borderColor="gray.100"
+      borderRadius="5px"
+      padding="5px"
+      w={["310px", "360px", "360px", "450px"]}
     >
       <Input
         id="fieldComment"
@@ -99,7 +96,17 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
         h="60px"
         icon={FaRegCommentAlt}
       />
-      <Text mt={5}>Rate tattoist</Text>
+      <Text
+        mt={5}
+        fontSize="1.2rem"
+        w="100%"
+        textAlign="center"
+        color="gray.300"
+        fontWeight="700"
+        textShadow="2px 2px 4px #000000"
+      >
+        Rate the tattoo artist
+      </Text>
       <Slider
         w="90%"
         id="slider"
@@ -107,25 +114,25 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
         defaultValue={1}
         min={1}
         max={5}
-        colorScheme="orange"
+        colorScheme="yellow"
         onChange={(v) => setSliderValue(v)}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
       >
         {" "}
-        <SliderMark value={1} mt="-1.5" ml="0" fontSize="sm">
+        <SliderMark value={1} color="gray.100" mt="-1.5" ml="0" fontSize="sm">
           i
         </SliderMark>
-        <SliderMark value={2} mt="-1.5" ml="0" fontSize="sm">
+        <SliderMark value={2} color="gray.100" mt="-1.5" ml="0" fontSize="sm">
           i
         </SliderMark>
-        <SliderMark value={3} mt="-1.5" ml="0" fontSize="sm">
+        <SliderMark value={3} color="gray.100" mt="-1.5" ml="0" fontSize="sm">
           i
         </SliderMark>
-        <SliderMark value={4} mt="-1.5" ml="0" fontSize="sm">
+        <SliderMark value={4} color="gray.100" mt="-1.5" ml="0" fontSize="sm">
           i
         </SliderMark>
-        <SliderMark value={5} mt="-1.5" ml="-1" fontSize="sm">
+        <SliderMark value={5} color="gray.100" mt="-1.5" ml="-1" fontSize="sm">
           i
         </SliderMark>
         <SliderTrack>
@@ -133,19 +140,19 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
         </SliderTrack>
         <Tooltip
           hasArrow
-          bg="teal.500"
+          bg="orange.800"
           color="white"
           placement="top"
           isOpen={showTooltip}
           label={`${sliderValue}`}
         >
-          <SliderThumb boxSize={6} color="yellow" bg="orange">
+          <SliderThumb boxSize={6} color="orange.800" bg="gray.100">
             <FaStar />
           </SliderThumb>
         </Tooltip>
       </Slider>
       <Button isLoading={loading} type="submit">
-        Send
+        Evaluate
       </Button>
     </Flex>
   );

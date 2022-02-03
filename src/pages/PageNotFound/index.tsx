@@ -11,8 +11,9 @@ export const PageNotFound = () => {
       justifyContent="space-evenly"
       height={["auto", "auto", "100vh", "100vh"]}
       flexDirection={["column-reverse", "column-reverse", "row", "row"]}
+      bgGradient="linear(to-t, #686255,#ABA394)"
     >
-      <Box mt="4">
+      <Box mt="4" >
         <Heading>Oooops!</Heading>
         <Text mt="4">
           Não encontramos a página que você procurou, <br />
@@ -20,17 +21,17 @@ export const PageNotFound = () => {
         </Text>
         <Button
           mt="4"
-          bg="red.600"
+          bg="orange.600"
           h="60px"
           color="white"
           w="100%"
-          _hover={{ bg: "red.700" }}
+          _hover={{ bg: "orange.700" }}
           onClick={() => history.push("/")}
         >
           Voltar
         </Button>
       </Box>
-      <Image src={NotFoundImg} />
+      <Image src={NotFoundImg} style={{ filter:  "sepia(0.9)" }} />
     </Flex>
   );
 };

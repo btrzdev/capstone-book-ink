@@ -13,7 +13,6 @@ import {
 import notFoundImage from "../../assets/v.jpeg";
 import { useHistory } from "react-router-dom";
 import { FaStar, FaUserAlt } from "react-icons/fa";
-import { Star } from "../Star";
 import React, { useState, useEffect } from "react";
 
 interface CardTattoistProps {

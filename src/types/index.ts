@@ -5,8 +5,15 @@ export interface Comment {
   rate: number;
 }
 
+export interface Event {
+  title: string;
+  allDay: boolean;
+  start: Date;
+  end: Date;
+}
+
 export interface Sessions {
-  date: Date;
+  allEvents: Event;
   accepted: boolean;
   pending: boolean;
   client: string;

@@ -7,6 +7,7 @@ import {
   ListItem,
   Text,
   UnorderedList,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
 import { FaRegCommentAlt } from "react-icons/fa";
@@ -15,6 +16,7 @@ import { User } from "../../types";
 import { PerfilBio } from "./PerfilBio";
 import { PerfilNewComment } from "./PerfilNewComment";
 import notFoundImage from "../../assets/v.jpeg";
+import { ModalSessions } from "../../components/Modal/ModalSessions";
 
 interface PerfilBodyProps {
   tattooist?: User;
@@ -26,6 +28,8 @@ export interface CommentData {
 }
 
 export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Flex
       paddingTop="0px"
@@ -96,7 +100,9 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
             borderColor="orange.800"
             w={["80%", "80%", "100%", "200px"]}
             textShadow="2px 2px 4px #000000"
+            onClick={onOpen}
           >
+            <ModalSessions onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
             BOOKING TATTOO
           </Button>
           <Button

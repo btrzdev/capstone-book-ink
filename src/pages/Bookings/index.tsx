@@ -1,7 +1,17 @@
-import { Flex, ListItem, UnorderedList } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Flex,
+  Image,
+  ListItem,
+  UnorderedList,
+} from "@chakra-ui/react";
 import { CardBooking } from "../../components/Cards/CardBooking";
 import { NavBarDash } from "../../components/NavBar/NavbarDash";
 import { useAuth } from "../../contexts/Auth.Context";
+import notSessions from "../../assets/notSessions.svg";
 import React, { useEffect, useState } from "react";
 
 export const Bookings = () => {
@@ -22,29 +32,60 @@ export const Bookings = () => {
       minH="100vh"
       flexDir="column"
       alignItems="center"
-      justifyContent="center"
       bgGradient="linear(to-t, #686255,#ABA394)"
     >
       <NavBarDash />
-      <UnorderedList
-        m="0"
-        display="flex"
-        justifyContent="center"
-        flexWrap="wrap"
-        alignItems="center"
-      >
-        {React.Children.toArray(
-          userSessions.map((session) => (
-            <ListItem
-              display="flex"
-              justifyContent="center"
-              listStyleType="none"
+      {userSessions.length > 0 ? (
+        <UnorderedList
+          m="0"
+          display="flex"
+          justifyContent="center"
+          flexWrap="wrap"
+          alignItems="center"
+        >
+          {React.Children.toArray(
+            userSessions.map((session) => (
+              <ListItem
+                display="flex"
+                justifyContent="center"
+                listStyleType="none"
+              >
+                <CardBooking handleUpdate={handleUpdate} session={session} />
+              </ListItem>
+            ))
+          )}
+        </UnorderedList>
+      ) : (
+        <Flex flexDir="column" alignItems="center" w="100%">
+          <Alert
+            status="info"
+            bg="orange.800"
+            borderRadius="5px"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            textAlign="center"
+            height="200px"
+            display="flex"
+          >
+            <AlertIcon boxSize="40px" mr={0} color="gray.100" />
+            <AlertTitle
+              mt={4}
+              mb={1}
+              lineHeight="50px"
+              fontSize="3rem"
+              color="gray.100"
             >
-              <CardBooking handleUpdate={handleUpdate} session={session} />
-            </ListItem>
-          ))
-        )}
-      </UnorderedList>
+              No Sessions
+            </AlertTitle>
+
+            <AlertDescription maxWidth="sm" color="gray.100">
+              you don't have any session
+            </AlertDescription>
+          </Alert>
+          <Image w={["510px"]} h={["510px"]} src={notSessions} />
+        </Flex>
+      )}
     </Flex>
   );
 };

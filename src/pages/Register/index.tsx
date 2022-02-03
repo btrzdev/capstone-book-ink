@@ -12,6 +12,7 @@ import img from "../../assets/tattoo-vector-black.png";
 import { NavBar } from "../../components/NavBar";
 import Logo from "../../assets/LOGO.svg";
 import { FaHome } from "react-icons/fa";
+import { NavBarHome } from "../../components/NavBar/NavBarHome";
 
 const signInSchema = yup.object().shape({
   email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -85,7 +86,7 @@ export const Register = () => {
       justifyContent={["center", "center", "right", "right"]}
       flexDir="column"
     >
-      <NavBar />
+      <NavBarHome />
       <Flex
         flexDir={["column", "column", "column", "column"]}
         alignItems="center"

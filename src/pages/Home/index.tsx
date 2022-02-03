@@ -4,6 +4,8 @@ import { Flex, Image, Heading, Text } from "@chakra-ui/react";
 import { HomeDevs } from "./HomeDevs";
 import { HomeComments } from "./HomeComments";
 import { HomeHowItWorks } from "./HomeHowItWorks";
+import Logo from "../../assets/LOGO.svg";
+import { NavBarHome } from "../../components/NavBar/NavBarHome";
 
 export const Home = () => {
   return (
@@ -14,7 +16,7 @@ export const Home = () => {
       p={0}
       bgGradient="linear(to-t, #686255,#ABA394)"
     >
-      <NavBar />
+      <NavBarHome />
 
       <Flex
         w="100%"
@@ -23,7 +25,7 @@ export const Home = () => {
         flexDir="column"
         alignItems="center"
       >
-        <Heading
+        {/* <Heading
           fontSize={["3rem", "4rem"]}
           fontFamily="Arapey"
           w="100%"
@@ -41,48 +43,55 @@ export const Home = () => {
           mb={["90px", "80px"]}
         >
           - ARTIST -
-        </Heading>
+        </Heading> */}
         <Flex
           boxShadow="rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.5) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
-          borderTop="solid 20px"
+          // borderTop="solid 20px"
           w="100%"
+          mt={["50px"]}
           borderColor="rgba(255,255,255,0.3)"
+          flexDir={["column", "column", "column", "row"]}
         >
-          <Image src={tattooImg} top="0" zIndex="0" filter="grayscale(100%)" />
-        </Flex>
-
-        <Flex
-          p="30px 10px"
-          w="100%"
-          h="400px"
-          bg="orange.800"
-          flexDir="column"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Heading
-            fontSize={["2rem", "3rem"]}
-            fontFamily="Arapey"
-            w={["100%", "100%", "70%"]}
-            textAlign="center"
-          >
-            A fantastic solution for tattoo booking
-          </Heading>
-          <Text mt="20px" fontSize="1.5rem" fontFamily="Alata">
-            {" "}
-            * * *
-          </Text>
-          <Heading
-            fontSize={["1.3rem", "2.5rem"]}
-            fontFamily="Arapey"
-            w="100%"
-            display="flex"
-            color="gray.200"
-            textAlign="center"
+          <Image
+            src={tattooImg}
+            top="0"
+            zIndex="0"
+            w={["100%", "100%", "100%", "50%"]}
+            filter="grayscale(100%)"
+          />
+          <Flex
+            p="30px 10px"
+            w={["100%", "100%", "100%", "50%"]}
+            // h="100%"
+            bg="orange.800"
+            flexDir="column"
+            alignItems="center"
             justifyContent="center"
           >
-            We connect clients with tattooists and reensure your booking
-          </Heading>
+            <Heading
+              fontSize={["2rem", "3rem"]}
+              fontFamily="Arapey"
+              w={["100%", "100%", "70%"]}
+              textAlign="center"
+            >
+              A fantastic solution for tattoo booking
+            </Heading>
+            <Text mt="20px" fontSize="1.5rem" fontFamily="Alata">
+              {" "}
+              * * *
+            </Text>
+            <Heading
+              fontSize={["1.3rem", "2.5rem"]}
+              fontFamily="Arapey"
+              w="100%"
+              display="flex"
+              color="gray.200"
+              textAlign="center"
+              justifyContent="center"
+            >
+              We connect clients with tattooists and reensure your booking
+            </Heading>
+          </Flex>
         </Flex>
       </Flex>
       <HomeDevs />

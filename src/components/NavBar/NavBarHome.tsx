@@ -31,7 +31,7 @@ import { IoMdPersonAdd } from "react-icons/io";
 
 export const Links = ["Home", "Artists", "About"];
 
-export const NavBar = () => {
+export const NavBarHome = () => {
   const history = useHistory();
 
   const isWideVersion = useBreakpointValue({
@@ -46,15 +46,16 @@ export const NavBar = () => {
       alignItems="center"
       justifyContent="space-between"
     >
+      <Flex ml="10px">
+        <Image src={Logo} w="350px" />
+      </Flex>
       <Flex
         alignItems="center"
         w={["200px"]}
         ml="20px"
         onClick={() => history.push("/")}
         cursor="pointer"
-      >
-        <Image src={Logo}></Image>
-      </Flex>
+      ></Flex>
 
       {isWideVersion ? (
         <Flex fontFamily="Arapey">
@@ -66,6 +67,7 @@ export const NavBar = () => {
             }}
             mr="10px"
             w="80px"
+            fontSize={["1.4rem"]}
             borderRadius="0"
             onClick={() => history.push("/")}
           >
@@ -79,20 +81,23 @@ export const NavBar = () => {
             }}
             mr="10px"
             w="80px"
+            fontSize={["1.4rem"]}
             borderRadius="0"
             onClick={() => history.push("/login")}
           >
             LOGIN
           </Button>
           <Button
-            bg="none"
             _hover={{
               borderBottom: "3px solid",
               borderColor: "orange.800",
             }}
             mr="10px"
-            w="80px"
-            borderRadius="0"
+            w="100px"
+            fontSize={["1.4rem"]}
+            color="gray.100"
+            bg="orange.700"
+            borderRadius="3px"
             onClick={() => history.push("/register")}
           >
             REGISTER

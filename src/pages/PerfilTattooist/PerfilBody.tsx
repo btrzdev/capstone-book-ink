@@ -106,25 +106,27 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
             bg="gray.400"
             h="50px"
             color="gray.100"
-            border="3px solid"
+            border="2px solid"
+            fontFamily="Arapey"
             borderColor="orange.800"
             w={["80%", "80%", "100%", "200px"]}
             textShadow="2px 2px 4px #000000"
           >
-            Schedule tattoo
+            BOOKING TATTOO
           </Button>
           <Button
             bg="orange.100"
             color="gray.100"
             mt="10px"
-            border="3px solid"
+            border="2px solid"
+            fontFamily="Arapey"
             borderColor="orange.800"
             h="50px"
             w={["80%", "80%", "100%", "200px"]}
             display="flex"
             textShadow="2px 2px 4px #000000"
           >
-            Portfolio
+            PORTFOLIO
           </Button>
         </Flex>
       </Flex>
@@ -147,16 +149,26 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
         <UnorderedList mb="50px" listStyleType="none" m="0">
           {React.Children.toArray(
             tattooist?.comments.map((element) => (
-              <ListItem m="30px 0">
+              <ListItem
+                m="30px 0"
+                padding="5px"
+                borderRadius="5px"
+                bg="#c08b6a2f"
+              >
                 <Flex>
                   <Box w="20px" fontSize="1.5rem">
                     <FaRegCommentAlt />
                   </Box>
-                  <Heading ml="10px" fontSize="1rem">
+                  <Heading fontFamily="Alata" ml="10px" fontSize="1rem">
                     {element.name}
                   </Heading>
                 </Flex>
-                <Text mt="5px" color="gray.200" fontWeight="700">
+                <Text
+                  mt="5px"
+                  textShadow="2px 2px 4px #000000"
+                  color="gray.200"
+                  fontWeight="700"
+                >
                   " {element.comment} "
                 </Text>
                 <Star numberStars={element.rate} />

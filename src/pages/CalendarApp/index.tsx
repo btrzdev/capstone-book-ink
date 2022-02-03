@@ -5,7 +5,7 @@ import { NavBarDash } from "../../components/NavBar/NavbarDash";
 import { useAuth } from "../../contexts/Auth.Context";
 import React, { useState } from "react";
 
-export const Bookings = () => {
+export const CalendarApp = () => {
   return (
     <Flex>
       <CalendarPage />

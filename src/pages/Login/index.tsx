@@ -72,12 +72,13 @@ export const Login = () => {
         flexDirection={["column-reverse", "column-reverse", "row", "row"]}
         alignItems="center"
         justifyContent="right"
+        paddingRight="20vw"
         bgImage={img}
-        backgroundPosition="left"
-        backgroundSize="90%"
-        backgroundRepeat="no-repeat"
-        w={["100%", "100%", "70%", "70%"]}
+        backgroundPosition="-30vw"
+        backgroundSize={["70%", "70%", "70%", "80%"]}
+        backgroundRepeat={["repeat", "50%", "no-repeat", "no-repeat"]}
         minHeight="100vh"
+        w={["100%", "100%", "100%", "100%"]}
       >
         <Flex justifyContent="left" flexDirection="column">
           <LoginForm

@@ -46,7 +46,13 @@ export const NavBar = () => {
       alignItems="center"
       justifyContent="space-between"
     >
-      <Flex alignItems="center" w={["200px"]} ml="20px">
+      <Flex
+        alignItems="center"
+        w={["200px"]}
+        ml="20px"
+        onClick={() => history.push("/")}
+        cursor="pointer"
+      >
         <Image src={Logo}></Image>
       </Flex>
 

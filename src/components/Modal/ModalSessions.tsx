@@ -11,6 +11,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
+import { CalendarPage } from "../CalendarPage";
+
 interface ModalSessionsProps {
   isOpen: boolean;
   onOpen: () => void;
@@ -29,7 +31,7 @@ export const ModalSessions = ({
         <ModalHeader>Get in touch with the artist!</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Text>Your message here</Text>
+          <CalendarPage />
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="blue" mr={3} onClick={onClose}>

@@ -55,16 +55,29 @@ export const Portfolio = () => {
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent fontFamily="Alata" w="90%" bg="gray.100">
           <ModalHeader></ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton bg="orange.700" />
           <ModalBody>
             {portfolio.map((image, index) => (
-              <Image src={image.img} key={index} alt={`tattoo ${image.id}`} />
+              <Image
+                width="80vh"
+                src={image.img}
+                key={index}
+                alt={`tattoo ${image.id}`}
+              />
             ))}
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button
+              m={2}
+              borderRadius={3}
+              fontFamily="Arapey"
+              fontSize={["lg", "2xl", "2xl", "2xl"]}
+              _hover={{ bg: "orange.100" }}
+              onClick={onClose}
+              bg="gray.300"
+            >
               Close
             </Button>
           </ModalFooter>

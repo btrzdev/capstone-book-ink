@@ -1,20 +1,47 @@
-import { Flex, Input, InputRightElement, InputGroup } from "@chakra-ui/react";
-import { useEffect } from "react";
+import {
+  Button,
+  Flex,
+  Heading,
+  Input,
+  InputRightElement,
+  InputGroup,
+  Divider,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../contexts/Auth.Context";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { DashboardList } from "./DashboardList";
 import { FaSearch } from "react-icons/fa";
 import { NavBarDash } from "../../components/NavBar/NavbarDash";
-import { useAuth } from "../../contexts/Auth.Context";
 
 export const Dashboard = () => {
+  const { loadTattooists, tattooists, setTattooists } = useTattooists();
   const { userSessions, loadSessions, user } = useAuth();
-  console.log(userSessions);
-  const { loadTattooists, tattooists } = useTattooists();
+
+
 
   useEffect(() => {
     loadSessions(user.id);
     loadTattooists();
   }, []);
+
+  interface CommentsProps {
+    comment: string;
+    id: number;
+    name: string;
+    rate: number;
+    userId: number;
+  }
+  const [notFound, setNotFound] = useState(false);
+
+  function showTattooists(input: string) {
+    const filtered = tattooists.filter((tattoist) =>
+      tattoist.name.toLowerCase().includes(input.toLowerCase())
+    );
+    {
+      filtered.length > 0 ? setTattooists(filtered) : setNotFound(true);
+    }
+  }
 
   return (
     <Flex
@@ -26,16 +53,22 @@ export const Dashboard = () => {
     >
       <NavBarDash />
       <Flex alignItems="right" zIndex="1">
-        <InputGroup marginBottom="10px">
+        <InputGroup marginBottom="20px">
           <InputRightElement
             children={<FaSearch color="green.500" />}
             pointerEvents="none"
           />
-          <Input w="30vw" type="text" placeholder="Search" variant="filled" />
+          <Input
+            w="30vw"
+            type="text"
+            placeholder="Search"
+            variant="filled"
+            onChange={(e) => showTattooists(e.target.value)}
+          />
         </InputGroup>
       </Flex>
 
-      <DashboardList tattooists={tattooists} />
+      {notFound === true ? null : <DashboardList tattooists={tattooists} />}
     </Flex>
   );
 };

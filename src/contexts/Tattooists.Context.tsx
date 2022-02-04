@@ -15,6 +15,7 @@ interface TattooistsProviderProps {
 
 interface TattooistsContextData {
   tattooists: User[];
+  setTattooists: any;
   loadTattooists: () => void;
   loadSpecificTattooist: (id: number) => User;
   loadSpecificUser: (id: number) => Promise<number>;
@@ -101,6 +102,7 @@ const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
     <TattooistsContext.Provider
       value={{
         tattooists,
+        setTattooists,
         loadTattooists,
         loadSpecificTattooist,
         loadSpecificUser,

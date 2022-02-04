@@ -97,6 +97,7 @@ export const CardTatttoist = ({ tattooist }: CardTattoistProps) => {
               </Flex>
 
               <Button
+                _focus={{ shadow: "none" }}
                 bg="gray.800"
                 color="orange.800"
                 borderRadius="100%"

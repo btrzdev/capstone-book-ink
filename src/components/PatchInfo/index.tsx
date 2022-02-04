@@ -81,6 +81,7 @@ export const PatchInfo = () => {
       <Button
         m={2}
         borderRadius={3}
+        _focus={{ shadow: "none" }}
         fontFamily="Arapey"
         fontSize={["lg", "2xl", "2xl", "2xl"]}
         onClick={onOpen}
@@ -89,14 +90,14 @@ export const PatchInfo = () => {
       >
         {" "}
         <IoMdSettings />
-        <Text ml="5px">Settings</Text>
+        <Text ml="5px">SETTINGS</Text>
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent fontFamily="Alata" w="90%" bg="gray.100">
           <ModalHeader></ModalHeader>
-          <ModalCloseButton bg="orange.700" />
+          <ModalCloseButton _focus={{ shadow: "none" }} bg="orange.700" />
           <form onSubmit={handleSubmit(handlePatch)}>
             <ModalBody>
               <Text>E-mail</Text>
@@ -120,6 +121,7 @@ export const PatchInfo = () => {
             <ModalFooter>
               <Button
                 m={2}
+                _focus={{ shadow: "none" }}
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
@@ -131,6 +133,7 @@ export const PatchInfo = () => {
               </Button>
               <Button
                 m={2}
+                _focus={{ shadow: "none" }}
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}

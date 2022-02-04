@@ -80,7 +80,11 @@ const TattooistsProvider = ({ children }: TattooistsProviderProps) => {
   }, []);
 
   const submitComment = useCallback(async (data: Object) => {
-    const response = await api.post("/comments", data);
+    const token = localStorage.getItem("@Bookink:accessToken") || "[]";
+
+    const response = await api.post("/comments", data, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
     loadTattooists();
   }, []);

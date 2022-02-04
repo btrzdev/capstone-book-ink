@@ -17,9 +17,10 @@ import React, { useEffect, useState } from "react";
 export const Bookings = () => {
   const { userSessions, loadSessions, user } = useAuth();
   const [update, setUpdate] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    loadSessions(user.id);
+    loadSessions(user.id).then((_) => setLoading(false));
   }, [update]);
 
   const handleUpdate = () => {

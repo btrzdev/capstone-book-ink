@@ -39,25 +39,27 @@ export const Portfolio = () => {
   return (
     <>
       <Button
+        _focus={{ shadow: "none" }}
         onClick={onOpen}
         bg="orange.100"
         color="gray.100"
         mt="10px"
-        border="3px solid"
+        border="2px solid"
+        fontFamily="Philosopher"
         borderColor="orange.800"
         h="50px"
         w={["80%", "80%", "100%", "200px"]}
         display="flex"
         textShadow="2px 2px 4px #000000"
       >
-        Portfolio
+        PORTFOLIO
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent fontFamily="Alata" w="90%" bg="gray.100">
           <ModalHeader></ModalHeader>
-          <ModalCloseButton bg="orange.700" />
+          <ModalCloseButton _focus={{ shadow: "none" }} bg="orange.700" />
           <ModalBody>
             {portfolio.map((image, index) => (
               <Image
@@ -71,6 +73,7 @@ export const Portfolio = () => {
           <ModalFooter>
             <Button
               m={2}
+              _focus={{ shadow: "none" }}
               borderRadius={3}
               fontFamily="Arapey"
               fontSize={["lg", "2xl", "2xl", "2xl"]}

@@ -97,10 +97,9 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
       p="6"
       border="2px solid"
       borderColor="orange.800"
-      m="20px 0"
+      m="20px 10px"
       fontFamily="Alata"
-      w="90%"
-      maxW="500px"
+      w={["310px", "350px", "350px", "350px", "350px"]}
       boxShadow="5px 5px 8px #000000ae"
       borderRadius="5px"
       bg="orange.800"
@@ -117,7 +116,6 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
         </Badge>
 
         <Box
-          // mt="1"
           ml="10px"
           fontWeight="semibold"
           as="h4"
@@ -128,10 +126,8 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
         </Box>
       </Flex>
 
-      {/* informações sobre o dia do evento e o que será feito */}
       <Flex
         flexDir="column"
-        // border="1px solid"
         fontFamily="Philosopher"
         borderColor="gray.100"
         borderRadius="5px"
@@ -154,16 +150,19 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
         </Flex>
       </Flex>
 
-      <Flex flexDir="column" mb="20px">
+      <Flex flexDir="column" mb="20px" w="100%" h="100px" overflowY="scroll">
         <Box color="gray.200">{session.messageRequest}</Box>
         {session.messageResponse && (
-          <Box mt="10px">R: {session.messageResponse}</Box>
+          <Box mt="10px" color="gray.200">
+            R: {session.messageResponse}
+          </Box>
         )}
       </Flex>
-      <Box>
+      <Box w="100%">
         {user.isTattooists ? (
           <>
             <Textarea
+              isD
               placeholder="Answer"
               bg="#38312d"
               {...register("messageResponse")}
@@ -197,6 +196,7 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
       <Flex alignItems="center" mt="20px">
         {session.pending ? (
           <Button
+            _focus={{ shadow: "none" }}
             bg="orange.300"
             _hover={{ bg: "orange.600" }}
             color="gray.100"
@@ -206,10 +206,15 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
           </Button>
         ) : (
           <Button
-            onClick={() => removeSession(session.id)}
+            _focus={{ shadow: "none" }}
+            onClick={() => {
+              setLoading(true);
+              removeSession(session.id).then((_) => setLoading(false));
+            }}
             isLoading={loading}
-            bg="gray.800"
+            bg="orange.300"
             color="gray.100"
+            _hover={{ bg: "orange.600" }}
             type="submit"
           >
             Cancel

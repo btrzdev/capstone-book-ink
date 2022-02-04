@@ -20,7 +20,7 @@ import { useAuth } from "../../contexts/Auth.Context";
 
 import { FaSignOutAlt } from "react-icons/fa";
 import { PatchInfo } from "../PatchInfo";
-
+import imgNotFound from "../../assets/v.jpeg";
 export const Links = ["Home", "Artists", "About"];
 
 export const NavBarDash = () => {
@@ -53,6 +53,7 @@ export const NavBarDash = () => {
       {isWideVersion ? (
         <Flex fontFamily="Arapey">
           <Button
+            _focus={{ shadow: "none" }}
             bg="none"
             _hover={{
               borderBottom: "3px solid",
@@ -67,6 +68,7 @@ export const NavBarDash = () => {
           </Button>
           <Button
             bg="none"
+            _focus={{ shadow: "none" }}
             _hover={{
               borderBottom: "3px solid",
               borderColor: "orange.800",
@@ -94,13 +96,20 @@ export const NavBarDash = () => {
           <Flex mr="20px">
             <Menu>
               <MenuButton
+                _focus={{ shadow: "none" }}
                 as={IconButton}
                 aria-label="Options"
                 variant="outline"
-                bgImage={user.img}
+                bgImage={user.img ? user.img : imgNotFound}
                 bgSize="contain"
-                _active={{ bgImage: `${user.img}`, bgSize: "contain" }}
-                _hover={{ bgImage: `${user.img}`, bgSize: "contain" }}
+                _active={{
+                  bgImage: `${user.img ? user.img : imgNotFound}`,
+                  bgSize: "contain",
+                }}
+                _hover={{
+                  bgImage: `${user.img ? user.img : imgNotFound}`,
+                  bgSize: "contain",
+                }}
               />
               <MenuList
                 display="flex"
@@ -112,6 +121,7 @@ export const NavBarDash = () => {
                 <Divider width="150px" m="0 auto" />
                 <Button
                   m={2}
+                  _focus={{ shadow: "none" }}
                   borderRadius={3}
                   fontFamily="Arapey"
                   fontSize={["lg", "2xl", "2xl", "2xl"]}
@@ -131,6 +141,7 @@ export const NavBarDash = () => {
         <Flex mr="20px" color="gray.100" bg="orange.800">
           <Menu>
             <MenuButton
+              _focus={{ shadow: "none" }}
               as={IconButton}
               aria-label="Options"
               icon={<HamburgerIcon />}
@@ -146,6 +157,7 @@ export const NavBarDash = () => {
             >
               <Button
                 m={2}
+                _focus={{ shadow: "none" }}
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
@@ -158,6 +170,7 @@ export const NavBarDash = () => {
               <Divider width="150px" m="0 auto" />
               <Button
                 m={2}
+                _focus={{ shadow: "none" }}
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
@@ -172,6 +185,7 @@ export const NavBarDash = () => {
               <Divider width="150px" m="0 auto" />
               <Button
                 m={2}
+                _focus={{ shadow: "none" }}
                 borderRadius={3}
                 fontFamily="Philosopher"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}

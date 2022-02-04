@@ -40,6 +40,7 @@ export const RegisterForm = ({
         flexDir="column"
         borderColor="gray.100"
         borderRadius="5px"
+        fontFamily="Alata"
       >
         <Heading
           display="flex"
@@ -104,6 +105,8 @@ export const RegisterForm = ({
           <Flex w="90%">
             <Textarea
               type="text"
+              color="gray.100"
+              fontFamily="Alata"
               bgColor="orange.700"
               placeholder="Decribe yourself in a few words"
               {...register("bio")}
@@ -122,6 +125,7 @@ export const RegisterForm = ({
             </Checkbox>
           </Flex>
           <Button
+            _focus={{ shadow: "none" }}
             isLoading={loading}
             bg="orange.700"
             w="91%"

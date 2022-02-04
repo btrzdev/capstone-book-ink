@@ -21,7 +21,7 @@ export const HomeHowItWorks = () => {
       background: -webkit-linear-gradient(-90deg,#38312d 20%,5F493F#aba394 80%);
       background: -moz-linear-gradient(-90deg,#38312d 20%, #5F493F 80%);"
     >
-      <Divider border="2px" w="100%" />
+      <Divider w="100%" />
       <Flex m="25px 0" alignItems="center" flexDir="column">
         <Text color="gray.800"></Text>
 

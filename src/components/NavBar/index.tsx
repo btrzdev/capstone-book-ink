@@ -27,12 +27,7 @@ export const NavBar = () => {
   });
 
   return (
-    <Flex
-      zIndex="2"
-      w="80%"
-      alignItems="center"
-      justifyContent="space-between"
-    >
+    <Flex zIndex="2" w="80%" alignItems="center" justifyContent="space-between">
       <Flex
         alignItems="center"
         w={["200px"]}
@@ -54,6 +49,7 @@ export const NavBar = () => {
             mr="10px"
             w="80px"
             borderRadius="0"
+            _focus={{ shadow: "none" }}
             onClick={() => history.push("/")}
           >
             HOME
@@ -67,6 +63,7 @@ export const NavBar = () => {
             mr="10px"
             w="80px"
             borderRadius="0"
+            _focus={{ shadow: "none" }}
             onClick={() => history.push("/login")}
           >
             LOGIN
@@ -78,6 +75,7 @@ export const NavBar = () => {
               borderColor: "orange.800",
             }}
             mr="10px"
+            _focus={{ shadow: "none" }}
             w="80px"
             borderRadius="0"
             onClick={() => history.push("/register")}
@@ -89,6 +87,7 @@ export const NavBar = () => {
         <Flex mr="20px" color="gray.100" bg="orange.800">
           <Menu>
             <MenuButton
+              _focus={{ shadow: "none" }}
               as={IconButton}
               aria-label="Options"
               icon={<HamburgerIcon />}
@@ -104,6 +103,7 @@ export const NavBar = () => {
             >
               <Button
                 m={2}
+                _focus={{ shadow: "none" }}
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
@@ -117,6 +117,7 @@ export const NavBar = () => {
               <Divider width="150px" m="0 auto" />
               <Button
                 m={2}
+                _focus={{ shadow: "none" }}
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
@@ -130,6 +131,7 @@ export const NavBar = () => {
               <Divider width="150px" m="0 auto" />
               <Button
                 m={2}
+                _focus={{ shadow: "none" }}
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}

@@ -165,20 +165,20 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
           <>
             <Textarea
               placeholder="Answer"
-              bg="gray.100"
+              bg="#38312d"
               {...register("messageResponse")}
               onChange={(e) => setMessage(e.target.value)}
               mb="10px"
               color="gray.100"
+              _focus={{ outline: "red" }}
             />
             <Checkbox
               fontFamily="Alata"
-              color="gray.800"
-              // textShadow="2px 2px 4px #797979"
               fontWeight="700"
               colorScheme="green"
               {...register("accepted")}
               size="lg"
+              color="gray.200"
             >
               Accept
             </Checkbox>

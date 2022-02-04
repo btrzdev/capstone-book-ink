@@ -61,8 +61,6 @@ export const Login = () => {
       bgGradient="linear(to-t, #686255,#ABA394)"
       alignItems="center"
       w="100%"
-      minHeight="100vh"
-      height={["auto", "auto", "100vh", "100vh"]}
       flexDir="column"
     >
       <NavBarHome />
@@ -70,12 +68,11 @@ export const Login = () => {
         flexDirection={["column-reverse", "column-reverse", "row", "row"]}
         alignItems="center"
         justifyContent="right"
-        paddingRight="20vw"
+        paddingRight={["0", "0", "20", "20vw"]}
         bgImage={img}
         backgroundPosition="-30vw"
         backgroundSize={["70%", "70%", "70%", "80%"]}
         backgroundRepeat={["repeat", "50%", "no-repeat", "no-repeat"]}
-        minHeight="100vh"
         w={["100%", "100%", "100%", "100%"]}
       >
         <Flex justifyContent="left" flexDirection="column">

@@ -2,9 +2,17 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useAuth } from "../../contexts/Auth.Context";
-import { Flex, Button, Heading, Input, Textarea } from "@chakra-ui/react";
+import {
+  Flex,
+  Button,
+  Heading,
+  Input,
+  Textarea,
+  Text,
+  Box,
+} from "@chakra-ui/react";
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { api } from "../../services/api";
 
@@ -24,7 +32,6 @@ export const CalendarPage = () => {
 
   const [messageRequest, setMessageRequest] = useState<string>("");
 
-  console.log("userId", accessToken);
   const handleSubmit = () => {
     const data = {
       allEvents: {
@@ -49,29 +56,55 @@ export const CalendarPage = () => {
   };
 
   return (
-    <Flex w={"auto"} h={"auto"} flexDirection="column">
-      <Heading>Calendar</Heading>
-      <Heading>Add new Event </Heading>
+    <Flex w="100%" h={"auto"} flexDirection="column">
+      <Heading fontFamily="Alata">Request your booking!</Heading>
 
       <Input
         type="text"
-        placeholder="Add Title"
-        style={{ width: "20%", marginRight: "100px" }}
+        w="100%"
+        placeholder="Add title"
+        bg="gray.300"
+        m="20px 0 10px 0"
         onChange={(e) => setTitle(e.target.value)}
       />
 
-      <DatePicker
-        placeholderText="Choose a session day "
-        selected={new Date()}
-        name="start"
-        onChange={(date) => {
-          setStart(String(date?.toUTCString()));
-        }}
+      <Textarea
+        bg="gray.300"
+        placeholder="Send your message"
+        onChange={(e) => setMessageRequest(e.target.value)}
       />
 
-      <Textarea onChange={(e) => setMessageRequest(e.target.value)} />
-
-      <Button onClick={handleSubmit}> Booking a tattoo </Button>
+      <Flex
+        justifyContent="space-around"
+        alignItems="center"
+        paddingBottom="10px"
+        m="20px 0 0 0"
+      >
+        <Text>Select date </Text>
+        <Box position="relative">
+          <DatePicker
+            placeholderText="Choose a session day "
+            selected={new Date()}
+            name="start"
+            onChange={(date) => {
+              setStart(String(date?.toUTCString()));
+            }}
+          />
+        </Box>
+      </Flex>
+      <Flex justifyContent="end">
+        <Button
+          w="100px"
+          m="20px 0"
+          onClick={handleSubmit}
+          bg="orange.700"
+          color="gray.100"
+          _hover={{ bg: "orange.600" }}
+        >
+          {" "}
+          Booking{" "}
+        </Button>
+      </Flex>
     </Flex>
   );
 };

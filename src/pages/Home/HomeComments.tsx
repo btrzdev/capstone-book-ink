@@ -14,9 +14,9 @@ export const HomeComments = () => {
       alignItems="center"
     >
       <Flex mb="50px" alignItems="center" flexDir="column">
-        <Divider border="2px" w="200px" />
-        <Heading color="orange.800">RECOMMENDED BY USERS</Heading>
-        <Divider border="2px" w="200px" />
+        <Heading textAlign="center" color="orange.800">
+          RECOMMENDED BY USERS
+        </Heading>
       </Flex>
 
       <Flex
@@ -110,7 +110,7 @@ export const HomeComments = () => {
             Jorge da Silva
           </Heading>
           <Image
-            style={{ filter:  "sepia(0.4) grayscale(0.1)"}}
+            style={{ filter: "sepia(0.4) grayscale(0.1)" }}
             w="100px"
             h="100px"
             m="10px 0"

@@ -52,8 +52,6 @@ const CalendarProvider = ({ children }: CalendarProviderProps) => {
   const [allEvents, setAllEvents] = useState<Event[]>([] as Event[]);
 
   const submitEvent = useCallback(async (data: Sessions) => {
-    console.log("aqui", data);
-
     const token = localStorage.getItem("@Bookink:accessToken") || "[]";
     await api
       .post(`/sessions`, data, {

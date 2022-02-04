@@ -9,7 +9,6 @@ import {
   Button,
   Text,
   Input,
-  InputGroup,
   useToast,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
@@ -18,7 +17,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { IoMdSettings } from "react-icons/io";
-import { Patched, User } from "../../types";
+import { Patched } from "../../types";
 import { api } from "../../services/api";
 
 const patchSchema = yup.object().shape({
@@ -96,9 +95,9 @@ export const PatchInfo = () => {
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent bg="gray.100">
+        <ModalContent fontFamily="Alata" w="90%" bg="gray.100">
           <ModalHeader></ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton bg="orange.700" />
           <form onSubmit={handleSubmit(handlePatch)}>
             <ModalBody>
               <Text>E-mail</Text>
@@ -106,12 +105,16 @@ export const PatchInfo = () => {
                 value={email}
                 {...register("email")}
                 onChange={(evt) => setEmail(evt.target.value)}
+                bg="gray.300"
+                _focus={{ bg: "white" }}
               />
               <Text>Name</Text>
               <Input
                 value={name}
                 {...register("name")}
                 onChange={(evt) => setName(evt.target.value)}
+                bg="gray.300"
+                _focus={{ bg: "white" }}
               />
             </ModalBody>
 
@@ -123,6 +126,7 @@ export const PatchInfo = () => {
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
                 _hover={{ bg: "orange.100" }}
                 onClick={onClose}
+                bg="gray.300"
               >
                 Close
               </Button>
@@ -133,6 +137,8 @@ export const PatchInfo = () => {
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
                 _hover={{ bg: "orange.100" }}
                 type="submit"
+                bg="orange.700"
+                color="gray.100"
               >
                 Edit
               </Button>

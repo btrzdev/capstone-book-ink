@@ -1,9 +1,8 @@
-import { Flex, Heading, Box } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { User } from "../../types";
 import { PerfilBody } from "./PerfilBody";
-import { HeaderProfileTattooist } from "./HeaderProfileTattooist";
 import { NavBarDash } from "../../components/NavBar/NavbarDash";
 
 export const PerfilTattooist = () => {

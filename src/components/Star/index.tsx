@@ -11,7 +11,7 @@ export const Star = ({ numberStars }: StarProps) => {
     <Flex alignItems="center">
       {React.Children.toArray(
         Array.from({ length: numberStars }).map(() => (
-          <Box>
+          <Box color="orange.200">
             <FaStar />
           </Box>
         ))

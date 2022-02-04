@@ -8,14 +8,6 @@ import {
   SliderFilledTrack,
   Tooltip,
   Text,
-  Heading,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-  Box,
-  CloseButton,
-  toast,
   useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -107,12 +99,11 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
       <Text
         mt={5}
         fontSize="1.2rem"
-        // bg="blue"
-
         w="100%"
         textAlign="center"
         color="gray.300"
         fontWeight="700"
+        textShadow="2px 2px 4px #000000"
       >
         Rate the tattoo artist
       </Text>

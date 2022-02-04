@@ -4,43 +4,37 @@ import {
   Button,
   Checkbox,
   Flex,
-  Heading,
-  Input,
-  Radio,
-  RadioGroup,
-  Select,
-  Stack,
+  Text,
   Textarea,
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import {
-  DeepMap,
-  FieldError,
-  FieldValues,
-  UseFormRegister,
-} from "react-hook-form";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { Sessions } from "../../types";
 import { useAuth } from "../../contexts/Auth.Context";
+import {
+  FaBook,
+  FaCalendar,
+  FaCalendarAlt,
+  FaEnvelope,
+  FaPenAlt,
+  FaRegCalendarAlt,
+} from "react-icons/fa";
 
 const bookingsSchema = yup.object().shape({
   accepted: yup.boolean(),
   message: yup.string(),
 });
 
-interface BookingData {
-  data: Sessions;
-}
-
 interface CardBookingProps {
   session: Sessions;
+  handleUpdate: () => void;
 }
 
-export const CardBooking = ({ session }: CardBookingProps) => {
+export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
   const [accepted, setAccepted] = useState<boolean>(true);
   const [pending, setPending] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
@@ -61,7 +55,6 @@ export const CardBooking = ({ session }: CardBookingProps) => {
 
   const handleRequest = (data: Sessions) => {
     setLoading(true);
-    data.date = session.date;
     data.pending = false;
     data.client = session.client;
     data.userId = session.clientId;
@@ -75,6 +68,7 @@ export const CardBooking = ({ session }: CardBookingProps) => {
 
     submitResponse(data)
       .then((_) => {
+        handleUpdate();
         setLoading(false);
         toast({
           title: "Enviado",
@@ -105,28 +99,63 @@ export const CardBooking = ({ session }: CardBookingProps) => {
       borderColor="orange.800"
       m="20px 0"
       fontFamily="Alata"
+      w="90%"
+      maxW="500px"
+      boxShadow="5px 5px 8px #000000ae"
+      borderRadius="5px"
+      bg="orange.800"
     >
-      <Flex display="flex" alignItems="baseline">
+      <Flex
+        p="5px"
+        display="flex"
+        bg="gray.100"
+        borderRadius="2px"
+        alignItems="center"
+      >
         <Badge borderRadius="full" px="2" color="gray.100" bg="orange.300">
           New
         </Badge>
+
+        <Box
+          // mt="1"
+          ml="10px"
+          fontWeight="semibold"
+          as="h4"
+          lineHeight="tight"
+          isTruncated
+        >
+          BOOKING REQUEST
+        </Box>
       </Flex>
 
-      <Box
-        mt="1"
-        mb="20px"
-        fontWeight="semibold"
-        as="h4"
-        lineHeight="tight"
-        isTruncated
+      {/* informações sobre o dia do evento e o que será feito */}
+      <Flex
+        flexDir="column"
+        // border="1px solid"
+        fontFamily="Philosopher"
+        borderColor="gray.100"
+        borderRadius="5px"
+        p="10px"
+        m="20px 0"
+        color="gray.100"
+        bg="#8d7e7e99"
       >
-        BOOKING REQUEST
-      </Box>
+        <Flex alignItems="center" mb="10px" fontWeight="semibold">
+          <FaPenAlt /> <Text ml="10px">{session.allEvents.title}</Text>
+        </Flex>
+        <Flex alignItems="center" mb="10px" fontWeight="semibold">
+          <FaRegCalendarAlt />{" "}
+          <Text ml="10px">
+            {session.allEvents.start?.split(" ").slice(0, 4).join(" ")}
+          </Text>
+        </Flex>
+        <Flex alignItems="center" mb="10px" fontWeight="semibold">
+          <FaEnvelope /> <Text ml="10px">{session.client}</Text>
+        </Flex>
+      </Flex>
 
-      <Box fontWeight="semibold">{session.date}</Box>
-      <Box fontWeight="semibold">{session.client}</Box>
-      <Flex flexDir="column">
-        <Box>{session.messageRequest}</Box>
+      <Flex flexDir="column" mb="20px">
+        <Box color="gray.200">{session.messageRequest}</Box>
         {session.messageResponse && (
           <Box mt="10px">R: {session.messageResponse}</Box>
         )}
@@ -135,17 +164,23 @@ export const CardBooking = ({ session }: CardBookingProps) => {
         {user.isTattooists ? (
           <>
             <Textarea
+              placeholder="Answer"
+              bg="gray.100"
               {...register("messageResponse")}
               onChange={(e) => setMessage(e.target.value)}
+              mb="10px"
+              color="gray.100"
             />
             <Checkbox
               fontFamily="Alata"
-              color="gray.100"
-              textShadow="2px 2px 4px #000000"
+              color="gray.800"
+              // textShadow="2px 2px 4px #797979"
+              fontWeight="700"
               colorScheme="green"
               {...register("accepted")}
+              size="lg"
             >
-              You accept?
+              Accept
             </Checkbox>
           </>
         ) : (
@@ -161,14 +196,23 @@ export const CardBooking = ({ session }: CardBookingProps) => {
       </Box>
       <Flex alignItems="center" mt="20px">
         {session.pending ? (
-          <Button type="submit">Send</Button>
+          <Button
+            bg="orange.300"
+            _hover={{ bg: "orange.600" }}
+            color="gray.100"
+            type="submit"
+          >
+            {user.isTattooists ? "Send response" : "Send request"}
+          </Button>
         ) : (
           <Button
             onClick={() => removeSession(session.id)}
             isLoading={loading}
+            bg="gray.800"
+            color="gray.100"
             type="submit"
           >
-            Remove
+            Cancel
           </Button>
         )}
       </Flex>

@@ -13,15 +13,12 @@ export const HomeDevs = () => {
       flexDir="column"
       alignItems="center"
     >
-      <Flex mb="20px" alignItems="center" flexDir="column">
-        <Text color="orange.800">who were the devs</Text>
+      <Flex mt="25px" mb="25px" alignItems="center" flexDir="column">
+        <Text color="orange.800">THE</Text>
         <Divider border="2px" w="200px" />
         <Heading color="orange.800">DEVELOPERS</Heading>
         <Divider border="2px" w="200px" />
-        <Text color="orange.800" fontSize="1.5rem" fontFamily="Alata">
-          {" "}
-          * * *
-        </Text>
+        <Text color="orange.800" fontSize="1.5rem" fontFamily="Alata">     </Text>
       </Flex>
 
       <Flex

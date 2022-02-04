@@ -1,47 +1,31 @@
-import { ReactNode, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
-  Box,
   Flex,
-  HStack,
-  Heading,
-  Spacer,
   Image,
   Button,
   Menu,
   MenuButton,
   IconButton,
   MenuList,
-  MenuItem,
   Text,
   Divider,
   useBreakpointValue,
 } from "@chakra-ui/react";
 
 import Logo from "../../assets/LOGO.svg";
-import {
-  AddIcon,
-  EditIcon,
-  ExternalLinkIcon,
-  HamburgerIcon,
-  RepeatIcon,
-} from "@chakra-ui/icons";
-import { FaBook, FaHome, FaRegistered, FaUserAlt } from "react-icons/fa";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { FaBook, FaUserAlt } from "react-icons/fa";
 import { useAuth } from "../../contexts/Auth.Context";
-import { IoMdSettings } from "react-icons/io";
+
 import { FaSignOutAlt } from "react-icons/fa";
 import { PatchInfo } from "../PatchInfo";
-import { api } from "../../services/api";
-import { Sessions, User } from "../../types";
-import { userInfo } from "os";
 
 export const Links = ["Home", "Artists", "About"];
 
 export const NavBarDash = () => {
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
-  const [sessionsLength, setSessionsLength] = useState<number>(0);
-
   const { logout, userSessions } = useAuth();
 
   const isWideVersion = useBreakpointValue({
@@ -56,7 +40,13 @@ export const NavBarDash = () => {
       alignItems="center"
       justifyContent="space-between"
     >
-      <Flex alignItems="center" w={["200px"]} ml="20px">
+      <Flex
+        alignItems="center"
+        onClick={() => history.push("/")}
+        w={["200px"]}
+        ml="20px"
+        cursor="pointer"
+      >
         <Image src={Logo}></Image>
       </Flex>
 
@@ -131,7 +121,7 @@ export const NavBarDash = () => {
                 >
                   {" "}
                   <FaSignOutAlt />
-                  <Text ml="5px">Logout</Text>
+                  <Text ml="5px">LOGOUT</Text>
                 </Button>
               </MenuList>
             </Menu>
@@ -163,7 +153,7 @@ export const NavBarDash = () => {
                 _hover={{ bg: "orange.100" }}
                 bg="none"
               >
-                <FaUserAlt /> <Text ml="5px">Artists</Text>
+                <FaUserAlt /> <Text ml="5px">ARTISTS</Text>
               </Button>
               <Divider width="150px" m="0 auto" />
               <Button
@@ -175,7 +165,7 @@ export const NavBarDash = () => {
                 _hover={{ bg: "orange.100" }}
                 bg="none"
               >
-                <FaBook /> <Text ml="5px">Bookings</Text>
+                <FaBook /> <Text ml="5px">BOOKINGS</Text>
               </Button>
               <Divider width="150px" m="0 auto" />
               <PatchInfo />
@@ -183,7 +173,7 @@ export const NavBarDash = () => {
               <Button
                 m={2}
                 borderRadius={3}
-                fontFamily="Arapey"
+                fontFamily="Philosopher"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
                 onClick={() => logout()}
                 _hover={{ bg: "orange.100" }}
@@ -191,7 +181,7 @@ export const NavBarDash = () => {
               >
                 {" "}
                 <FaSignOutAlt />
-                <Text ml="5px">Logout</Text>
+                <Text ml="5px">LOGOUT</Text>
               </Button>
             </MenuList>
           </Menu>

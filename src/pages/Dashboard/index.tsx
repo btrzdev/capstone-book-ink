@@ -1,30 +1,24 @@
-import {
-  Button,
-  Flex,
-  Heading,
-  Input,
-  InputRightElement,
-  InputGroup,
-} from "@chakra-ui/react";
+import { Flex, Input, InputRightElement, InputGroup } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { useAuth } from "../../contexts/Auth.Context";
 import { useTattooists } from "../../contexts/Tattooists.Context";
 import { DashboardList } from "./DashboardList";
-import { HeaderDashboard } from "./HeaderDashboard";
 import { FaSearch } from "react-icons/fa";
 import { NavBarDash } from "../../components/NavBar/NavbarDash";
+import { useAuth } from "../../contexts/Auth.Context";
+
 export const Dashboard = () => {
-  const { logout } = useAuth();
+  const { userSessions, loadSessions, user } = useAuth();
+  console.log(userSessions);
   const { loadTattooists, tattooists } = useTattooists();
 
   useEffect(() => {
+    loadSessions(user.id);
     loadTattooists();
   }, []);
 
   return (
     <Flex
       w="100%"
-      // bg="gray.300"
       minH="100vh"
       flexDir="column"
       alignItems="center"

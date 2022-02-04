@@ -7,13 +7,14 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
+  Image,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 interface Port {
-  src: string;
+  img: string;
   userId: number;
   id: number;
 }
@@ -21,11 +22,18 @@ interface Port {
 export const Portfolio = () => {
   const [portfolio, setPortifolio] = useState<Port[]>([] as Port[]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [numberId, setNumberId] = useState<number>(() => {
+    const { id } = JSON.parse(
+      localStorage.getItem("@Bookink:tattooistInfo") || "{}"
+    );
+
+    return id;
+  });
+
   useEffect(() => {
-    const info = JSON.parse(localStorage.getItem("@Bookink:user") || "{}");
     api
-      .get(`/portifolio/${info.id}`)
-      .then((response) => console.log([...response.data]));
+      .get(`/portifolio/${numberId}`)
+      .then((response) => setPortifolio([...response.data]));
   }, []);
 
   return (
@@ -51,8 +59,8 @@ export const Portfolio = () => {
           <ModalHeader></ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {portfolio.map((image) => (
-              <img src={image.src} alt={`tattoo ${image.id}`} />
+            {portfolio.map((image, index) => (
+              <Image src={image.img} key={index} alt={`tattoo ${image.id}`} />
             ))}
           </ModalBody>
           <ModalFooter>

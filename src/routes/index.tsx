@@ -8,13 +8,15 @@ import { PerfilTattooist } from "../pages/PerfilTattooist";
 import { PageNotFound } from "../pages/PageNotFound";
 import { useAuth } from "../contexts/Auth.Context";
 import { Bookings } from "../pages/Bookings";
+import { CalendarPage } from "../components/CalendarPage";
 
 export const Routes = () => {
-  const { accessToken, user } = useAuth();
+  const { accessToken } = useAuth();
   return (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
+      <Route exact path="/calendar" component={CalendarPage} isPrivate />
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/perfil" component={PerfilTattooist} isPrivate />
       <Route path="/register" component={Register} />

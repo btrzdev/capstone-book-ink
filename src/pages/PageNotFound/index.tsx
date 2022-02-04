@@ -19,6 +19,7 @@ export const PageNotFound = () => {
           <b>Why don't you get some ink and try again?</b>
         </Text>
         <Button
+          _focus={{ shadow: "none" }}
           mt="4"
           bg="red.600"
           h="60px"

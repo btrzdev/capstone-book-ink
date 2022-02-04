@@ -65,6 +65,7 @@ export const Login = () => {
     >
       <NavBarHome />
       <Flex
+        fontFamily="Alata"
         flexDirection={["column-reverse", "column-reverse", "row", "row"]}
         alignItems="center"
         justifyContent="right"
@@ -74,6 +75,7 @@ export const Login = () => {
         backgroundSize={["70%", "70%", "70%", "80%"]}
         backgroundRepeat={["repeat", "50%", "no-repeat", "no-repeat"]}
         w={["100%", "100%", "100%", "100%"]}
+        h="100vh"
       >
         <Flex justifyContent="left" flexDirection="column">
           <LoginForm

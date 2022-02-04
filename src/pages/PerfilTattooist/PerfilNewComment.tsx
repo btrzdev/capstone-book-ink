@@ -151,7 +151,7 @@ export const PerfilNewComment = ({ tattooist }: PerfilNewCommentProps) => {
           </SliderThumb>
         </Tooltip>
       </Slider>
-      <Button isLoading={loading} type="submit">
+      <Button isLoading={loading} _focus={{ shadow: "none" }} type="submit">
         Evaluate
       </Button>
     </Flex>

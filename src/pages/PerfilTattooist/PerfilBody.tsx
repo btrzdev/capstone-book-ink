@@ -95,6 +95,7 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
             <Star numberStars={numberStars} />
           </Flex>
           <Button
+            _focus={{ shadow: "none" }}
             bg="gray.400"
             h="50px"
             color="gray.100"

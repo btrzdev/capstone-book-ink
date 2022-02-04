@@ -9,6 +9,7 @@ import {
   Input,
   Textarea,
   Text,
+  useToast,
   Box,
 } from "@chakra-ui/react";
 
@@ -18,7 +19,8 @@ import { api } from "../../services/api";
 
 export const CalendarPage = () => {
   const { user, accessToken } = useAuth();
-
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
   const [title, setTitle] = useState<string>("");
   const [allDay, setAllDay] = useState<boolean>(true);
   const [start, setStart] = useState<string | undefined>("");
@@ -33,6 +35,7 @@ export const CalendarPage = () => {
   const [messageRequest, setMessageRequest] = useState<string>("");
 
   const handleSubmit = () => {
+    setLoading(true);
     const data = {
       allEvents: {
         title: title,
@@ -51,8 +54,27 @@ export const CalendarPage = () => {
       .post("/sessions", data, {
         headers: { Authorization: `Bearer ${accessToken}` },
       })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
+      .then((response) => {
+        setLoading(false);
+        toast({
+          title: "Booking success",
+          description: "wait for the tattoo artist's answer!",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+      })
+      .catch((err) => {
+        setLoading(false);
+        toast({
+          title: "No success",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      });
   };
 
   return (
@@ -94,6 +116,7 @@ export const CalendarPage = () => {
       </Flex>
       <Flex justifyContent="end">
         <Button
+          isLoading={loading}
           w="100px"
           m="20px 0"
           onClick={handleSubmit}

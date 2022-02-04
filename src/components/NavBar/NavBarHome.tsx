@@ -27,6 +27,10 @@ export const NavBarHome = () => {
     md: true,
   });
 
+  // const Input = {
+  //   theme.shadows.outline = {none}
+  //   }
+
   return (
     <Flex
       zIndex="2"
@@ -58,13 +62,16 @@ export const NavBarHome = () => {
             mr="10px"
             w="80px"
             fontSize={["1.4rem"]}
+            _focus={{ shadow: "none" }}
             borderRadius="0"
             onClick={() => history.push("/")}
           >
             HOME
           </Button>
           <Button
+            outline="none"
             bg="none"
+            _focus={{ shadow: "none" }}
             _hover={{
               borderBottom: "3px solid",
               borderColor: "orange.800",
@@ -84,6 +91,7 @@ export const NavBarHome = () => {
               bg: "gray.100",
               color: "orange.700",
             }}
+            _focus={{ shadow: "none" }}
             mr="10px"
             w="100px"
             fontSize={["1.4rem"]}
@@ -101,6 +109,7 @@ export const NavBarHome = () => {
             <MenuButton
               as={IconButton}
               aria-label="Options"
+              _focus={{ shadow: "none" }}
               icon={<HamburgerIcon />}
               variant="outline"
               _hover={{ bg: "orange.800" }}
@@ -113,6 +122,7 @@ export const NavBarHome = () => {
               flexDir="column"
             >
               <Button
+                _focus={{ shadow: "none" }}
                 m={2}
                 borderRadius={3}
                 fontFamily="Arapey"
@@ -127,6 +137,7 @@ export const NavBarHome = () => {
               <Divider width="150px" m="0 auto" />
               <Button
                 m={2}
+                _focus={{ shadow: "none" }}
                 borderRadius={3}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
@@ -141,6 +152,7 @@ export const NavBarHome = () => {
               <Button
                 m={2}
                 borderRadius={3}
+                _focus={{ shadow: "none" }}
                 fontFamily="Arapey"
                 fontSize={["lg", "2xl", "2xl", "2xl"]}
                 onClick={() => history.push("/register")}

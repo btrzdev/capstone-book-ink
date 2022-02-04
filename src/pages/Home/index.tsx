@@ -21,6 +21,7 @@ export const Home = () => {
         flexDirection="column"
         p={0}
         bgGradient="linear(to-t, #686255,#ABA394)"
+        w="100%"
       >
         <NavBarHome />
 

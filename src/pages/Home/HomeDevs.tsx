@@ -18,7 +18,9 @@ export const HomeDevs = () => {
         <Divider border="2px" w="200px" />
         <Heading color="orange.800">DEVELOPERS</Heading>
         <Divider border="2px" w="200px" />
-        <Text color="orange.800" fontSize="1.5rem" fontFamily="Alata">     </Text>
+        <Text color="orange.800" fontSize="1.5rem" fontFamily="Alata">
+          {" "}
+        </Text>
       </Flex>
 
       <Flex
@@ -49,9 +51,10 @@ export const HomeDevs = () => {
             textAlign={["center", "center", "left", "left"]}
             w="90%"
           >
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde ullam
-            aliquid, eos quidem sequi a in ratione incidunt eligendi et. Quae
-            quas quaerat explicabo et tempore quos eveniet saepe facere.
+            O objetivo nesse momento é me capacitar, e assim estou, e trabalhar
+            em uma empresa que tenha como valores a colaboração e não a
+            competitividade, a harmonia e não a desunião, a fraternidade e não a
+            descomunhão.
           </Text>
         </Flex>
 
@@ -76,9 +79,10 @@ export const HomeDevs = () => {
             textAlign={["center", "center", "right", "right"]}
             w="90%"
           >
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde ullam
-            aliquid, eos quidem sequi a in ratione incidunt eligendi et. Quae
-            quas quaerat explicabo et tempore quos eveniet saepe facere.
+            A programação começou a fazer parte da minha vida em 2020, desde
+            então, diariamente estou aprimorando minhas competências e
+            habilidades. Hoje trazemos esse projeto para demonstrar como a
+            tecnologia pode automatizar e facilitar a vida do trabalhador.
           </Text>
         </Flex>
       </Flex>
@@ -110,9 +114,9 @@ export const HomeDevs = () => {
             textAlign={["center", "center", "left", "left"]}
             w="90%"
           >
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde ullam
-            aliquid, eos quidem sequi a in ratione incidunt eligendi et. Quae
-            quas quaerat explicabo et tempore quos eveniet saepe facere.
+            Apaixonado por tecnologia e pela capacidade que ela tem de mudar a
+            nossa vida. Eu busco criar soluções para construir uma realidade
+            melhor para todos.
           </Text>
         </Flex>
 
@@ -137,9 +141,10 @@ export const HomeDevs = () => {
             textAlign={["center", "center", "right", "right"]}
             w="90%"
           >
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde ullam
-            aliquid, eos quidem sequi a in ratione incidunt eligendi et. Quae
-            quas quaerat explicabo et tempore quos eveniet saepe facere.
+            A minha relação com a tecnologia está diretamente atrelada a ideia
+            de resolução de problemas e facilitação do cotidiano. O
+            desenvolvimento dessa aplicação traz preocupações reais e a
+            aplicação dos conceitos na prática.
           </Text>
         </Flex>
       </Flex>

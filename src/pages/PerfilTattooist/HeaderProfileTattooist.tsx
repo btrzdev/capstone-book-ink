@@ -61,6 +61,7 @@ export const HeaderProfileTattooist = () => {
           About
         </Link>
         <Button
+          _focus={{ shadow: "none" }}
           m={2}
           borderRadius={3}
           bgColor={theme.colors.gray[800]}

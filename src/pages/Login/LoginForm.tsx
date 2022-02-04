@@ -71,6 +71,7 @@ export const LoginForm = ({
           </VStack>
           <VStack m="10px 0px 20px 0px" spacing="5">
             <Button
+              _focus={{ shadow: "none" }}
               isLoading={loading}
               bg={theme.colors.orange[700]}
               w="100%"

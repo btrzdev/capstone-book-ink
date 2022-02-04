@@ -52,7 +52,6 @@ export const Register = () => {
 
   const handleSignUp = (data: SignUpData) => {
     setLoading(true);
-    console.log(data);
     delete data.confirm_password;
 
     registerUser(data)

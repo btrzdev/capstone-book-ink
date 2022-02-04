@@ -55,7 +55,6 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
 
   const handleRequest = (data: Sessions) => {
     setLoading(true);
-    // data.date = session.date;
     data.pending = false;
     data.client = session.client;
     data.userId = session.clientId;
@@ -104,7 +103,7 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
       maxW="500px"
       boxShadow="5px 5px 8px #000000ae"
       borderRadius="5px"
-      bg="gray.100"
+      bg="orange.800"
     >
       <Flex
         p="5px"
@@ -132,25 +131,31 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
       {/* informações sobre o dia do evento e o que será feito */}
       <Flex
         flexDir="column"
-        border="1px solid"
-        borderColor="orange.700"
+        // border="1px solid"
+        fontFamily="Philosopher"
+        borderColor="gray.100"
         borderRadius="5px"
         p="10px"
         m="20px 0"
+        color="gray.100"
+        bg="#8d7e7e99"
       >
         <Flex alignItems="center" mb="10px" fontWeight="semibold">
           <FaPenAlt /> <Text ml="10px">{session.allEvents.title}</Text>
         </Flex>
         <Flex alignItems="center" mb="10px" fontWeight="semibold">
           <FaRegCalendarAlt />{" "}
-          <Text ml="10px">start - {session.allEvents.start}</Text>
+          <Text ml="10px">
+            {session.allEvents.start?.split(" ").slice(0, 4).join(" ")}
+          </Text>
         </Flex>
-      </Flex>
-      <Flex flexDir="column" mb="20px">
         <Flex alignItems="center" mb="10px" fontWeight="semibold">
           <FaEnvelope /> <Text ml="10px">{session.client}</Text>
         </Flex>
-        <Box>{session.messageRequest}</Box>
+      </Flex>
+
+      <Flex flexDir="column" mb="20px">
+        <Box color="gray.200">{session.messageRequest}</Box>
         {session.messageResponse && (
           <Box mt="10px">R: {session.messageResponse}</Box>
         )}
@@ -160,20 +165,20 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
           <>
             <Textarea
               placeholder="Answer"
-              bg="gray.800"
+              bg="#38312d"
               {...register("messageResponse")}
               onChange={(e) => setMessage(e.target.value)}
               mb="10px"
               color="gray.100"
+              _focus={{ outline: "red" }}
             />
             <Checkbox
               fontFamily="Alata"
-              color="gray.800"
-              // textShadow="2px 2px 4px #797979"
               fontWeight="700"
               colorScheme="green"
               {...register("accepted")}
               size="lg"
+              color="gray.200"
             >
               Accept
             </Checkbox>
@@ -191,8 +196,13 @@ export const CardBooking = ({ session, handleUpdate }: CardBookingProps) => {
       </Box>
       <Flex alignItems="center" mt="20px">
         {session.pending ? (
-          <Button bg="gray.800" color="gray.100" type="submit">
-            Send request
+          <Button
+            bg="orange.300"
+            _hover={{ bg: "orange.600" }}
+            color="gray.100"
+            type="submit"
+          >
+            {user.isTattooists ? "Send response" : "Send request"}
           </Button>
         ) : (
           <Button

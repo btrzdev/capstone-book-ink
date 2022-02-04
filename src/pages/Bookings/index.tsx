@@ -25,7 +25,7 @@ export const Bookings = () => {
   const handleUpdate = () => {
     setUpdate(!update);
   };
-  console.log(userSessions);
+
   return (
     <Flex
       w="100%"
@@ -76,7 +76,7 @@ export const Bookings = () => {
               fontSize="3rem"
               color="gray.100"
             >
-              No bookings 
+              No bookings
             </AlertTitle>
 
             <AlertDescription maxWidth="sm" color="gray.100">

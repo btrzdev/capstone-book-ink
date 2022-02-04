@@ -16,6 +16,7 @@ import { User } from "../../types";
 import { PerfilBio } from "./PerfilBio";
 import { PerfilNewComment } from "./PerfilNewComment";
 import notFoundImage from "../../assets/v.jpeg";
+import { Portfolio } from "../../components/Portfolio";
 import { ModalSessions } from "../../components/Modal/ModalSessions";
 import { useHistory } from "react-router-dom";
 
@@ -107,21 +108,7 @@ export const PerfilBody = ({ tattooist, numberStars }: PerfilBodyProps) => {
             <ModalSessions onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
             BOOKING TATTOO
           </Button>
-          <Button
-            bg="orange.100"
-            color="gray.100"
-            mt="10px"
-            border="2px solid"
-            fontFamily="Arapey"
-            borderColor="orange.800"
-            h="50px"
-            w={["80%", "80%", "100%", "200px"]}
-            display="flex"
-            textShadow="2px 2px 4px #000000"
-            onClick={() => history.push('/calendar')}
-          >
-            PORTFOLIO
-          </Button>
+          <Portfolio />
         </Flex>
       </Flex>
 

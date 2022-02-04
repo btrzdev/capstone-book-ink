@@ -27,18 +27,12 @@ export const ModalSessions = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Get in touch with the artist!</ModalHeader>
+      <ModalContent fontFamily="Alata" bg="gray.100">
+        <ModalHeader></ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <CalendarPage />
         </ModalBody>
-        <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={onClose}>
-            Close
-          </Button>
-          <Button variant="ghost">Secondary Action</Button>
-        </ModalFooter>
       </ModalContent>
     </Modal>
   );

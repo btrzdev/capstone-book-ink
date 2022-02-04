@@ -31,26 +31,43 @@ export const HomeHowItWorks = () => {
           {" "}
         </Text>
       </Flex>
-      <UnorderedList
+      <Flex
         fontSize={["1.3rem", "5rem"]}
         fontFamily="Philosopher"
         w="100%"
         color="gray.200"
         mb="50px"
         listStyleType="none"
+        display="flex"
+        flexDir="column"
+        alignItems="center"
       >
-        <ListItem fontSize={["1.3rem", "1.75rem"]} m="15px" textAlign={["center"]}>
+        <Flex
+          fontSize={["1.3rem", "1.75rem"]}
+          m="15px 0px"
+          textAlign={["center"]}
+        >
           Get in touch with artists from your area or any where in the world!
-        </ListItem>
-        <ListItem fontSize={["1.3rem", "1.75rem"]} mb="15px" textAlign={["center"]} >
+        </Flex>
+        <Flex
+          fontSize={["1.3rem", "1.75rem"]}
+          m="15px 0px"
+          textAlign={["center"]}
+        >
           Check their profile and work!
-        </ListItem>
-        <ListItem fontSize={["1.3rem", "1.75rem"]} mb="15px" textAlign={["center"]}>
+        </Flex>
+        <Flex
+          fontSize={["1.3rem", "1.75rem"]}
+          m="15px 0px"
+          textAlign={["center"]}
+        >
           {" "}
           Find the artist you are looking for!{" "}
-        </ListItem>
-        <ListItem fontSize={["1.3rem", "1.75rem"]} textAlign={["center"]}>Schedule a Booking! </ListItem>
-      </UnorderedList>
+        </Flex>
+        <Flex fontSize={["1.3rem", "1.75rem"]} textAlign={["center"]}>
+          Schedule a Booking!{" "}
+        </Flex>
+      </Flex>
     </Flex>
   );
 };

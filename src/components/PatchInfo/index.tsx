@@ -51,7 +51,6 @@ export const PatchInfo = () => {
   });
 
   const handlePatch = (data: Patched) => {
-    console.log(data);
     api
       .patch(`/users/${id}`, data, {
         headers: { Authorization: `Bearer ${token}` },
